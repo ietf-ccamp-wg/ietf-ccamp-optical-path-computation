@@ -1,0 +1,147 @@
+module: ietf-flexi-grid-path-computation
+
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request:
+    +-- fec-type?                identityref
+    +-- termination-type?        identityref
+    +-- bit-stuffing?            boolean
+    +-- wavelength-assignment?   identityref
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- grid-type?    identityref
+    +-- priority?     uint8
+    +-- flexi-grid
+       +-- slot-width-granularity?   identityref
+       +-- min-slot-width-factor?    uint16
+       +-- max-slot-width-factor?    uint16
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- grid-type?    identityref
+    +-- priority?     uint8
+    +-- flexi-grid
+       +-- slot-width-granularity?   identityref
+       +-- min-slot-width-factor?    uint16
+       +-- max-slot-width-factor?    uint16
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- (single-or-super-channel)?
+          +--:(single)
+          |  +-- flexi-n?              l0-types:flexi-n
+          |  +-- flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +-- subcarrier-flexi-n* [flexi-n]
+                +-- flexi-n    l0-types:flexi-n
+                +-- flexi-m?   l0-types:flexi-m
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- (single-or-super-channel)?
+          +--:(single)
+          |  +-- flexi-n?              l0-types:flexi-n
+          |  +-- flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +-- subcarrier-flexi-n* [flexi-n]
+                +-- flexi-n    l0-types:flexi-n
+                +-- flexi-m?   l0-types:flexi-m
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- (single-or-super-channel)?
+          +--:(single)
+          |  +-- flexi-n?              l0-types:flexi-n
+          |  +-- flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +-- subcarrier-flexi-n* [flexi-n]
+                +-- flexi-n    l0-types:flexi-n
+                +-- flexi-m?   l0-types:flexi-m
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- (single-or-super-channel)?
+          +--:(single)
+          |  +-- flexi-n?              l0-types:flexi-n
+          |  +-- flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +-- subcarrier-flexi-n* [flexi-n]
+                +-- flexi-n    l0-types:flexi-n
+                +-- flexi-m?   l0-types:flexi-m
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-n?   l0-types:flexi-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-n?   l0-types:flexi-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-grid-channel-spacing?   identityref
+       +-- flexi-n-step?                 uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-n?   l0-types:flexi-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-n?   l0-types:flexi-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(flexi-grid)
+       +-- flexi-grid-channel-spacing?   identityref
+       +-- flexi-n-step?                 uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
+            /tepc:technology:
+    +--:(flexi-grid)
+       +-- (single-or-super-channel)?
+          +--:(single)
+          |  +-- flexi-n?              l0-types:flexi-n
+          |  +-- flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +-- subcarrier-flexi-n* [flexi-n]
+                +-- flexi-n    l0-types:flexi-n
+                +-- flexi-m?   l0-types:flexi-m
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object/tepc:type
+            /tepc:label/tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(flexi-grid)
+       +--ro (single-or-super-channel)?
+          +--:(single)
+          |  +--ro flexi-n?              l0-types:flexi-n
+          |  +--ro flexi-m?              l0-types:flexi-m
+          +--:(super)
+             +--ro subcarrier-flexi-n* [flexi-n]
+                +--ro flexi-n    l0-types:flexi-n
+                +--ro flexi-m?   l0-types:flexi-m
