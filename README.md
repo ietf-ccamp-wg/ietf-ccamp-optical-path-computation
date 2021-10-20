@@ -2,11 +2,15 @@
 
 ## Scope
 
-This repository is for the YANG modeling of OTN- and optical-layer path computation
+This repository is for the YANG modeling of OTN and optical-layer path computation
 
 ## Abstract
 
-TBD
+This document describes YANG data models for Remote Procedure Calls (RPCs) to request Path Computation in Optical Networks (OTN, WSON and Flexi-grid).
+
+The YANG data models defined in this
+document conforms to the Network Management Datastore Architecture
+(NMDA).
 
 ## Contributing
 
