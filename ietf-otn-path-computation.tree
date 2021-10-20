@@ -1,0 +1,189 @@
+module: ietf-otn-path-computation
+
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:te-bandwidth/tepc:technology:
+    +--:(otn)
+       +-- otn
+          +-- odu-type?                     identityref
+          +-- (oduflex-type)?
+             +--:(generic)
+             |  +-- nominal-bit-rate        uint64
+             +--:(cbr)
+             |  +-- client-type             identityref
+             +--:(gfp-n-k)
+             |  +-- gfp-n                   uint8
+             |  +-- gfp-k?                  gfp-k
+             +--:(flexe-client)
+             |  +-- flexe-client            flexe-client-rate
+             +--:(flexe-aware)
+             |  +-- flexe-aware-n           uint16
+             +--:(packet)
+                +-- opuflex-payload-rate    uint64
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:tunnel-attributes/tepc:te-bandwidth
+            /tepc:technology:
+    +--:(otn)
+       +-- otn
+          +-- odu-type?                     identityref
+          +-- (oduflex-type)?
+             +--:(generic)
+             |  +-- nominal-bit-rate        uint64
+             +--:(cbr)
+             |  +-- client-type             identityref
+             +--:(gfp-n-k)
+             |  +-- gfp-n                   uint8
+             |  +-- gfp-k?                  gfp-k
+             +--:(flexe-client)
+             |  +-- flexe-client            flexe-client-rate
+             +--:(flexe-aware)
+             |  +-- flexe-aware-n           uint16
+             +--:(packet)
+                +-- opuflex-payload-rate    uint64
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:te-bandwidth/tepc:technology:
+    +--:(otn)
+       +--ro otn
+          +--ro odu-type?                     identityref
+          +--ro (oduflex-type)?
+             +--:(generic)
+             |  +--ro nominal-bit-rate        uint64
+             +--:(cbr)
+             |  +--ro client-type             identityref
+             +--:(gfp-n-k)
+             |  +--ro gfp-n                   uint8
+             |  +--ro gfp-k?                  gfp-k
+             +--:(flexe-client)
+             |  +--ro flexe-client            flexe-client-rate
+             +--:(flexe-aware)
+             |  +--ro flexe-aware-n           uint16
+             +--:(packet)
+                +--ro opuflex-payload-rate    uint64
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- range-type?      otn-label-range-type
+    +-- tsg?             identityref
+    +-- odu-type-list*   identityref
+    +-- priority?        uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- range-type?      otn-label-range-type
+    +-- tsg?             identityref
+    +-- odu-type-list*   identityref
+    +-- priority?        uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- otn-tpn?   otn-tpn
+       +-- tsg?       identityref
+       +-- ts-list?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- otn-tpn?   otn-tpn
+       +-- tsg?       identityref
+       +-- ts-list?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- otn-tpn?   otn-tpn
+       +-- tsg?       identityref
+       +-- ts-list?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- otn-tpn?   otn-tpn
+       +-- tsg?       identityref
+       +-- ts-list?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(otn)
+       +-- (range-type)?
+          +--:(trib-port)
+          |  +-- otn-tpn?   otn-tpn
+          +--:(trib-slot)
+             +-- otn-ts?    otn-ts
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
+            /tepc:technology:
+    +--:(otn)
+       +-- otn-tpn?   otn-tpn
+       +-- tsg?       identityref
+       +-- ts-list?   string
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object/tepc:type
+            /tepc:label/tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(otn)
+       +--ro otn-tpn?   otn-tpn
+       +--ro tsg?       identityref
+       +--ro ts-list?   string

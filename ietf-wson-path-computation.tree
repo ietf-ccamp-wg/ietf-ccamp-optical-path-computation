@@ -1,0 +1,167 @@
+module: ietf-wson-path-computation
+
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request:
+    +-- fec-type?                identityref
+    +-- termination-type?        identityref
+    +-- bit-stuffing?            boolean
+    +-- wavelength-assignment?   identityref
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- grid-type?   identityref
+    +-- priority?    uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction:
+    +-- grid-type?   identityref
+    +-- priority?    uint8
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +-- dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?                    l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +-- dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?                    l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +-- dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?                    l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type/tepc:label
+            /tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +-- dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?                    l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?   l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?   l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-in-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(wson)
+       +-- (l0-grid-type)?
+          +--:(dwdm)
+          |  +-- wson-dwdm-channel-spacing?   identityref
+          +--:(cwdm)
+             +-- wson-cwdm-channel-spacing?   identityref
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-start/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?   l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-end/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?   l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:path-out-segment
+            /tepc:label-restrictions/tepc:label-restriction
+            /tepc:label-step/tepc:technology:
+    +--:(wson)
+       +-- (l0-grid-type)?
+          +--:(dwdm)
+          |  +-- wson-dwdm-channel-spacing?   identityref
+          +--:(cwdm)
+             +-- wson-cwdm-channel-spacing?   identityref
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
+            /tepc:technology:
+    +--:(wson)
+       +-- (grid-type)?
+          +--:(dwdm)
+          |  +-- (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +-- dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +-- cwdm-n?                    l0-types:cwdm-n
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object/tepc:type
+            /tepc:label/tepc:label-hop/tepc:te-label/tepc:technology:
+    +--:(wson)
+       +--ro (grid-type)?
+          +--:(dwdm)
+          |  +--ro (single-or-super-channel)?
+          |     +--:(single)
+          |     |  +--ro dwdm-n?              l0-types:dwdm-n
+          |     +--:(super)
+          |        +--ro subcarrier-dwdm-n*   l0-types:dwdm-n
+          +--:(cwdm)
+             +--ro cwdm-n?                    l0-types:cwdm-n
