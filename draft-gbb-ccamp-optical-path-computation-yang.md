@@ -4,7 +4,7 @@ coding: utf-8
 title: YANG Data Models for requesting Path Computation in Optical Networks
 
 abbrev: Yang for Optical Path Computation
-docname: draft-xx-ccamp-optical-path-computation-yang-00
+docname: draft-gbb-ccamp-optical-path-computation-yang-00
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -47,7 +47,8 @@ document conforms to the Network Management Datastore Architecture
 {{!I-D.ietf-teas-yang-path-computation}} describes some use cases, where a client needs to request
 underlying SDN controllers for path computation. In some of these use cases the underlying SDN controller can control a single-layer (OTN, WSON or Flexi-grid) or multi-layer Optical network.
 
-This document define YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an Optical underlying SDN controller.
+This document define YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
+a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths requires knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.
 
 The YANG data model defined in this document conforms to the Network
 Management Datastore Architecture {{!RFC8342}}.
@@ -92,15 +93,23 @@ Management Datastore Architecture {{!RFC8342}}.
 
 | Prefix       | YANG module                      | Reference
 | l0-types     | ietf-layer0-types                | {{!RFC9093}}
-| l0-types-ext | ietf-layer0-types-ext            | {{!I-D.ietf-ccamp-layer0-types-ext}}
+| l0-types-ext | ietf-layer0-types-ext            | \[RFCYYYY]
 | l0-types     | ietf-layer0-types                | {{!RFC8776}}
-| l1-types     | ietf-layer1-types                | {{!I-D.ietf-ccamp-layer1-types}}
-| te           | ietf-te                          | {{!I-D.ietf-teas-yang-te}}
-| tep          | ietf-te-path-computation         | {{!I-D.ietf-teas-yang-path-computation}}
-| flexg-pc     | ietf-flexi-grid-path-computation | This Document         
-| wson-pc      | ietf-wson-path-computation       | This Document         
-| otn-pc       | ietf-otn-path-computation        | This Document         
+| l1-types     | ietf-layer1-types                | \[RFCZZZZ]
+| te           | ietf-te                          | \[RFCKKKK]
+| tep          | ietf-te-path-computation         | \[RFCJJJJ]
+| flexg-pc     | ietf-flexi-grid-path-computation | RFCXXXX         
+| wson-pc      | ietf-wson-path-computation       | RFCXXXX         
+| otn-pc       | ietf-otn-path-computation        | RFCXXXX         
 {: #tab-prefixes title="Prefixes and corresponding YANG modules"}
+
+RFC Editor Note:
+Please replace XXXX with the RFC number assigned to this document.
+Please replace YYYY with the RFC number assigned to {{!I-D.ietf-ccamp-layer0-types-ext}}.
+Please replace ZZZZ with the RFC number assigned to {{!I-D.ietf-ccamp-layer1-types}}.
+Please replace KKKK with the RFC number assigned to {{!I-D.ietf-teas-yang-te}}.
+Please replace JJJJ with the RFC number assigned to {{!I-D.ietf-teas-yang-path-computation}}.
+Please remove this note.
 
 # YANG Data Models for Optical Path Computation 
 
