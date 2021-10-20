@@ -167,13 +167,34 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
 
 ## WSON Path Computation Tree Diagrams
 
+{{fig-wson-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-wson-path-computation.yang.
+
+~~~~
+{::include ./ietf-wson-path-computation.tree}
+~~~~
+{: #fig-wson-pc-tree title="WSON path computation tree diagram"}
+
 {: #flexg-pc-tree}
 
 ## Flexi-grid Path Computation Tree Diagrams
 
+{{fig-flexg-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-flexi-grid-path-computation.yang.
+
+~~~~
+{::include ./ietf-flexi-grid-path-computation.tree}
+~~~~
+{: #fig-flexg-pc-tree title="Flexi-grid path computation tree diagram"}
+
 {: #otn-pc-tree}
 
 ## OTN Path Computation Tree Diagrams
+
+{{fig-otn-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-otn-path-computation.yang.
+
+~~~~
+{::include ./ietf-otn-path-computation.tree}
+~~~~
+{: #fig-otn-pc-tree title="OTN path computation tree diagram"}
 
 {: #optical-pc-yang}
 
@@ -183,13 +204,34 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
 
 ## YANG Model for WSON Path Computation
 
+~~~~
+<CODE BEGINS> file "ietf-wson-path-computation@2021-10-15.yang"
+{::include ./ietf-wson-path-computation.yang}
+<CODE ENDS>
+~~~~
+{: #fig-wson-pc-yang title="WSON path computation YANG module"}
+
 {: #flexg-pc-yang}
 
 ## YANG Model for Flexi-grid Path Computation
 
+~~~~
+<CODE BEGINS> file "ietf-flexi-grid-path-computation@2021-10-15.yang"
+{::include ./ietf-flexi-grid-path-computation.yang}
+<CODE ENDS>
+~~~~
+{: #fig-flexg-pc-yang title="Flexi-grid path computation YANG module"}
+
 {: #otn-pc-yang}
 
 ## YANG Model for OTN Path Computation
+
+~~~~
+<CODE BEGINS> file "ietf-otn-path-computation@2021-10-07.yang"
+{::include ./ietf-otn-path-computation.yang}
+<CODE ENDS>
+~~~~
+{: #fig-otn-pc-yang title="OTN path computation YANG module"}
 
 # Manageability Considerations
 
