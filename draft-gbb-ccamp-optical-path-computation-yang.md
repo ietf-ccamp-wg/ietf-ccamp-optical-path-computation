@@ -314,4 +314,20 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
 
 The authors of this document would like to thank the authors of {{?I-D.ietf-teas-actn-poi-applicability}} for having identified the gap and requirements to trigger this work.
 
+The authors of this document would also like to thank 
+Young Lee, 
+Haomian Zheng, 
+Victor Lopex, 
+Ricard Vilalta, 
+Bin Yeong Yoon, 
+Jorge E. Lopez de Vergara Mendez, 
+Daniel Perdices Burrero, 
+Oscar Gonzalez de Dios, 
+Gabriele Galimberti, 
+Zafar Ali, 
+Daniel Michaud Vallinoto and 
+Dhruv Dhody 
+who have contributed to the development of path computation augmentations for WSON and Flexi-grid topology in earlier versions of
+{{?I-D.ietf-ccamp-wson-tunnel-model}} and of {{?I-D.ietf-ccamp-flexigrid-tunnel-yang}}.
+
 This document was prepared using kramdown.

@@ -88,8 +88,8 @@ Table of Contents
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  36
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  37
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  38
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  38
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  38
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  39
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  39
 
 1.  Introduction
 
@@ -2074,6 +2074,23 @@ Busi, et al.            Expires 2 September 2022               [Page 37]
 Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
+   [I-D.ietf-ccamp-flexigrid-tunnel-yang]
+              Mendez, J. E. L. D. V., Burrero, D. P., King, D., Lopez,
+              V., Busi, I., Dios, O. G. D., Lee, Y., and G. Galimberti,
+              "A YANG Data Model for Flexi-Grid Tunnels", Work in
+              Progress, Internet-Draft, draft-ietf-ccamp-flexigrid-
+              tunnel-yang-00, 9 November 2021,
+              <https://www.ietf.org/archive/id/draft-ietf-ccamp-
+              flexigrid-tunnel-yang-00.txt>.
+
+   [I-D.ietf-ccamp-wson-tunnel-model]
+              Lee, Y., Zheng, H., Guo, A., Lopez, V., King, D., Yoon, B.
+              Y., and R. Vilalta, "A Yang Data Model for WSON Tunnel",
+              Work in Progress, Internet-Draft, draft-ietf-ccamp-wson-
+              tunnel-model-06, 22 October 2021,
+              <https://www.ietf.org/archive/id/draft-ietf-ccamp-wson-
+              tunnel-model-06.txt>.
+
    [I-D.ietf-teas-actn-poi-applicability]
               Peruzzini, F., Bouquier, J., Busi, I., King, D., and D.
               Ceccarelli, "Applicability of Abstraction and Control of
@@ -2101,6 +2118,23 @@ Acknowledgments
    [I-D.ietf-teas-actn-poi-applicability] for having identified the gap
    and requirements to trigger this work.
 
+   The authors of this document would also like to thank Young Lee,
+   Haomian Zheng, Victor Lopex, Ricard Vilalta, Bin Yeong Yoon, Jorge E.
+   Lopez de Vergara Mendez, Daniel Perdices Burrero, Oscar Gonzalez de
+   Dios, Gabriele Galimberti, Zafar Ali, Daniel Michaud Vallinoto and
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 38]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
+   Dhruv Dhody who have contributed to the development of path
+   computation augmentations for WSON and Flexi-grid topology in earlier
+   versions of [I-D.ietf-ccamp-wson-tunnel-model] and of
+   [I-D.ietf-ccamp-flexigrid-tunnel-yang].
+
    This document was prepared using kramdown.
 
 Contributors
@@ -2122,43 +2156,9 @@ Authors' Addresses
    Email: aihuaguo.ietf@gmail.com
 
 
-
-
-
-Busi, et al.            Expires 2 September 2022               [Page 38]
-
-Internet-Draft      Yang for Optical Path Computation         March 2022
-
-
    Sergio Belotti
    Nokia
    Email: sergio.belotti@nokia.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
