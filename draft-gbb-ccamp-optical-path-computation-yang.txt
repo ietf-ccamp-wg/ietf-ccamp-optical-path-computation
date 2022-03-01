@@ -5,10 +5,10 @@
 CCAMP Working Group                                              I. Busi
 Internet-Draft                                       Huawei Technologies
 Intended status: Standards Track                                  A. Guo
-Expires: 25 April 2022                            Futurewei Technologies
+Expires: 2 September 2022                         Futurewei Technologies
                                                               S. Belotti
                                                                    Nokia
-                                                         22 October 2021
+                                                            1 March 2022
 
 
   YANG Data Models for requesting Path Computation in Optical Networks
@@ -38,11 +38,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2022.
+   This Internet-Draft will expire on 2 September 2022.
 
 Copyright Notice
 
-   Copyright (c) 2021 IETF Trust and the persons identified as the
+   Copyright (c) 2022 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,14 +53,14 @@ Copyright Notice
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 1]
+Busi, et al.            Expires 2 September 2022                [Page 1]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
-   extracted from this document must include Simplified BSD License text
-   as described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Simplified BSD License.
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
 
 Table of Contents
 
@@ -84,12 +84,12 @@ Table of Contents
    5.  Manageability Considerations  . . . . . . . . . . . . . . . .  35
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  35
    7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  35
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  35
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  35
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  36
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  36
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  37
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  37
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  37
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  37
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  38
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  38
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  38
 
 1.  Introduction
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 2]
+Busi, et al.            Expires 2 September 2022                [Page 2]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
    computation itself.  This is especially helpful in cases where
@@ -165,9 +165,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 3]
+Busi, et al.            Expires 2 September 2022                [Page 3]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
       +==============+==================================+===========+
@@ -221,9 +221,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 4]
+Busi, et al.            Expires 2 September 2022                [Page 4]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                        +--------------------------+    o: augment
@@ -277,9 +277,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 5]
+Busi, et al.            Expires 2 September 2022                [Page 5]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
 2.3.  Bandwidth Augmentation
@@ -333,9 +333,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 6]
+Busi, et al.            Expires 2 September 2022                [Page 6]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                /tepc:path-request/tepc:path-in-segment
@@ -389,9 +389,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 7]
+Busi, et al.            Expires 2 September 2022                [Page 7]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
              |  +-- (single-or-super-channel)?
@@ -445,9 +445,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 8]
+Busi, et al.            Expires 2 September 2022                [Page 8]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
              |  +-- wson-dwdm-channel-spacing?   identityref
@@ -501,9 +501,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                 [Page 9]
+Busi, et al.            Expires 2 September 2022                [Page 9]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                /tepc:response/tepc:computed-paths-properties
@@ -557,9 +557,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 10]
+Busi, et al.            Expires 2 September 2022               [Page 10]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
      augment /te:tunnels-path-compute/te:input/te:path-compute-info
@@ -613,9 +613,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 11]
+Busi, et al.            Expires 2 September 2022               [Page 11]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
           +-- (single-or-super-channel)?
@@ -669,9 +669,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 12]
+Busi, et al.            Expires 2 September 2022               [Page 12]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
@@ -725,9 +725,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 13]
+Busi, et al.            Expires 2 September 2022               [Page 13]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                 +--:(flexe-client)
@@ -781,9 +781,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 14]
+Busi, et al.            Expires 2 September 2022               [Page 14]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
                /tepc:path-request/tepc:path-in-segment
@@ -837,9 +837,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 15]
+Busi, et al.            Expires 2 September 2022               [Page 15]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
           +-- ts-list?   string
@@ -893,9 +893,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 16]
+Busi, et al.            Expires 2 September 2022               [Page 16]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
              |  +-- otn-tpn?   otn-tpn
@@ -949,9 +949,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 17]
+Busi, et al.            Expires 2 September 2022               [Page 17]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
        for requesting Path Computation.";
@@ -1005,9 +1005,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 18]
+Busi, et al.            Expires 2 September 2022               [Page 18]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
        Relating to IETF Documents
@@ -1016,7 +1016,7 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
        This version of this YANG module is part of RFC XXXX; see
        the RFC itself for full legal notices.";
 
-     revision "2021-10-15" {
+     revision "2021-12-20" {
        description
          "Initial version.";
        reference
@@ -1034,7 +1034,6 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
        description
           "Augment with additional constraints for WSON paths.";
        uses l0-types-ext:l0-tunnel-attributes;
-       uses l0-types-ext:l0-path-constraints;
      }
 
      /*
@@ -1061,9 +1060,10 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 19]
+
+Busi, et al.            Expires 2 September 2022               [Page 19]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
      /*
@@ -1117,9 +1117,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 20]
+Busi, et al.            Expires 2 September 2022               [Page 20]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
            + "tepc:route-object-include-exclude/tepc:type/tepc:label/"
@@ -1173,9 +1173,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 21]
+Busi, et al.            Expires 2 September 2022               [Page 21]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
            + "tepc:label-restrictions/tepc:label-restriction/"
@@ -1229,9 +1229,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 22]
+Busi, et al.            Expires 2 September 2022               [Page 22]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
            + "tepc:computed-paths-properties/"
@@ -1285,9 +1285,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 23]
+Busi, et al.            Expires 2 September 2022               [Page 23]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
      }
@@ -1327,7 +1327,7 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
        This version of this YANG module is part of RFC XXXX; see
        the RFC itself for full legal notices.";
 
-     revision "2021-10-15" {
+     revision "2021-12-20" {
        description
          "Initial version.";
        reference
@@ -1341,9 +1341,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 24]
+Busi, et al.            Expires 2 September 2022               [Page 24]
 
-Internet-Draft      Yang for Optical Path Computation       October 2021
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
      */
@@ -1354,7 +1354,6 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
           "Augment with additional constraints flexi-grid
            media channel.";
        uses l0-types-ext:l0-tunnel-attributes;
-       uses l0-types-ext:l0-path-constraints;
      }
 
      /*
@@ -1394,15 +1393,15 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
          route objects excluded by the path computation of the requested
          path.";
        case flexi-grid {
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 25]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          uses l0-types:flexi-grid-label-hop;
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 25]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
        }
      }
 
@@ -1450,15 +1449,15 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
            + "tepc:label-restrictions/tepc:label-restriction/"
            + "tepc:label-start/tepc:te-label/tepc:technology" {
        description
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 26]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          "Augment TE label range start for the ingress segment
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 26]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
          of the requested path.";
        case flexi-grid {
          uses l0-types:flexi-grid-label-start-end;
@@ -1506,15 +1505,15 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
            + "tepc:label-restrictions/tepc:label-restriction/"
            + "tepc:label-end/tepc:te-label/tepc:technology" {
        description
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 27]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          "Augment TE label range end for the egress segment
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 27]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
          of the requested path.";
        case flexi-grid {
          uses l0-types:flexi-grid-label-start-end;
@@ -1562,15 +1561,14 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
    }
    <CODE ENDS>
 
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 28]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
              Figure 6: Flexi-grid path computation YANG module
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 28]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
 
 4.3.  YANG Model for OTN Path Computation
 
@@ -1618,16 +1616,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
         Editor:   Sergio Belotti
                   <mailto:sergio.belotti@nokia.com>";
 
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 29]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
      description
        "This module defines a model for requesting
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 29]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
        OTN Path Computation.
 
        The model fully conforms to the Network Management
@@ -1674,16 +1672,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
      augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
            + "tepc:tunnel-attributes/tepc:te-bandwidth/"
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 30]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
            + "tepc:technology" {
        description
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 30]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
          "Augment TE bandwidth of the requested tunnel attributes.";
        case otn {
          uses l1-types:otn-path-bandwidth;
@@ -1730,16 +1728,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
      augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
            + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 31]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
            + "tepc:metric/tepc:optimization-metric/"
            + "tepc:explicit-route-exclude-objects/"
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 31]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
            + "tepc:route-object-exclude-object/tepc:type/tepc:label/"
            + "tepc:label-hop/tepc:te-label/tepc:technology" {
        description
@@ -1786,16 +1784,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
          "Augment TE label hop for the explicit route objects included
          or excluded by the path computation of the requested path.";
        case otn {
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 32]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          uses l1-types:otn-label-hop;
        }
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 32]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
      }
 
      augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
@@ -1842,16 +1840,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
          "Augment TE label range start for the egress segment
          of the requested path.";
        case otn {
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 33]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          uses l1-types:otn-label-start-end;
        }
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 33]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
      }
 
      augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
@@ -1898,16 +1896,16 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
            + "tepc:type/tepc:label/"
            + "tepc:label-hop/tepc:te-label/tepc:technology" {
        description
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 34]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
          "Augment TE label hop for the route object of the computed
          path.";
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 34]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
        case otn {
          uses l1-types:otn-label-hop;
        }
@@ -1927,7 +1925,57 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 7.  IANA Considerations
 
-   <Add any IANA considerations>
+   This document registers the following URIs in the "ns" subregistry
+   within the "IETF XML registry" [RFC3688].
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+       URI: urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+       Registrant Contact:  The IESG.
+       XML: N/A, the requested URI is an XML namespace.
+
+   This document registers the following YANG module in the "YANG Module
+   Names" registry [RFC7950].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 35]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
+      name:      ietf-otn-path-computation
+      namespace: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
+      prefix:    otn-pc
+      reference: this document
+
+      name:      ietf-wson-path-computation
+      namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
+      prefix:    wson-pc
+      reference: this document
+
+      name:      ietf-flexi-grid-path-computation
+      namespace: ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+      prefix:    flexg-pc
+      reference: this document
 
 8.  References
 
@@ -1937,9 +1985,9 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
               Beller, D., Belotti, S., Zheng, H., Busi, I., and E. L.
               Rouzic, "A YANG Data Model for Layer 0 Types - Revision
               2", Work in Progress, Internet-Draft, draft-ietf-ccamp-
-              layer0-types-ext-00, 10 August 2021,
+              layer0-types-ext-01, 25 October 2021,
               <https://www.ietf.org/archive/id/draft-ietf-ccamp-layer0-
-              types-ext-00.txt>.
+              types-ext-01.txt>.
 
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "A YANG Data Model for Layer 1
@@ -1947,20 +1995,6 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
               ccamp-layer1-types-11, 7 September 2021,
               <https://www.ietf.org/archive/id/draft-ietf-ccamp-layer1-
               types-11.txt>.
-
-
-
-
-
-
-
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 35]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
 
    [I-D.ietf-teas-yang-path-computation]
               Busi, I., Belotti, S., Lopez, V., Sharma, A., and Y. Shi,
@@ -1970,13 +2004,31 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
               <https://www.ietf.org/archive/id/draft-ietf-teas-yang-
               path-computation-16.txt>.
 
+
+
+
+
+
+
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 36]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
+
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., Bryskin, I.,
               and O. G. D. Dios, "A YANG Data Model for Traffic
               Engineering Tunnels, Label Switched Paths and Interfaces",
               Work in Progress, Internet-Draft, draft-ietf-teas-yang-te-
-              27, 8 July 2021, <https://www.ietf.org/archive/id/draft-
-              ietf-teas-yang-te-27.txt>.
+              29, 7 February 2022, <https://www.ietf.org/archive/id/
+              draft-ietf-teas-yang-te-29.txt>.
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/info/rfc3688>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -2011,23 +2063,25 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
               DOI 10.17487/RFC9093, August 2021,
               <https://www.rfc-editor.org/info/rfc9093>.
 
-
-
-Busi, et al.              Expires 25 April 2022                [Page 36]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
-
-
 8.2.  Informative References
+
+
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 37]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
+
 
    [I-D.ietf-teas-actn-poi-applicability]
               Peruzzini, F., Bouquier, J., Busi, I., King, D., and D.
               Ceccarelli, "Applicability of Abstraction and Control of
               Traffic Engineered Networks (ACTN) to Packet Optical
               Integration (POI)", Work in Progress, Internet-Draft,
-              draft-ietf-teas-actn-poi-applicability-03, 12 July 2021,
-              <https://www.ietf.org/archive/id/draft-ietf-teas-actn-poi-
-              applicability-03.txt>.
+              draft-ietf-teas-actn-poi-applicability-04, 17 January
+              2022, <https://www.ietf.org/archive/id/draft-ietf-teas-
+              actn-poi-applicability-04.txt>.
 
    [RFC7446]  Lee, Y., Ed., Bernstein, G., Ed., Li, D., and W. Imajuku,
               "Routing and Wavelength Assignment Information Model for
@@ -2053,7 +2107,6 @@ Contributors
 
    Daniel King
    Old Dog Consulting
-
    Email: daniel@olddog.co.uk
 
 
@@ -2061,28 +2114,24 @@ Authors' Addresses
 
    Italo Busi
    Huawei Technologies
-
    Email: italo.busi@huawei.com
-
-
-
-
-
-
-Busi, et al.              Expires 25 April 2022                [Page 37]
-
-Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
    Aihua Guo
    Futurewei Technologies
-
    Email: aihuaguo.ietf@gmail.com
+
+
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 38]
+
+Internet-Draft      Yang for Optical Path Computation         March 2022
 
 
    Sergio Belotti
    Nokia
-
    Email: sergio.belotti@nokia.com
 
 
@@ -2125,4 +2174,11 @@ Internet-Draft      Yang for Optical Path Computation       October 2021
 
 
 
-Busi, et al.              Expires 25 April 2022                [Page 38]
+
+
+
+
+
+
+
+Busi, et al.            Expires 2 September 2022               [Page 39]
