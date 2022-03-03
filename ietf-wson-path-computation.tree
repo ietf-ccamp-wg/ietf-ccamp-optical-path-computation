@@ -6,13 +6,11 @@ module: ietf-wson-path-computation
     +-- termination-type?        identityref
     +-- bit-stuffing?            boolean
     +-- wavelength-assignment?   identityref
-    +-- wson-path-constraints
-       +-- gsnr-margin?   snr
+    +-- gsnr-margin?             snr
   augment /te:tunnels-path-compute/te:output/te:path-compute-result
             /tepc:response/tepc:computed-paths-properties
             /tepc:computed-path-properties/tepc:path-properties:
-    +--ro wson-path-properties
-       +--ro estimated-gsnr?   snr
+    +--ro estimated-gsnr?   snr
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:optimizations/tepc:algorithm
             /tepc:metric/tepc:optimization-metric
