@@ -6,6 +6,49 @@ module: ietf-wson-path-computation
     +-- termination-type?        identityref
     +-- bit-stuffing?            boolean
     +-- wavelength-assignment?   identityref
+    +-- wson-path-constraints
+       +-- gsnr-margin?   snr
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties:
+    +--ro wson-path-properties
+       +--ro estimated-gsnr?   snr
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object
+            /tepc:type:
+    +--:(oms-element)
+       +--ro oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction:

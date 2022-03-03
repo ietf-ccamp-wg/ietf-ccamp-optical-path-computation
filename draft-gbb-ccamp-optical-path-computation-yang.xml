@@ -36,7 +36,7 @@
       </address>
     </author>
 
-    <date year="2022" month="March" day="01"/>
+    <date year="2022" month="March" day="02"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -244,6 +244,49 @@ module: ietf-wson-path-computation
     +-- termination-type?        identityref
     +-- bit-stuffing?            boolean
     +-- wavelength-assignment?   identityref
+    +-- wson-path-constraints
+       +-- gsnr-margin?   snr
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties:
+    +--ro wson-path-properties
+       +--ro estimated-gsnr?   snr
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object
+            /tepc:type:
+    +--:(oms-element)
+       +--ro oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction:
@@ -415,10 +458,53 @@ module: ietf-flexi-grid-path-computation
 
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request:
-    +-- fec-type?                identityref
-    +-- termination-type?        identityref
-    +-- bit-stuffing?            boolean
-    +-- wavelength-assignment?   identityref
+    +-- fec-type?                      identityref
+    +-- termination-type?              identityref
+    +-- bit-stuffing?                  boolean
+    +-- wavelength-assignment?         identityref
+    +-- flexi-grid-path-constraints
+       +-- gsnr-margin?   snr
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties:
+    +--ro flexi-grid-path-properties
+       +--ro estimated-gsnr?   snr
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-exclude-always/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:route-object-include-exclude/tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type:
+    +--:(oms-element)
+       +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object
+            /tepc:type:
+    +--:(oms-element)
+       +--ro oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction:
@@ -816,7 +902,7 @@ module ietf-wson-path-computation {
     The model fully conforms to the Network Management 
     Datastore Architecture (NMDA).
     
-    Copyright (c) 2021 IETF Trust and the persons
+    Copyright (c) 2022 IETF Trust and the persons
     identified as authors of the code.  All rights reserved.
 
     Redistribution and use in source and binary forms, with or
@@ -829,7 +915,7 @@ module ietf-wson-path-computation {
     This version of this YANG module is part of RFC XXXX; see
     the RFC itself for full legal notices.";
 
-  revision "2021-12-20" {
+  revision "2022-03-02" {
     description
       "Initial version.";
     reference
@@ -847,6 +933,139 @@ module ietf-wson-path-computation {
     description
        "Augment with additional constraints for WSON paths.";
     uses l0-types-ext:l0-tunnel-attributes;
+    container wson-path-constraints {
+      description
+        "WSON technology-specific path constraints.";
+      uses l0-types-ext:l0-path-constraints;
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties" {
+    description
+       "Augment with additional properties for WSON paths.";
+    container wson-path-properties {
+      description
+        "WSON technology-specific path properties.";
+      uses l0-types-ext:l0-path-properties;
+    }
+  }
+
+  /*
+   * Augment Route Hop
+   */
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-exclude-objects/"
+        + "tepc:route-object-exclude-object/tepc:type" {
+    description
+      "Augment the route hop for the optimization of the explicit
+      route objects excluded by the path computation of the requested
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-include-objects/"
+        + "tepc:route-object-include-object/tepc:type" {
+    description
+      "Augment the route hop for the optimization of the explicit
+      route objects included by the path computation of the requested
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:route-object-exclude-always/tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects always
+      excluded by the path computation of the requested path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:route-object-include-exclude/tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects included
+      or excluded by the path computation of the requested path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
+        + "tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects to always
+      exclude from synchronized path computation.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties/"
+        + "tepc:path-route-objects/tepc:path-route-object/"
+        + "tepc:type" {
+    description
+      "Augment the route hop for the route object of the computed
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
   }
 
   /*
@@ -1088,7 +1307,7 @@ module ietf-flexi-grid-path-computation {
     The model fully conforms to the Network Management 
     Datastore Architecture (NMDA).
     
-    Copyright (c) 2021 IETF Trust and the persons
+    Copyright (c) 2022 IETF Trust and the persons
     identified as authors of the code.  All rights reserved.
 
     Redistribution and use in source and binary forms, with or
@@ -1101,7 +1320,7 @@ module ietf-flexi-grid-path-computation {
     This version of this YANG module is part of RFC XXXX; see
     the RFC itself for full legal notices.";
 
-  revision "2021-12-20" {
+  revision "2022-03-02" {
     description
       "Initial version.";
     reference
@@ -1120,6 +1339,139 @@ module ietf-flexi-grid-path-computation {
        "Augment with additional constraints flexi-grid
         media channel.";
     uses l0-types-ext:l0-tunnel-attributes;
+    container flexi-grid-path-constraints {
+      description
+        "Flexi-grid technology-specific path constraints.";
+      uses l0-types-ext:l0-path-constraints;
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties" {
+    description
+       "Augment with additional properties for Flexi-grid paths.";
+    container flexi-grid-path-properties {
+      description
+        "Flexi-grid technology-specific path properties.";
+      uses l0-types-ext:l0-path-properties;
+    }
+  }
+
+  /*
+   * Augment Route Hop
+   */
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-exclude-objects/"
+        + "tepc:route-object-exclude-object/tepc:type" {
+    description
+      "Augment the route hop for the optimization of the explicit
+      route objects excluded by the path computation of the requested
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-include-objects/"
+        + "tepc:route-object-include-object/tepc:type" {
+    description
+      "Augment the route hop for the optimization of the explicit
+      route objects included by the path computation of the requested
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:route-object-exclude-always/tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects always
+      excluded by the path computation of the requested path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:route-object-include-exclude/tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects included
+      or excluded by the path computation of the requested path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
+        + "tepc:type" {
+    description
+      "Augment the route hop for the explicit route objects to always
+      exclude from synchronized path computation.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
+  }
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties/"
+        + "tepc:path-route-objects/tepc:path-route-object/"
+        + "tepc:type" {
+    description
+      "Augment the route hop for the route object of the computed
+      path.";
+    case oms-element {
+      leaf oms-element-uid {
+        type string;
+        description
+          "The unique id of the OMS element.";
+      }
+      description
+        "The OMS element route hop type";
+    }
   }
 
   /*
@@ -2145,146 +2497,159 @@ who have contributed to the development of path computation augmentations for WS
   </back>
 
 <!-- ##markdown-source:
-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
-KYJg7LMXpD5zi1ukKoFqp95XmqsGqEZD4Y0GAu+sCfQqln3LlqfcPP276HDu
-ZZzQHndzi917ZvQgG/tn/uSe8fCLJtHZFyJy43TKIhd2IGizEoMvBRvV/F7t
-pWaHvbhhxQNl10V99baBMfZe56tHFqcDj0YRBwEVk+9a+UqOXmXEmpVnE7Ei
-qJcxvIFg5uFCYC4378DcgRk/TWCuYE1jzKXBGT2f22+q1h3UOqjh51qglnk1
-DbkOax3W8LOC3UQjrdysrxRXBRC+1ko31igs9DuTrJdJ8LRqISuAJhY3hDzM
-karXztaNp9TT5x/VvfBsu0h23lzsNuy4oPNnG2WVzqGtn006j7agneLz0BtH
-ItRHH9l+oHSuUXpo2w9Uov3WAN9G3kX7axvtw4S1oQnmYhrYprBKbo41HHRz
-ldMAzCMBeki4FUSltkZTw3u00iuPY25gG54XmG1yI8vaoUbiCqhFoqXiFhhe
-E3KB8/KwC8wWQG8pH868t8wy4uS1Z/3f5xlXmJjqJjnof4Rg3Jkat9rz3ZyW
-eSz16rQlM6j5ArWFqLtGvanXqLMvFvObRW2fIr+0mIckDkTiyqweeEXDNKAZ
-vSW0uS//oTWMqiAaUi8RUX6Rufeo1JZ+ntV2w2LRzhgbdmu3plfQhf3LYe88
-sUBzFFAgq3H516+b6CbtdJOaGNWIgdSiXN3jd+R3/dcf5eakJPcMYavtJ8/q
-7Sc3E8lrev/cIblKsXFI3ojL5w5ndtzcFpyt7Oa5A5odOBsEtPW7dm4AlYEI
-i2ZviKYWuTq5zXqacZ3Rqhq5G53vfsLQp+yyfgK3oQnYt2GqrtM1561W1M2f
-rGt7WdgFaFWK1Qdo3U3hV+8o5r36a4UsMLkiaHPKJcG2fD04H3AL6WeIXKew
-g7d0UVi6pstuCo3LvrnuC9VPhRm3hfiPXue7JjRJl3pJaPtxhubbQVvra78W
-zOdG/o/GW+YHSFjy5PC9DDoC47HfLcpPYxIOuQuECIP6nXzWt/7pqAqetV8P
-BV5SBi5eQEa0+KU8XHMfPbRw8wbVmaE5qd/elGLMIXou3HAK6/6JnaV8adFG
-cdFkozixqFA+t3SPmmOuEt0ug9nCfG0+l5pr5E7PaMTamMsGpYGWr7YMjhBJ
-nbCqpEQjaKqAMKXngaB+bs7clEufDoqJa/xkTG1OzBvxdBOkmyCNzNdpgmxO
-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
-Y5jVh+g6gXnni7Ow5/w/Be7ApNntAAA=
+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
+YaMe5lPAwmhST7A/j/hfavxSj6g3EAF40VEFgxHDoapMaqsXFRTsC86PAFXg
+dEAw9sXxYpfZ2S5NyUKynHpfKK4KIIZT/XYfihGEtp4M2R+ZkDKe2zF3pVZB
+RpmzcgcVy/25FJsvvkmKLbRbt9em3gWdNMaTKn1vmp1YWzd/fdsdTnxnGAhf
+oz9peg7auYdVTV9Rw9Z06KlFk4mbmucLKxMGsVvuH/IJ9+2Q5bZaDJrSbCus
+eZ7FWTIeT2KmqsBmHHB06RMZKsUQ1bxYYWvBcPekuRsapRgKrzUQzNE0gZ7L
+Jt+SSarR+TCSzLmwh6nFHv1k1CALuxfu6JHx8Ksm0TmYIrDDGFyG7Qwp2izH
+4GvGRhV/VHqp2WEttl+YhyRJI131toYx1l7mq1sWxj2HBgEHARWTx1P5So5O
+ocWalVMlYkFQJ2F4B8G8pMiwBXML5hVF4y3UWqitagbUYq3F2o3OJmpp5ZL9
+SnGVAeG6VrqzRmG+25pkvUyCe1ZzWQE0Mb8h5Cq9VL12tnY4po7eBSnOhWfb
+RbJzGrHbsOWC1p9tlFVah7Z+Nmk92m1tCxhWmBrgV5G30f7aRvt3cCsmw2yd
+G1nWDDUQC6AWiZaKW2B4Q8gFzsvDLjCbA725rHgzeynJi5fJT+VT+kYiEya8
+Sw76KKKROWXktjXLn8rzWGoC1ZT84Po0qilE65BMpT5zpVTVk9QmVqlP4/Sq
++hrK2rx3qVZFFbQJV23C1Zpvq62/YtuEqzbhavbMqk24KqGpTbi6XgbS7BSk
+NAepGAGZsAs9EdnyFBC8on7s0YS+YhHkifxhNmhVRtSnTiSCNOVp73muLP0y
+q+yGrVq1xtiwQGRNk9Uy++cXyJqsGtSvF2TIql0o0K/r6EbT6UYlMYprC6S0
+HqZrfEz+1H/9O1+c5OSeIWyx/OincvnR3UTymmaqtUguUmwckjciTa3FWTVu
+7gvOVpaj1gKtGjgbBLT1S1CrAZWBiArN3hFNzZNkcZ/1NCPxYapq5Gy0WSaD
+oU9ZZXm/ZUOPat2HrrpOCVH3WlF3v7OubVpRG6AVKVYfoN3B3YYMsHWdfrkz
+iqZJQlMhm27rzw3alHJJsM0nEjUDbib9DJHLFNXgzaUU5RJ6kpwiIy2oUWaR
++mlxI68IfySrWUKRSbrUdKKqH3OszyOqKn3jCURp30h/ZG5K/wAJ81uhUSHf
+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
+xP4CnY1hVh+i6wz6nSsu/I71//OaCA07HwEA
 
 -->
 
