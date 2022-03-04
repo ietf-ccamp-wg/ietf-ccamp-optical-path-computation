@@ -4,7 +4,7 @@ coding: utf-8
 title: YANG Data Models for requesting Path Computation in Optical Networks
 
 abbrev: Yang for Optical Path Computation
-docname: draft-gbb-ccamp-optical-path-computation-yang-00
+docname: draft-gbb-ccamp-optical-path-computation-yang-01
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -89,7 +89,8 @@ Management Datastore Architecture {{!RFC8342}}.
 
   In this document, names of data nodes and other data model objects
   are prefixed using the standard prefix associated with the
-  corresponding YANG imported modules, as shown in the following table.
+  corresponding YANG imported modules, as shown in
+  {{tab-prefixes}}.
 
 | Prefix       | YANG module                      | Reference
 | l0-types     | ietf-layer0-types                | {{!RFC9093}}
@@ -273,37 +274,37 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
    within the "IETF XML registry" {{!RFC3688}}.
 
 ~~~~
-      URI: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
-      Registrant Contact:  The IESG.
-      XML: N/A, the requested URI is an XML namespace.
+  URI: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
+  Registrant Contact:  The IESG.
+  XML: N/A, the requested URI is an XML namespace.
 
-      URI: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-      Registrant Contact:  The IESG.
-      XML: N/A, the requested URI is an XML namespace.
+  URI: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
+  Registrant Contact:  The IESG.
+  XML: N/A, the requested URI is an XML namespace.
 
-      URI: urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
-      Registrant Contact:  The IESG.
-      XML: N/A, the requested URI is an XML namespace.
+  URI: urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+  Registrant Contact:  The IESG.
+  XML: N/A, the requested URI is an XML namespace.
 ~~~~
 
    This document registers the following YANG module in the "YANG Module Names"
    registry {{!RFC7950}}.
 
 ~~~~
-      name:      ietf-otn-path-computation
-      namespace: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
-      prefix:    otn-pc
-      reference: this document
+  name:      ietf-otn-path-computation
+  namespace: urn:ietf:params:xml:ns:yang:ietf-otn-path-computation
+  prefix:    otn-pc
+  reference: this document
 
-      name:      ietf-wson-path-computation
-      namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-      prefix:    wson-pc
-      reference: this document
+  name:      ietf-wson-path-computation
+  namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
+  prefix:    wson-pc
+  reference: this document
 
-      name:      ietf-flexi-grid-path-computation
-      namespace: ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
-      prefix:    flexg-pc
-      reference: this document
+  name:      ietf-flexi-grid-path-computation
+  namespace: ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+  prefix:    flexg-pc
+  reference: this document
 ~~~~
 
 --- back
