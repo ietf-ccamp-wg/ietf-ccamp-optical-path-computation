@@ -36,7 +36,7 @@
       </address>
     </author>
 
-    <date year="2022" month="March" day="04"/>
+    <date year="2022" month="March" day="07"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -64,11 +64,14 @@ document conforms to the Network Management Datastore Architecture
 
 <section anchor="introduction"><name>Introduction</name>
 
-<t><xref target="I-D.ietf-teas-yang-path-computation"/> describes some use cases, where a client needs to request
-underlying SDN controllers for path computation. In some of these use cases the underlying SDN controller can control a single-layer (OTN, WSON or Flexi-grid) or multi-layer Optical network.</t>
+<t><xref target="I-D.ietf-teas-yang-path-computation"/> describes key use cases, where a client needs to request
+underlying SDN controllers for path computation. In some of these use cases, the
+underlying SDN controller can control a single-layer optical technologies, including 
+Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, 
+and multi-layer Optical network.</t>
 
-<t>This document define YANG data models, which augment the generic Path Computation RPC defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
-a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths requires knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.</t>
+<t>This document defines YANG data models, which augment the generic Path Computation RPC defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
+a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths require knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.</t>
 
 <t>The YANG data model defined in this document conforms to the Network
 Management Datastore Architecture <xref target="RFC8342"/>.</t>
@@ -189,7 +192,7 @@ Please remove this note.</t>
                                             Flexi-grid
 ]]></artwork></figure>
 
-<t>The entities and TE attributes, such as requested path and tunnel attributes, defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, are still applicable when requestiong WSON, Flexi-grid and OTN path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in <xref target="RFC9093"/>, <xref target="I-D.ietf-ccamp-layer0-types-ext"/> and <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
+<t>The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, are still applicable when requesting WSON, Flexi-grid and OTN path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in <xref target="RFC9093"/>, <xref target="I-D.ietf-ccamp-layer0-types-ext"/> and <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
 
 <t>The YANG modules ietf-wson-path-computation, ietf-flexi-grid-path-computation and ietf-otn-path-computation defined in this document conforms
 to the Network Management Datastore Architecture (NMDA) defined in
@@ -212,18 +215,18 @@ flexi-grid networks. Therefore, the model does not define any augmentation
 for the te-bandwidth containers defined in <xref target="I-D.ietf-teas-yang-path-computation"/>.</t>
 
 <t>The OTN path computation model augments all the occurrences of the te-bandwidth container
-with the OTN technology specific attributes using the otn-link-bandwidth and otn-path-bandwidth groupings defined in <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
+with the OTN technology-specific attributes using the otn-link-bandwidth and otn-path-bandwidth groupings defined in <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
 
 </section>
 <section anchor="optical-te-label"><name>Label Augmentations</name>
 
 <t>The models augment all the occurrences of the label-restriction list
-with WSON, Flexi-grid and OTN technology specific attributes using the 
+with WSON, Flexi-grid and OTN technology-specific attributes using the 
 l0-label-range-info and flexi-grid-label-range-info groupings defined in <xref target="RFC9093"/> and the
 otn-label-range-info grouping defined in <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
 
 <t>Moreover, the models augment all the occurrences of the te-label
-container with the WSON, Flexi-grid and OTN technology specific attributes using the
+container with the WSON, Flexi-grid and OTN technology-specific attributes using the
 wson-label-start-end, wson-label-hop, wson-label-step,
 flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defined in <xref target="RFC9093"/> and the
 otn-label-start-end, otn-label-hop and otn-label-step groupings defined in <xref target="I-D.ietf-ccamp-layer1-types"/>.</t>
@@ -2000,15 +2003,15 @@ module ietf-otn-path-computation {
 
 <reference anchor='I-D.ietf-teas-yang-path-computation'>
    <front>
-      <title>YANG Data Model for requesting Path Computation</title>
+      <title>A YANG Data Model for requesting path computation</title>
       <author fullname='Italo Busi'>
-	 <organization>Huawei</organization>
+	 <organization>Huawei Technologies</organization>
       </author>
       <author fullname='Sergio Belotti'>
 	 <organization>Nokia</organization>
       </author>
-      <author fullname='Victor Lopez'>
-	 <organization>Nokia</organization>
+      <author fullname='Oscar Gonzalez de Dios'>
+	 <organization>Telefonica</organization>
       </author>
       <author fullname='Anurag Sharma'>
 	 <organization>Google</organization>
@@ -2016,32 +2019,35 @@ module ietf-otn-path-computation {
       <author fullname='Yan Shi'>
 	 <organization>China Unicom</organization>
       </author>
-      <date day='6' month='September' year='2021'/>
+      <author fullname='Daniele Ceccarelli'>
+	 <organization>Ericsson</organization>
+      </author>
+      <date day='7' month='March' year='2022'/>
       <abstract>
 	 <t>   There are scenarios, typically in a hierarchical Software-Defined
    Networking (SDN) context, where the topology information provided by
    a Traffic Engineering (TE) network provider may be insufficient for
-   its client to perform end-to-end path computation. In these cases the
-   client would need to request the provider to calculate some (partial)
-   feasible paths.
+   its client to perform multi-domain path computation.  In these cases
+   the client would need to request the TE network provider to compute
+   some intra-domain paths.
 
-   This document defines a YANG data model for a Remote Procedure Call
-   (RPC) to request path computation. This model complements the
-   solution, defined in RFC YYYY, to configure a TE tunnel path in
-   &quot;compute-only&quot; mode.
+   This document defines a YANG data model which contains Remote
+   Procedure Calls (RPCs) to request path computation.  This model
+   complements the solution, defined in RFC YYYY, to configure a TE
+   tunnel path in &quot;compute-only&quot; mode.
 
    [RFC EDITOR NOTE: Please replace RFC YYYY with the RFC number of
    draft-ietf-teas-yang-te once it has been published.
 
-   Moreover this document describes some use cases where a path
+   Moreover, this document describes some use cases where the path
    computation request, via YANG-based protocols (e.g., NETCONF or
    RESTCONF), can be needed.
 
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-path-computation-16'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-path-computation-16.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-path-computation-17'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-path-computation-17.txt' type='TXT'/>
 </reference>
 
 
@@ -2334,11 +2340,11 @@ module ietf-otn-path-computation {
       <author fullname='Daniele Ceccarelli'>
 	 <organization>Ericsson</organization>
       </author>
-      <date day='17' month='January' year='2022'/>
+      <date day='7' month='March' year='2022'/>
       <abstract>
 	 <t>   This document considers the applicability of Abstraction and Control
    of TE Networks (ACTN) architecture to Packet Optical Integration
-   (POI)in the context of IP/MPLS and Optical internetworking. It
+   (POI)in the context of IP/MPLS and optical internetworking. It
    identifies the YANG data models being defined by the IETF to support
    this deployment architecture and specific scenarios relevant for
    Service Providers.
@@ -2351,8 +2357,8 @@ module ietf-otn-path-computation {
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-actn-poi-applicability-04'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-actn-poi-applicability-04.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-actn-poi-applicability-06'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-actn-poi-applicability-06.txt' type='TXT'/>
 </reference>
 
 
@@ -2478,7 +2484,7 @@ who have contributed to the development of path computation augmentations for WS
   </back>
 
 <!-- ##markdown-source:
-H4sIAMBiImIAA+1d6XfbOJL/zr8C4/6wOUzZTqfTibqnE8d20plJnLzY2+fM
+H4sIAMDuJWIAA+1d6XfbOJL/zr8C4/6wOUzZTqfTibqnE8d20plJnLzY2+fM
 2weRkIQ1RWh4WFEn3r99qwCQBE8dkWXJpl4fFokqFKp+KBSAgmDbtuUIl/uD
 Lomjvv3UsiIeeaxLfj88fU2OaUTJO+EyLyR9EZCA/SdmYQTFyQcaDcmRGI3j
 iEZc+IT75P044g71yCmLJiK4CC2L9noBuwRuFEiQQ1KkSG65wvHpCCp2A9qP
@@ -2492,143 +2498,144 @@ BlBBJ76wLNu2Ce2FUUCdyLLOhzwkAJkYjUFcFjpQPQsVal1E7ShD7Uc2EhEj
 HwLhMBdURo6oB6/uffxwFN4nkUhgPRemyb3356e75Nez96cEgENeeewTtwcB
 d+93UC5WlsFlfe4zF7lFILeVyg1qA/lGIcoQAaWug7yjPh0wWQR7YAhqZeQw
 cIY8Yg4a3bp3+u74ECtEtYy463rMsr4hb8AMwo0d2aOsz5//9sY+lsa3I0ZD
-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
-rgvob66Y+B3r/wGS5XNibBwBAA==
+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
+X16DVmVEfepEIkizkg6e5MrST7PKbtnCUmuMLQtENjSfLLN/fg1rnol9/ZQ+
+Q1btXF6/rqMbNdONSmIUp/+ktGSla3xA/tR//TtfnOTkniFssfzoebn86HYi
+eUOTyVokFym2DslbkUnW4qwaN3cFZ2tLI2uBVg2cLQLa5uWQ1YDKQESFZm+J
+phbJg7jLepqRm9CoGjkbnS/ZwNCnrLK8nbalp6nuQlfdpJylO62o299ZNzbz
+pw3QihTrD9Bu4W5DBti6Tr/aGcW8eTyNkAUmS4I2pVwRbPO5PvMBN5N+hshl
+imrw5rJ+cjk3SdqPkbkzV/KP+mVvI/UHf45qvpwfk3SlGT9VP5tYn+pTVfra
+c3zSvpH+nFtD/wAJ81uhUSEljEB7qhOF5Kc2o5bcA0KEQTnBLqlb/9JzAc/a
+r/sCM448G7OJApr9sD2OuU8eV3BzesWeoTmpmzKkGHOIngrXH8O4f1HNUr6s
+0Ea20VRFcVGhQvm8onrUHLOV6NUymCXM1+Zzqbla7nRCA9bEXBbINTS/tWVw
+hEjqghUlJRpBYwWEMZ16grqpOVNTrrw7KCa28WOupT4xb8TTdpC2g9Qy36QO
+sj1h4XJDEyaWFPsePluu92EE+FX9DxisrAdievXK+yAwXbgXapqV9kMdNl5X
+T0zZr6YvIqLWPlytKYdJ/fCs0VmKv0mbTsCwdBTms7cr82yS3mfjL/E+qCmU
+T8YhW7vIebc12WYP1cWDdjSWSwD6T/OtYfqaFcYolBZvk9JvJIPmllhzK7JI
+Wl2vMZPilih787IJioq9lw345aVjXH6w8WbMig2PeovkqDFtuGKjQpKE0mjq
+z9tjj0X2QVtr3HBmRGuADUuhaA2yUYkarTluOh3kLllgY/NGNiUc3Z5F8g3I
+nahcgK83G7yfaThZpmi6/A2ZUennQiqvUKtMGMhuW8It+av0Kuc5bnHO37eU
+kJv0krzy+iW99f/j0fvjE/Ly5PWb07OfSJ97jOzU33/04tH+owP7YN8++E4m
+EOxYM29YIp9BlfK6uUsWhPjgoHPwAzzz6YhhMhtUGAd+FzkAUDAhovtp5HX9
+sItU3XrOO8hFXX9OdrQS4Bk85CN0h/U3MX+W1k1IEUySFyEBu+Qoo+3i+vmO
+bO3+M3v/Sfq+z+T1ZETjY2eOa/Xsg8dd8ju8UVkamrJwoXbRPB1Z41W5NSXh
+m0R/ZD/aL4reIDno6uBZlxwW7xKXwuprWTW5eTnreXJppe+SN37Egj5YNeyQ
+6iaYF1YWGpPk58wmxJsua4jxVcZABAOaDC2WavfJ+StydHT47gP5VQQX2IDX
+eFuapJGXzOmT5Du/via/sl4X/vxxGEXj7t5eJIQXSq11gPHeZLAn71Hb+0lp
+BQjegpsAih9HlHuR6MrXLxKCnyxV7sTlkQiQ8SEfxpS8jksXeCcMKBYYxEJW
++mKATzuArTKnNxH1BHkZh7yOFccSnR6UeAE8J4xXMzpjwYADJwYxQVTLLJSl
+Oj1V6oUvLjiV/FQPVHdjjjOtn+PVrNpZqDQlwItOW8p3BVm+0mV1lKzpBYyk
+H3veNL3nldTf8yrpGi977cgi8j9HYjwN+GAYkXvOfQId6RGRmDkP4jBKr/GF
+UTDE+yCzcaPPkyvuo6EI0gsMHRC1A5b2PCK54p3FoL1L5ur2fGQuD1XSR3If
+axzi9aREX1SKT3rcp8GUyIbuqhsQRSDJ8W8YWlEleM9hcqluiBKOeCSvRo6D
+MKby1tJdyS2Msx9M0FrzuMMgaJA/mxSmt3ZiLpm6sfEMuqKn2vjy7BhwLotL
+DiGLUDAQKXevq5NoINPef4XkLRvgSBYI5a5CrQK8UBrvZBSq9LG+xFe9vofd
+L8T+h0wYy3qgllrGlvdTfEDjk8FGigDfjduIpW5georvPr46Ir/B5wdohGoM
+CoxPeRQyry+xiTAjnpTbFzASg29TKE98rnS3j+z9b+GfHe2Wij0APQ/e4wtM
+tGydOs+cCNUtDuTJhdp18YBmuLcnW3DidrrAfOzhGIv8FGzAvcVAiyX8eNTD
+GznjsRw05H8SDubtuOpC4ZG4ZEqZoAWmHezeA/jjgRorfKGC8wd7Zr7gznIz
+hb2d1PU8VGN0bq5Wr2ayoy9s1c3N7s4GUEM/A1hHYRYXybA4MQX0u5CYA0kX
+vxQTsxrK6mak9aTj0Fza0JF+oeVVYX8h0i/rqjbsn1V2Vti/jOIz6kX0Xqg4
+VaWEHGAuqe0jTizIz2IsH68Be7N3IysYzNiNrKBo3luuIJhrb7nBPyUKRRco
+eRG8XTa5ZtoUOvHsiYiagyLSAhItAYxdUzViFqdDmonWKkt+2gTLJcBwKAxJ
+xm/zaOEJuGPaL/5oT/oSvDjmJKmp2g/pwwrIEhma4F3rHISAgTwR6v27M6JZ
+J7Ig/OoZSTYGlaFBqXbF42ohf7BlCC3sl89CaN1++foQqiVoEXpTCG3cl57X
+wxVzAJbGTyJNASW5XfKFnVoLlo0AS20Sw6rRkvgUzQQKt5BZE2QW30moYHId
+mIBZbZUTIf1AjEgmNSufMWtRsC3zoloXNs92yIphaKIvW4ZSjblLIUxxpnh+
+QuT+kcqFNpc41jt1LOTAVNDMvcM8B0bqW50CBiwIPEOS3/JuHJdyU3acrpup
+5FjHYksfq9CosWl/8ypl16jROlx32hWQxbLra2Eyc8t5EZBsxioK7pCmzjuP
+Nbl5mja8XamYd6Viu5C0stWOTUbStawo3Kid17QqcWuNOs/xhY2x6rWsHmyy
+aVcYCtfSzpGMvHjMJ5l+TQC9gGlkXZjCe0sNNDM5eXHzAMvWOCvqPeVU5WW6
+CxuvzSDsxjzZiqagN+nKFp+4blNnuW4DXbMra41z865sjfZYgyNb2aaJGU4X
+IugKgvWE0yvaeLnWAPqObm7c6OxrmQ2SpUBwpQ9YnJwen/1UfcksZt43XzJr
+5K6W7pitPfTRcOXsrKMfDZe9Nh8AaSCcfQxEam32UZCGOnIHQhINtSdC2hMh
+7YmQalbbdCKkwZ+150LacyHtuZD2XMhKzoWULtokI+iHlOifWm9PiqzzpEjh
+19fb8yLteZE2G//WILQ9L9IidAOyO9rzIi1Y5s8aac+L3BrItOdFbikKtmF2
+1J4X2TxwtedF1nVexNjFac+NrPTcyDyabc+PtOdHFp6zZsCq2QUvIa89S9Ke
+JbktqGrPlSw5Fb0TBm7PmGyLme/4eZPFzXTjScF38+xJa6gNPoeyjHHaMylf
+4e6WTLPfwk50N8+ntIa6Jnd3Q7Zpz61sxLmVtQXld3TD5UZnd8ts2nw1IBrO
+s+SOpCQHWgoJfLOOteiLVGoPtWCi66KnWSTPumMs+99XHGOpoph9fmWOsytV
+jHOHVlT713tkZdkDK3f7uMpB9XGVA+O4SoOm5SGQHKOuPj9ULfpbLEkOyDkW
+NeVqD7Ns5WGWKj92U6dYDtpTLO0plpmnWPRo2Z5i0fvjFVvoPWA04W40lG/W
+tosOZdOal4stU/J5Mguj4iHoZABLg5uU3bXPAUvnbSo0UjWHW5l6lAAkE2Ct
+utrSWdc1ADYRSU0ystpXZY42Mey6E8NMU7QZYSvJCJtLpW0qWJsKtvjxpUZP
+2iZ/1eKoTf7aEhy16V7Lnjy6nSZtE7w217B3PKVrHsPc+G753Uziak2zUWlb
+85mjTdT6Cie2ZI7JVnSUu5ma1Zpmk5KxNsaFtelXc5y/v76QeUuX/u9cwtUS
+EGhIsTLSo5IEK9w0nZVZ9Y1OFqA97vFoSo4ACdxlgVolQ8ydvzzuECx4xpw4
+qC7zrx8PXZdQfwpOSxdycoV+QgZvDk8PK4jVtrWr973Bww04uKkglErsC88T
+E9wg/++Pb3D6Kp/u+OEObuWrssEUueAWb/Ja7qT/9u4tSQqAXT//7eOro2+f
+PH16ddXReWEEmXbJUrlZFu7dS+aYXnCkkme6KkfjzcnZa1wkBwm65HTvcLfg
+uqFW3IqnvpQxzRKTu/jzSaR+IHqjRGr48eVrEUxacH745NIgNEySJAN8doqc
+pd9IMKMh8/2z7/ZNyKAIXdVrm8CRSro8vlTmmKxL9W7LSJnoqoSEpN1WhWR1
+IFlEtDoehmz6x8oXFK4ZLoaIXwE6Q8gkA7VJSoUo27ZJjzoXMutU5Ykw9+87
+feqF2mMeOhe+mHjMHahEHQtxnMt9MgE5EbHnEo9fMJVwRP0LiT6D4PPn5/mE
+RegeoFLBbTrGIEQ756srOd4M6SUC2ki9QnYDOtbZKv+JeSCTv1ReWMAHAxYo
+oTA7rDOXvNBaURDa+l3EUO9bxnaJ9TMVIw6d8o8h8wfw/ReIkjEZEQb4T/D1
+IwgduOQX7lEvovDgJfS535nAjigwS8v6hwgg7D3pSJK/YMAlv7BgAGYm7yAW
+Zn9BkWPqcxhnP7DAxdQj8jIOAhYIePM+BPbktfD/op4iPuYihBevaS8AGkZe
+U4+j6SIOT/+gfSh+6PGM6TvuDGkMElLP477AqA6UZx0Pg/iSHA+FOyXWZChQ
+2UzmhKkkDjdJGnPZJfPEWGoMVFgaZnWkpkY5aTb5+/1YiZH3HImxDDvQIzEa
+eBwMpXOk0DKWCQyVFyo7m85tkamAAApkWkCRKix7h+wcmkImT19JBORMTkPs
+K9DJGGbgIbouoL+5YuJ3rP8HUkmP1OQcAQA=
 
 -->
 

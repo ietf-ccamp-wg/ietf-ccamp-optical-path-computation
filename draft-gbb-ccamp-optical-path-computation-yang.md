@@ -44,11 +44,14 @@ document conforms to the Network Management Datastore Architecture
 
 # Introduction
 
-{{!I-D.ietf-teas-yang-path-computation}} describes some use cases, where a client needs to request
-underlying SDN controllers for path computation. In some of these use cases the underlying SDN controller can control a single-layer (OTN, WSON or Flexi-grid) or multi-layer Optical network.
+{{!I-D.ietf-teas-yang-path-computation}} describes key use cases, where a client needs to request
+underlying SDN controllers for path computation. In some of these use cases, the
+underlying SDN controller can control a single-layer optical technologies, including 
+Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, 
+and multi-layer Optical network.
 
-This document define YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
-a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths requires knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.
+This document defines YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
+a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths require knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.
 
 The YANG data model defined in this document conforms to the Network
 Management Datastore Architecture {{!RFC8342}}.
@@ -146,7 +149,7 @@ The YANG data models for requesting WSON, Flexi-grid and OTN path computation ar
 ~~~~
 {: #fig-optical-pc title="Relationship between WSON, Flexi-grid, OTN and TE path computation models"}
 
-The entities and TE attributes, such as requested path and tunnel attributes, defined in {{!I-D.ietf-teas-yang-path-computation}}, are still applicable when requestiong WSON, Flexi-grid and OTN path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in {{!RFC9093}}, {{!I-D.ietf-ccamp-layer0-types-ext}} and {{!I-D.ietf-ccamp-layer1-types}}.
+The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in {{!I-D.ietf-teas-yang-path-computation}}, are still applicable when requesting WSON, Flexi-grid and OTN path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in {{!RFC9093}}, {{!I-D.ietf-ccamp-layer0-types-ext}} and {{!I-D.ietf-ccamp-layer1-types}}.
 
 The YANG modules ietf-wson-path-computation, ietf-flexi-grid-path-computation and ietf-otn-path-computation defined in this document conforms
 to the Network Management Datastore Architecture (NMDA) defined in
@@ -169,19 +172,19 @@ flexi-grid networks. Therefore, the model does not define any augmentation
 for the te-bandwidth containers defined in {{!I-D.ietf-teas-yang-path-computation}}.
 
 The OTN path computation model augments all the occurrences of the te-bandwidth container
-with the OTN technology specific attributes using the otn-link-bandwidth and otn-path-bandwidth groupings defined in {{!I-D.ietf-ccamp-layer1-types}}.
+with the OTN technology-specific attributes using the otn-link-bandwidth and otn-path-bandwidth groupings defined in {{!I-D.ietf-ccamp-layer1-types}}.
 
 {: #optical-te-label}
 
 ## Label Augmentations
 
 The models augment all the occurrences of the label-restriction list
-with WSON, Flexi-grid and OTN technology specific attributes using the 
+with WSON, Flexi-grid and OTN technology-specific attributes using the 
 l0-label-range-info and flexi-grid-label-range-info groupings defined in {{!RFC9093}} and the
 otn-label-range-info grouping defined in {{!I-D.ietf-ccamp-layer1-types}}.
 
 Moreover, the models augment all the occurrences of the te-label
-container with the WSON, Flexi-grid and OTN technology specific attributes using the
+container with the WSON, Flexi-grid and OTN technology-specific attributes using the
 wson-label-start-end, wson-label-hop, wson-label-step,
 flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defined in {{!RFC9093}} and the
 otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-D.ietf-ccamp-layer1-types}}.
