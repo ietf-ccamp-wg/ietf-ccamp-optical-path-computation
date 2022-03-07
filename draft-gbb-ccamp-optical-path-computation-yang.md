@@ -235,7 +235,7 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
 ## YANG Model for WSON Path Computation
 
 ~~~~
-<CODE BEGINS> file "ietf-wson-path-computation@2021-10-15.yang"
+<CODE BEGINS> file "ietf-wson-path-computation@2022-03-07.yang"
 {::include ./ietf-wson-path-computation.yang}
 <CODE ENDS>
 ~~~~
@@ -246,7 +246,7 @@ otn-label-start-end, otn-label-hop and otn-label-step groupings defined in {{!I-
 ## YANG Model for Flexi-grid Path Computation
 
 ~~~~
-<CODE BEGINS> file "ietf-flexi-grid-path-computation@2021-10-15.yang"
+<CODE BEGINS> file "ietf-flexi-grid-path-computation@2022-03-07.yang"
 {::include ./ietf-flexi-grid-path-computation.yang}
 <CODE ENDS>
 ~~~~

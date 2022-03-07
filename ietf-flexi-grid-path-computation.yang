@@ -24,10 +24,6 @@ module ietf-flexi-grid-path-computation {
     prefix "l0-types";
   }
 
-  import ietf-layer0-types-ext {
-    prefix "l0-types-ext";
-  }
-
   organization
     "IETF CCAMP Working Group";
   contact
@@ -63,7 +59,7 @@ module ietf-flexi-grid-path-computation {
     This version of this YANG module is part of RFC XXXX; see
     the RFC itself for full legal notices.";
 
-  revision "2022-03-03" {
+  revision "2022-03-07" {
     description
       "Initial version.";
     reference
@@ -81,8 +77,8 @@ module ietf-flexi-grid-path-computation {
     description
        "Augment with additional constraints flexi-grid
         media channel.";
-    uses l0-types-ext:l0-tunnel-attributes;
-    uses l0-types-ext:l0-path-constraints;
+    uses l0-types:l0-tunnel-attributes;
+    uses l0-types:l0-path-constraints;
   }
 
   augment "/te:tunnels-path-compute/te:output/"
@@ -91,7 +87,7 @@ module ietf-flexi-grid-path-computation {
         + "tepc:computed-path-properties/tepc:path-properties" {
     description
        "Augment with additional properties for Flexi-grid paths.";
-    uses l0-types-ext:l0-path-properties;
+    uses l0-types:l0-path-properties;
   }
 
   /*
