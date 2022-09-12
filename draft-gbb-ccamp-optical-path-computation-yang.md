@@ -211,11 +211,20 @@ flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defin
 
 # Manageability Considerations
 
-  TBD. 
+This document provides a method for requesting path computations for WSON and Flexi-Grid tunnels. Consideration of mechanisms to gather and collate information required for the path computations will be necessary. Furthermore, storing path computation requests and responses and triggering actions will also need to be carefully managed and secured.
+
+Future versions of this document will contain additional information.
 
 # Security Considerations
 
-  \<Add any security considerations>
+The YANG module defined in this document will be accessed via the NETCONF protocol {{!RFC6241}} or RESTCONF protocol {{!RFC8040}}. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) {{!RFC6242}}. The lowest RESTCONF layer is HTTPS and the mandatory-to-implement secure transport is TLS {{!RFC8446}}.
+
+The Network Configuration Access Control Model (NACM) {{!RFC8341}} provides the means to restrict access to particular NETCONF or RESTCONF users to a pre-configured subset of all available NETCONF or RESTCONF protocol operations and content.
+
+Some of the RPC operations defined in this YANG module may be
+considered sensitive or vulnerable in some network environments. It is thus essential to control access to these operations.
+
+Operations defined in this document, and their sensitivities and possible vulnerabilities, will be discussed further in future versions of this document.
 
 # IANA Considerations
 
