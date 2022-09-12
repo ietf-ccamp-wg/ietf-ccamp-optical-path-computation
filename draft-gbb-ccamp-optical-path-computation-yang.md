@@ -211,7 +211,7 @@ flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defin
 
 # Manageability Considerations
 
-This document provides a method for requesting path computations for WSON and Flexi-Grid tunnels. Consideration of mechanisms to gather and collate information required for the path computations will be necessary. Furthermore, storing path computation requests and responses and triggering actions according to configured will also need to be carefully managed and secured.
+This document provides a method for requesting path computations for WSON and Flexi-Grid tunnels. Consideration of mechanisms to gather and collate information required for the path computations will be necessary. Furthermore, storing path computation requests and responses and triggering actions will also need to be carefully managed and secured.
 
 Future versions of this document will contain additional information.
 

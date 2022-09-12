@@ -1688,8 +1688,8 @@ Internet-Draft      Yang for Optical Path Computation     September 2022
    WSON and Flexi-Grid tunnels.  Consideration of mechanisms to gather
    and collate information required for the path computations will be
    necessary.  Furthermore, storing path computation requests and
-   responses and triggering actions according to configured will also
-   need to be carefully managed and secured.
+   responses and triggering actions will also need to be carefully
+   managed and secured.
 
    Future versions of this document will contain additional information.
 
