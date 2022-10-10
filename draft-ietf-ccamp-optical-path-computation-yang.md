@@ -4,7 +4,7 @@ coding: utf-8
 title: YANG Data Models for requesting Path Computation in Optical Networks
 
 abbrev: Yang for Optical Path Computation
-docname: draft-gbb-ccamp-optical-path-computation-yang-02
+docname: draft-ietf-ccamp-optical-path-computation-yang-00
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -257,6 +257,14 @@ Operations defined in this document, and their sensitivities and possible vulner
 ~~~~
 
 --- back
+
+# Change Log
+
+The initial YANG data model requesting path computation in optical networks was draft-gbb-ccamp-optical-path-computation-yang-00. This document included path computation request capabilities for WSON, Flexi-Grid and OTN technologies. However, it was proposed at IETF 113 (March 25, 2022) to split the initial document into separate documents for WDM (WSON and Flexi-Grid) and OTN technologies, as each technology may be developed and implemented separately.
+
+The WDM technology capabilities were kept in this document, and the OTN capabilities were moved into {{?I-D.draft-gbb-ccamp-otn-path-computation-yang}}.
+
+Editors note, please remove this appendix before publication.
 
 {: numbered="false"}
 
