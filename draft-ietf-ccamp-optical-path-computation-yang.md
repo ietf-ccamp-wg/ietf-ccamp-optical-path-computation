@@ -4,7 +4,7 @@ coding: utf-8
 title: YANG Data Models for requesting Path Computation in Optical Networks
 
 abbrev: Yang for Optical Path Computation
-docname: draft-ietf-ccamp-optical-path-computation-yang-01
+docname: draft-ietf-ccamp-optical-path-computation-yang-02
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
