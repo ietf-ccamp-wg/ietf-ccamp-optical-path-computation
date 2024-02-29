@@ -127,10 +127,10 @@ module: ietf-te-path-computation
     |  |     |  |  |        |  |     |  |       frequency-thz
     |  |     |  |  |        |  |     |  +-- wdm-pc:transceiver-tunability?
     |  |     |  |  |        |  |     |          frequency-ghz
-    |  |     |  |  |        |  |     +-- wdm-pc:line-coding-bitrate?
+    |  |     |  |  |        |  |     +-- wdm-pc:line-coding-bitrate*
     |  |     |  |  |        |  |     |       identityref
     |  |     |  |  |        |  |     +-- wdm-pc:tx-channel-power?
-    |  |     |  |  |        |  |     |       power-dbm-or-null
+    |  |     |  |  |        |  |     |       l0-types:power-dbm
     |  |     |  |  |        |  |     +-- wdm-pc:preferred-rx-channel-power?
     |  |     |  |  |        |  |             l0-types:power-dbm
     |  |     |  |  |        |  +-- wdm-pc:path-out-transceiver
@@ -149,10 +149,10 @@ module: ietf-te-path-computation
     |  |     |  |  |        |        |  |       frequency-thz
     |  |     |  |  |        |        |  +-- wdm-pc:transceiver-tunability?
     |  |     |  |  |        |        |          frequency-ghz
-    |  |     |  |  |        |        +-- wdm-pc:line-coding-bitrate?
+    |  |     |  |  |        |        +-- wdm-pc:line-coding-bitrate*
     |  |     |  |  |        |        |       identityref
     |  |     |  |  |        |        +-- wdm-pc:tx-channel-power?
-    |  |     |  |  |        |        |       power-dbm-or-null
+    |  |     |  |  |        |        |       l0-types:power-dbm
     |  |     |  |  |        |        +-- wdm-pc:preferred-rx-channel-power?
     |  |     |  |  |        |                l0-types:power-dbm
     |  |     |  |  |        +--:(numbered-link-hop)
@@ -201,7 +201,7 @@ module: ietf-te-path-computation
     |  |     |  |  |        |        |              |  +-- wdm-pc:flexi-m?
     |  |     |  |  |        |        |              |          l0-types:flexi-m
     |  |     |  |  |        |        |              x--:(wdm-pc:super)
-    |  |     |  |  |        |        |              |  +-- wdm-pc:subcarrier-flexi-n*
+    |  |     |  |  |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
     |  |     |  |  |        |        |              |          [flexi-n]
     |  |     |  |  |        |        |              |     +-- wdm-pc:flexi-n
     |  |     |  |  |        |        |              |     |       l0-types:flexi-n
@@ -249,10 +249,10 @@ module: ietf-te-path-computation
     |  |     |  |           |  |     |  |       frequency-thz
     |  |     |  |           |  |     |  +-- wdm-pc:transceiver-tunability?
     |  |     |  |           |  |     |          frequency-ghz
-    |  |     |  |           |  |     +-- wdm-pc:line-coding-bitrate?
+    |  |     |  |           |  |     +-- wdm-pc:line-coding-bitrate*
     |  |     |  |           |  |     |       identityref
     |  |     |  |           |  |     +-- wdm-pc:tx-channel-power?
-    |  |     |  |           |  |     |       power-dbm-or-null
+    |  |     |  |           |  |     |       l0-types:power-dbm
     |  |     |  |           |  |     +-- wdm-pc:preferred-rx-channel-power?
     |  |     |  |           |  |             l0-types:power-dbm
     |  |     |  |           |  +-- wdm-pc:path-out-transceiver
@@ -271,10 +271,10 @@ module: ietf-te-path-computation
     |  |     |  |           |        |  |       frequency-thz
     |  |     |  |           |        |  +-- wdm-pc:transceiver-tunability?
     |  |     |  |           |        |          frequency-ghz
-    |  |     |  |           |        +-- wdm-pc:line-coding-bitrate?
+    |  |     |  |           |        +-- wdm-pc:line-coding-bitrate*
     |  |     |  |           |        |       identityref
     |  |     |  |           |        +-- wdm-pc:tx-channel-power?
-    |  |     |  |           |        |       power-dbm-or-null
+    |  |     |  |           |        |       l0-types:power-dbm
     |  |     |  |           |        +-- wdm-pc:preferred-rx-channel-power?
     |  |     |  |           |                l0-types:power-dbm
     |  |     |  |           +--:(numbered-link-hop)
@@ -323,7 +323,7 @@ module: ietf-te-path-computation
     |  |     |  |           |        |              |  +-- wdm-pc:flexi-m?
     |  |     |  |           |        |              |          l0-types:flexi-m
     |  |     |  |           |        |              x--:(wdm-pc:super)
-    |  |     |  |           |        |              |  +-- wdm-pc:subcarrier-flexi-n*
+    |  |     |  |           |        |              |  x-- wdm-pc:subcarrier-flexi-n*
     |  |     |  |           |        |              |          [flexi-n]
     |  |     |  |           |        |              |     +-- wdm-pc:flexi-n
     |  |     |  |           |        |              |     |       l0-types:flexi-n
@@ -406,10 +406,10 @@ module: ietf-te-path-computation
     |  |  |     |  |     |  |       frequency-thz
     |  |  |     |  |     |  +-- wdm-pc:transceiver-tunability?
     |  |  |     |  |     |          frequency-ghz
-    |  |  |     |  |     +-- wdm-pc:line-coding-bitrate?
+    |  |  |     |  |     +-- wdm-pc:line-coding-bitrate*
     |  |  |     |  |     |       identityref
     |  |  |     |  |     +-- wdm-pc:tx-channel-power?
-    |  |  |     |  |     |       power-dbm-or-null
+    |  |  |     |  |     |       l0-types:power-dbm
     |  |  |     |  |     +-- wdm-pc:preferred-rx-channel-power?
     |  |  |     |  |             l0-types:power-dbm
     |  |  |     |  +-- wdm-pc:path-out-transceiver
@@ -428,10 +428,10 @@ module: ietf-te-path-computation
     |  |  |     |        |  |       frequency-thz
     |  |  |     |        |  +-- wdm-pc:transceiver-tunability?
     |  |  |     |        |          frequency-ghz
-    |  |  |     |        +-- wdm-pc:line-coding-bitrate?
+    |  |  |     |        +-- wdm-pc:line-coding-bitrate*
     |  |  |     |        |       identityref
     |  |  |     |        +-- wdm-pc:tx-channel-power?
-    |  |  |     |        |       power-dbm-or-null
+    |  |  |     |        |       l0-types:power-dbm
     |  |  |     |        +-- wdm-pc:preferred-rx-channel-power?
     |  |  |     |                l0-types:power-dbm
     |  |  |     +--:(numbered-link-hop)
@@ -479,7 +479,7 @@ module: ietf-te-path-computation
     |  |  |     |        |              |  +-- wdm-pc:flexi-m?
     |  |  |     |        |              |          l0-types:flexi-m
     |  |  |     |        |              x--:(wdm-pc:super)
-    |  |  |     |        |              |  +-- wdm-pc:subcarrier-flexi-n*
+    |  |  |     |        |              |  x-- wdm-pc:subcarrier-flexi-n*
     |  |  |     |        |              |          [flexi-n]
     |  |  |     |        |              |     +-- wdm-pc:flexi-n
     |  |  |     |        |              |     |       l0-types:flexi-n
@@ -522,10 +522,10 @@ module: ietf-te-path-computation
     |  |        |  |     |  |       frequency-thz
     |  |        |  |     |  +-- wdm-pc:transceiver-tunability?
     |  |        |  |     |          frequency-ghz
-    |  |        |  |     +-- wdm-pc:line-coding-bitrate?
+    |  |        |  |     +-- wdm-pc:line-coding-bitrate*
     |  |        |  |     |       identityref
     |  |        |  |     +-- wdm-pc:tx-channel-power?
-    |  |        |  |     |       power-dbm-or-null
+    |  |        |  |     |       l0-types:power-dbm
     |  |        |  |     +-- wdm-pc:preferred-rx-channel-power?
     |  |        |  |             l0-types:power-dbm
     |  |        |  +-- wdm-pc:path-out-transceiver
@@ -544,10 +544,10 @@ module: ietf-te-path-computation
     |  |        |        |  |       frequency-thz
     |  |        |        |  +-- wdm-pc:transceiver-tunability?
     |  |        |        |          frequency-ghz
-    |  |        |        +-- wdm-pc:line-coding-bitrate?
+    |  |        |        +-- wdm-pc:line-coding-bitrate*
     |  |        |        |       identityref
     |  |        |        +-- wdm-pc:tx-channel-power?
-    |  |        |        |       power-dbm-or-null
+    |  |        |        |       l0-types:power-dbm
     |  |        |        +-- wdm-pc:preferred-rx-channel-power?
     |  |        |                l0-types:power-dbm
     |  |        +--:(numbered-link-hop)
@@ -595,7 +595,7 @@ module: ietf-te-path-computation
     |  |        |        |              |  +-- wdm-pc:flexi-m?
     |  |        |        |              |          l0-types:flexi-m
     |  |        |        |              x--:(wdm-pc:super)
-    |  |        |        |              |  +-- wdm-pc:subcarrier-flexi-n*
+    |  |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
     |  |        |        |              |          [flexi-n]
     |  |        |        |              |     +-- wdm-pc:flexi-n
     |  |        |        |              |     |       l0-types:flexi-n
@@ -838,9 +838,9 @@ module: ietf-te-path-computation
     |     |  |  +-- wdm-pc:min-central-frequency?    frequency-thz
     |     |  |  +-- wdm-pc:max-central-frequency?    frequency-thz
     |     |  |  +-- wdm-pc:transceiver-tunability?   frequency-ghz
-    |     |  +-- wdm-pc:line-coding-bitrate?          identityref
+    |     |  +-- wdm-pc:line-coding-bitrate*          identityref
     |     |  +-- wdm-pc:tx-channel-power?
-    |     |  |       power-dbm-or-null
+    |     |  |       l0-types:power-dbm
     |     |  +-- wdm-pc:preferred-rx-channel-power?
     |     |          l0-types:power-dbm
     |     +-- wdm-pc:gsnr-extra-margin?             snr
@@ -894,10 +894,10 @@ module: ietf-te-path-computation
        |        |  |     |  |       frequency-thz
        |        |  |     |  +-- wdm-pc:transceiver-tunability?
        |        |  |     |          frequency-ghz
-       |        |  |     +-- wdm-pc:line-coding-bitrate?
+       |        |  |     +-- wdm-pc:line-coding-bitrate*
        |        |  |     |       identityref
        |        |  |     +-- wdm-pc:tx-channel-power?
-       |        |  |     |       power-dbm-or-null
+       |        |  |     |       l0-types:power-dbm
        |        |  |     +-- wdm-pc:preferred-rx-channel-power?
        |        |  |             l0-types:power-dbm
        |        |  +-- wdm-pc:path-out-transceiver
@@ -916,10 +916,10 @@ module: ietf-te-path-computation
        |        |        |  |       frequency-thz
        |        |        |  +-- wdm-pc:transceiver-tunability?
        |        |        |          frequency-ghz
-       |        |        +-- wdm-pc:line-coding-bitrate?
+       |        |        +-- wdm-pc:line-coding-bitrate*
        |        |        |       identityref
        |        |        +-- wdm-pc:tx-channel-power?
-       |        |        |       power-dbm-or-null
+       |        |        |       l0-types:power-dbm
        |        |        +-- wdm-pc:preferred-rx-channel-power?
        |        |                l0-types:power-dbm
        |        +--:(numbered-link-hop)
@@ -967,7 +967,7 @@ module: ietf-te-path-computation
        |        |        |              |  +-- wdm-pc:flexi-m?
        |        |        |              |          l0-types:flexi-m
        |        |        |              x--:(wdm-pc:super)
-       |        |        |              |  +-- wdm-pc:subcarrier-flexi-n*
+       |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
        |        |        |              |          [flexi-n]
        |        |        |              |     +-- wdm-pc:flexi-n
        |        |        |              |     |       l0-types:flexi-n
@@ -1048,10 +1048,10 @@ module: ietf-te-path-computation
        |        |        |  |     |  |       frequency-thz
        |        |        |  |     |  +--ro wdm-pc:transceiver-tunability?
        |        |        |  |     |          frequency-ghz
-       |        |        |  |     +--ro wdm-pc:line-coding-bitrate?
+       |        |        |  |     +--ro wdm-pc:line-coding-bitrate*
        |        |        |  |     |       identityref
        |        |        |  |     +--ro wdm-pc:tx-channel-power?
-       |        |        |  |     |       power-dbm-or-null
+       |        |        |  |     |       l0-types:power-dbm
        |        |        |  |     +--ro wdm-pc:preferred-rx-channel-power?
        |        |        |  |             l0-types:power-dbm
        |        |        |  +--ro wdm-pc:path-out-transceiver
@@ -1070,10 +1070,10 @@ module: ietf-te-path-computation
        |        |        |        |  |       frequency-thz
        |        |        |        |  +--ro wdm-pc:transceiver-tunability?
        |        |        |        |          frequency-ghz
-       |        |        |        +--ro wdm-pc:line-coding-bitrate?
+       |        |        |        +--ro wdm-pc:line-coding-bitrate*
        |        |        |        |       identityref
        |        |        |        +--ro wdm-pc:tx-channel-power?
-       |        |        |        |       power-dbm-or-null
+       |        |        |        |       l0-types:power-dbm
        |        |        |        +--ro wdm-pc:preferred-rx-channel-power?
        |        |        |                l0-types:power-dbm
        |        |        +--:(numbered-link-hop)
@@ -1122,7 +1122,7 @@ module: ietf-te-path-computation
        |        |        |        |              |  +--ro wdm-pc:flexi-m?
        |        |        |        |              |          l0-types:flexi-m
        |        |        |        |              x--:(wdm-pc:super)
-       |        |        |        |              |  +--ro wdm-pc:subcarrier-flexi-n*
+       |        |        |        |              |  x--ro wdm-pc:subcarrier-flexi-n*
        |        |        |        |              |          [flexi-n]
        |        |        |        |              |     +--ro wdm-pc:flexi-n
        |        |        |        |              |     |       l0-types:flexi-n

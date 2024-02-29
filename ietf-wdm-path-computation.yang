@@ -104,7 +104,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
@@ -137,7 +137,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
@@ -168,7 +168,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
@@ -196,7 +196,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
@@ -223,7 +223,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
@@ -268,7 +268,7 @@ module ietf-wdm-path-computation {
     description
       "Augment with transceiver configurations.";
       
-    uses wdm-tnl:path-transceiver-config-grp;
+    uses wdm-tnl:path-transceiver-config;
   }
 
   //???
