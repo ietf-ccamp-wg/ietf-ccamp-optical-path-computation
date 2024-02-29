@@ -1,10 +1,10 @@
 ---
 coding: utf-8
 
-title: YANG Data Models for requesting Path Computation in Optical Networks
+title: YANG Data Models for requesting Path Computation in WDM Optical Networks
 
-abbrev: Yang for Optical Path Computation
-docname: draft-ietf-ccamp-optical-path-computation-yang-02
+abbrev: Yang for WDM Path Computation
+docname: draft-ietf-ccamp-optical-path-computation-yang-03
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -34,7 +34,7 @@ contributor:
 
 --- abstract
 
-This document provides a mechanism to request path computation in Optical Networks (WSON and Flexi-grid) by augmenting the Remote Procedure Calls (RPCs) defined in RFC YYYY.
+This document provides a mechanism to request path computation in Wavelength-Division Multiplexing (WDM) optical networks composed of Wavelength Switched Optical Networks (WSON) and Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) switched technologies. This model augments the Remote Procedure Calls (RPCs) defined in RFC YYYY.
 
 \[RFC EDITOR NOTE: Please replace RFC YYYY with the RFC number of
 draft-ietf-teas-yang-path-computation once it has been published.
@@ -44,10 +44,9 @@ draft-ietf-teas-yang-path-computation once it has been published.
 # Introduction
 
 {{!I-D.ietf-teas-yang-path-computation}} describes key use cases, where a client needs to request
-underlying SDN controllers for path computation. In some of these use cases, the
+underlying Software-Defined Network (SDN) controllers for path computation. In some of these use cases, the
 underlying SDN controller can control a single-layer optical technologies, including 
-Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, 
-and multi-layer Optical network.
+Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, and multi-layer Optical network.
 
 This document defines YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
 a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths require knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.
@@ -81,7 +80,7 @@ a client to delegate path computation tasks to the underlying Optical SDN contro
 ## Tree Diagram
 
   A simplified graphical representation of the data model is used in
-  {{optical-pc-tree}} of this document.  The meaning of the symbols in these
+  {{wdm-pc-tree}} of this document.  The meaning of the symbols in these
   diagrams is defined in {{!RFC8340}}.
 
 ## Prefix in Data Node Names
@@ -95,8 +94,7 @@ a client to delegate path computation tasks to the underlying Optical SDN contro
 | l0-types     | ietf-layer0-types                | \[RFCZZZZ]
 | te           | ietf-te                          | \[RFCKKKK]
 | tepc         | ietf-te-path-computation         | \[RFCYYYY]
-| wson-pc      | ietf-wson-path-computation       | RFCXXXX         
-| flexg-pc     | ietf-flexi-grid-path-computation | RFCXXXX         
+| wdm-pc       | ietf-wdm-path-computation        | RFCXXXX         
 {: #tab-prefixes title="Prefixes and corresponding YANG modules"}
 
 RFC Editor Note:
@@ -106,49 +104,46 @@ Please replace KKKK with the RFC number assigned to {{!I-D.ietf-teas-yang-te}}.
 Please replace YYYY with the RFC number assigned to {{!I-D.ietf-teas-yang-path-computation}}.
 Please remove this note.
 
-# YANG Data Models for Optical Path Computation 
+# YANG Data Models for WDM Path Computation 
 
 ## YANG Models Overview
 
-The YANG data models for requesting WSON and Flexi-grid path computation are defined as augmentations of the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, as shown in {{fig-optical-pc}}.
+The YANG data models for requesting WDM path computation are defined as augmentations of the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, as shown in {{fig-wdm-pc}}.
 
 ~~~~ ascii-art
                     +--------------------------+    o: augment
        TE generic   | ietf-te-path-computation |
                     +--------------------------+
-                          o             o
-                          |             |
-                          |             |
-              +-----------+             +-----------+
-              |                                     |
-              |                                     |
-+----------------------------+  +----------------------------------+
-| ietf-wson-path-computation |  | ietf-flexi-grid-path-computation |
-+----------------------------+  +----------------------------------+
-            WSON                            Flexi-grid
+                                 o              
+                                 |              
+                                 |             
+                                 |     
+                    +---------------------------+   
+                    | ietf-wdm-path-computation |   
+                    +---------------------------+   
 
 ~~~~
-{: #fig-optical-pc title="Relationship between WSON, Flexi-grid and TE path computation models" artwork-name="optical-path-computation.txt"}
+{: #fig-wdm-pc title="Relationship between WDM and TE path computation models" artwork-name="wdm-path-computation.txt"}
 
-The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in {{!I-D.ietf-teas-yang-path-computation}}, are still applicable when requesting WSON and Flexi-grid path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in {{!I-D.ietf-ccamp-rfc9093-bis}}.
+The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in {{!I-D.ietf-teas-yang-path-computation}}, are still applicable when requesting WDM path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in {{!I-D.ietf-ccamp-rfc9093-bis}}.
 
 ## Attributes Augmentation
 
-The common characteristics for layer 0 (WSON and Flexi-grid) tunnels are under definition in {{!I-D.ietf-ccamp-rfc9093-bis}} and re-used in the ietf-wson-path-computation and ietf-flexi-grid-path-computation YANG models
+The common characteristics for layer 0 (WSON and Flexi-grid) path computation are under definition in {{!I-D.ietf-ccamp-rfc9093-bis}} and re-used in the ietf-wdm-path-computation YANG models.
 
-{: #optical-te-bandwidh}
+{: #wdm-te-bandwidth}
 
 ## Bandwidth Augmentation
 
 As described in Section 4.2 of {{!RFC7699}}, there is some overlap
 between bandwidth and label in layer0.
 
-The WSON and flexi-grid label resource information described in {{optical-te-label}},
+The WSON and flexi-grid label resource information described in {{wdm-te-label}},
 is sufficient to describe also the spectrum resources within WSON and
 flexi-grid networks. Therefore, the model does not define any augmentation
 for the te-bandwidth containers defined in {{!I-D.ietf-teas-yang-path-computation}}.
 
-{: #optical-te-label}
+{: #wdm-te-label}
 
 ## Label Augmentations
 
@@ -161,53 +156,27 @@ container with the WSON, Flexi-grid and OTN technology-specific attributes using
 wson-label-start-end, wson-label-hop, wson-label-step,
 flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defined in {{!I-D.ietf-ccamp-rfc9093-bis}}.
 
-{: #optical-pc-tree}
+{: #wdm-pc-tree}
 
-# Optical Path Computation Tree Diagrams
+# WDM Path Computation Tree Diagrams
 
-{: #wson-pc-tree}
-
-## WSON Path Computation Tree Diagrams
-
-{{fig-wson-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-wson-path-computation.yang.
+{{fig-wdm-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-wdm-path-computation.yang.
 
 ~~~~ ascii-art
-{::include ./ietf-wson-path-computation.tree}
+{::include ./ietf-wdm-path-computation.tree}
 ~~~~
-{: #fig-wson-pc-tree title="WSON path computation tree diagram" artwork-name="ietf-wson-path-computation.tree"}
+{: #fig-wdm-pc-tree title="WDM path computation tree diagram" artwork-name="ietf-wdm-path-computation.tree"}
 
-{: #flexg-pc-tree}
 
-## Flexi-grid Path Computation Tree Diagrams
+{: #wdm-pc-yang}
 
-{{fig-flexg-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-flexi-grid-path-computation.yang.
-
-~~~~ ascii-art
-{::include ./ietf-flexi-grid-path-computation.tree}
-~~~~
-{: #fig-flexg-pc-tree title="Flexi-grid path computation tree diagram" artwork-name="ietf-flexi-grid-path-computation.tree"}
-
-{: #optical-pc-yang}
-
-# YANG Models for Optical Path Computation
-
-{: #wson-pc-yang}
-
-## YANG Model for WSON Path Computation
+# YANG Models for WDM Path Computation
 
 ~~~~ yang
-{::include ./ietf-wson-path-computation.yang}
+{::include ./ietf-wdm-path-computation.yang}
 ~~~~
-{: #fig-wson-pc-yang title="WSON path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-wson-path-computation@2022-09-08.yang"}
+{: #fig-wdm-pc-yang title="WDM path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-wdm-path-computation@2024-02-29.yang"}
 
-{: #flexg-pc-yang}
-
-## YANG Model for Flexi-grid Path Computation
-
-~~~~ yang
-{::include ./ietf-flexi-grid-path-computation.yang}
-~~~~
-{: #fig-flexg-pc-yang title="Flexi-grid path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-flexi-grid-path-computation@2022-09-08.yang"}
 
 # Manageability Considerations
 
@@ -232,11 +201,7 @@ Operations defined in this document, and their sensitivities and possible vulner
    within the "IETF XML registry" {{!RFC3688}}.
 
 ~~~~
-  URI: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-  Registrant Contact:  The IESG.
-  XML: N/A, the requested URI is an XML namespace.
-
-  URI: urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+  URI: urn:ietf:params:xml:ns:yang:ietf-wdm-path-computation
   Registrant Contact:  The IESG.
   XML: N/A, the requested URI is an XML namespace.
 ~~~~
@@ -245,14 +210,9 @@ Operations defined in this document, and their sensitivities and possible vulner
    registry {{!RFC7950}}.
 
 ~~~~
-  name:      ietf-wson-path-computation
+  name:      ietf-wdm-path-computation
   namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-  prefix:    wson-pc
-  reference: this document
-
-  name:      ietf-flexi-grid-path-computation
-  namespace: ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
-  prefix:    flexg-pc
+  prefix:    wdm-pc
   reference: this document
 ~~~~
 

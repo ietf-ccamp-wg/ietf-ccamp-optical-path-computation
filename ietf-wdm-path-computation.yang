@@ -66,7 +66,7 @@ module ietf-wdm-path-computation {
     This version of this YANG module is part of RFC XXXX; see
     the RFC itself for full legal notices.";
 
-  revision "2024-02-16" {
+  revision "2024-02-29" {
     description
       "Initial version.";
     reference

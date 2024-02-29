@@ -10,10 +10,10 @@
 <?rfc symrefs="yes"?>
 <?rfc comments="yes"?>
 
-<rfc ipr="trust200902" docName="draft-ietf-ccamp-optical-path-computation-yang-02" category="std">
+<rfc ipr="trust200902" docName="draft-ietf-ccamp-optical-path-computation-yang-03" category="std">
 
   <front>
-    <title abbrev="Yang for Optical Path Computation">YANG Data Models for requesting Path Computation in Optical Networks</title>
+    <title abbrev="Yang for WDM Path Computation">YANG Data Models for requesting Path Computation in WDM Optical Networks</title>
 
     <author initials="I." surname="Busi" fullname="Italo Busi">
       <organization>Huawei Technologies</organization>
@@ -34,7 +34,7 @@
       </address>
     </author>
 
-    <date year="2023" month="October" day="20"/>
+    <date year="2024" month="March" day="01"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -43,7 +43,7 @@
     <abstract>
 
 
-<t>This document provides a mechanism to request path computation in Optical Networks (WSON and Flexi-grid) by augmenting the Remote Procedure Calls (RPCs) defined in RFC YYYY.</t>
+<t>This document provides a mechanism to request path computation in Wavelength-Division Multiplexing (WDM) optical networks composed of Wavelength Switched Optical Networks (WSON) and Flexi-Grid Dense Wavelength Division Multiplexing (DWDM) switched technologies. This model augments the Remote Procedure Calls (RPCs) defined in RFC YYYY.</t>
 
 <t>[RFC EDITOR NOTE: Please replace RFC YYYY with the RFC number of
 draft-ietf-teas-yang-path-computation once it has been published.</t>
@@ -61,10 +61,9 @@ draft-ietf-teas-yang-path-computation once it has been published.</t>
 <section anchor="introduction"><name>Introduction</name>
 
 <t><xref target="I-D.ietf-teas-yang-path-computation"/> describes key use cases, where a client needs to request
-underlying SDN controllers for path computation. In some of these use cases, the
+underlying Software-Defined Network (SDN) controllers for path computation. In some of these use cases, the
 underlying SDN controller can control a single-layer optical technologies, including 
-Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, 
-and multi-layer Optical network.</t>
+Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, and multi-layer Optical network.</t>
 
 <t>This document defines YANG data models, which augment the generic Path Computation RPC defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
 a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths require knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.</t>
@@ -98,7 +97,7 @@ a client to delegate path computation tasks to the underlying Optical SDN contro
 <section anchor="tree-diagram"><name>Tree Diagram</name>
 
 <t>A simplified graphical representation of the data model is used in
-  <xref target="optical-pc-tree"/> of this document.  The meaning of the symbols in these
+  <xref target="wdm-pc-tree"/> of this document.  The meaning of the symbols in these
   diagrams is defined in <xref target="RFC8340"/>.</t>
 
 </section>
@@ -122,11 +121,8 @@ a client to delegate path computation tasks to the underlying Optical SDN contro
       <c>tepc</c>
       <c>ietf-te-path-computation</c>
       <c>[RFCYYYY]</c>
-      <c>wson-pc</c>
-      <c>ietf-wson-path-computation</c>
-      <c>RFCXXXX</c>
-      <c>flexg-pc</c>
-      <c>ietf-flexi-grid-path-computation</c>
+      <c>wdm-pc</c>
+      <c>ietf-wdm-path-computation</c>
       <c>RFCXXXX</c>
 </texttable>
 
@@ -139,49 +135,46 @@ Please remove this note.</t>
 
 </section>
 </section>
-<section anchor="yang-data-models-for-optical-path-computation"><name>YANG Data Models for Optical Path Computation</name>
+<section anchor="yang-data-models-for-wdm-path-computation"><name>YANG Data Models for WDM Path Computation</name>
 
 <section anchor="yang-models-overview"><name>YANG Models Overview</name>
 
-<t>The YANG data models for requesting WSON and Flexi-grid path computation are defined as augmentations of the generic Path Computation RPC defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, as shown in <xref target="fig-optical-pc"/>.</t>
+<t>The YANG data models for requesting WDM path computation are defined as augmentations of the generic Path Computation RPC defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, as shown in <xref target="fig-wdm-pc"/>.</t>
 
-<figure title="Relationship between WSON, Flexi-grid and TE path computation models" anchor="fig-optical-pc"><artwork type="ascii-art" name="optical-path-computation.txt"><![CDATA[
+<figure title="Relationship between WDM and TE path computation models" anchor="fig-wdm-pc"><artwork type="ascii-art" name="wdm-path-computation.txt"><![CDATA[
                     +--------------------------+    o: augment
        TE generic   | ietf-te-path-computation |
                     +--------------------------+
-                          o             o
-                          |             |
-                          |             |
-              +-----------+             +-----------+
-              |                                     |
-              |                                     |
-+----------------------------+  +----------------------------------+
-| ietf-wson-path-computation |  | ietf-flexi-grid-path-computation |
-+----------------------------+  +----------------------------------+
-            WSON                            Flexi-grid
+                                 o              
+                                 |              
+                                 |             
+                                 |     
+                    +---------------------------+   
+                    | ietf-wdm-path-computation |   
+                    +---------------------------+   
 
 ]]></artwork></figure>
 
-<t>The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, are still applicable when requesting WSON and Flexi-grid path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in <xref target="I-D.ietf-ccamp-rfc9093-bis"/>.</t>
+<t>The entities and Traffic Engineering (TE) attributes, such as requested path and tunnel attributes, defined in <xref target="I-D.ietf-teas-yang-path-computation"/>, are still applicable when requesting WDM path computation and the models defined in this document only specifies the additional technology-specific attributes/information, using the attributes defined in <xref target="I-D.ietf-ccamp-rfc9093-bis"/>.</t>
 
 </section>
 <section anchor="attributes-augmentation"><name>Attributes Augmentation</name>
 
-<t>The common characteristics for layer 0 (WSON and Flexi-grid) tunnels are under definition in <xref target="I-D.ietf-ccamp-rfc9093-bis"/> and re-used in the ietf-wson-path-computation and ietf-flexi-grid-path-computation YANG models</t>
+<t>The common characteristics for layer 0 (WSON and Flexi-grid) path computation are under definition in <xref target="I-D.ietf-ccamp-rfc9093-bis"/> and re-used in the ietf-wdm-path-computation YANG models.</t>
 
 </section>
-<section anchor="optical-te-bandwidh"><name>Bandwidth Augmentation</name>
+<section anchor="wdm-te-bandwidth"><name>Bandwidth Augmentation</name>
 
 <t>As described in Section 4.2 of <xref target="RFC7699"/>, there is some overlap
 between bandwidth and label in layer0.</t>
 
-<t>The WSON and flexi-grid label resource information described in <xref target="optical-te-label"/>,
+<t>The WSON and flexi-grid label resource information described in <xref target="wdm-te-label"/>,
 is sufficient to describe also the spectrum resources within WSON and
 flexi-grid networks. Therefore, the model does not define any augmentation
 for the te-bandwidth containers defined in <xref target="I-D.ietf-teas-yang-path-computation"/>.</t>
 
 </section>
-<section anchor="optical-te-label"><name>Label Augmentations</name>
+<section anchor="wdm-te-label"><name>Label Augmentations</name>
 
 <t>The models augment all the occurrences of the label-restriction list
 with WSON and Flexi-grid technology-specific attributes using the 
@@ -194,24 +187,65 @@ flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defin
 
 </section>
 </section>
-<section anchor="optical-pc-tree"><name>Optical Path Computation Tree Diagrams</name>
+<section anchor="wdm-pc-tree"><name>WDM Path Computation Tree Diagrams</name>
 
-<section anchor="wson-pc-tree"><name>WSON Path Computation Tree Diagrams</name>
+<t><xref target="fig-wdm-pc-tree"/> below shows the tree diagram of the YANG data model defined in module ietf-wdm-path-computation.yang.</t>
 
-<t><xref target="fig-wson-pc-tree"/> below shows the tree diagram of the YANG data model defined in module ietf-wson-path-computation.yang.</t>
-
-<figure title="WSON path computation tree diagram" anchor="fig-wson-pc-tree"><artwork type="ascii-art" name="ietf-wson-path-computation.tree"><![CDATA[
-module: ietf-wson-path-computation
+<figure title="WDM path computation tree diagram" anchor="fig-wdm-pc-tree"><artwork type="ascii-art" name="ietf-wdm-path-computation.tree"><![CDATA[
+module: ietf-wdm-path-computation
 
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request:
-    +-- bit-stuffing?            boolean
-    +-- wavelength-assignment?   identityref
-    +-- gsnr-margin?             snr
-  augment /te:tunnels-path-compute/te:output/te:path-compute-result
-            /tepc:response/tepc:computed-paths-properties
-            /tepc:computed-path-properties/tepc:path-properties:
-    +--ro estimated-gsnr?   snr
+            /tepc:tunnel-attributes:
+    +-- wdm-constraint
+       +-- transceiver-constraint
+       |  +-- operational-modes*            string
+       |  +-- tx-tune-constraints
+       |  |  +-- min-central-frequency?    frequency-thz
+       |  |  +-- max-central-frequency?    frequency-thz
+       |  |  +-- transceiver-tunability?   frequency-ghz
+       |  +-- line-coding-bitrate*          identityref
+       |  +-- tx-channel-power?             l0-types:power-dbm
+       |  +-- preferred-rx-channel-power?   l0-types:power-dbm
+       +-- gsnr-extra-margin?             snr
+       +-- use-regen?                     boolean
+       +-- wavelength-conversion?         boolean
+       +-- wavelength-assignment?         identityref
+       +-- guard-band-size?               l0-types:frequency-thz
+       +-- matching-fwd-rev-wavelength?   boolean
+       +-- allow-retuning?                boolean
+       +-- delta-power?                   l0-types:power-ratio
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-exclude-objects
+            /tepc:route-object-exclude-object/tepc:type
+            /tepc:numbered-node-hop:
+    +-- path-in-transceiver
+    |  +-- transponder-id?   uint32
+    |  +-- transceivers* [lane-id]
+    |     +-- lane-id                       uint8
+    |     +-- transceiver-id?               uint32
+    |     +-- operational-modes*            string
+    |     +-- tx-tune-constraints
+    |     |  +-- min-central-frequency?    frequency-thz
+    |     |  +-- max-central-frequency?    frequency-thz
+    |     |  +-- transceiver-tunability?   frequency-ghz
+    |     +-- line-coding-bitrate*          identityref
+    |     +-- tx-channel-power?             l0-types:power-dbm
+    |     +-- preferred-rx-channel-power?   l0-types:power-dbm
+    +-- path-out-transceiver
+       +-- transponder-id?   uint32
+       +-- transceivers* [lane-id]
+          +-- lane-id                       uint8
+          +-- transceiver-id?               uint32
+          +-- operational-modes*            string
+          +-- tx-tune-constraints
+          |  +-- min-central-frequency?    frequency-thz
+          |  +-- max-central-frequency?    frequency-thz
+          |  +-- transceiver-tunability?   frequency-ghz
+          +-- line-coding-bitrate*          identityref
+          +-- tx-channel-power?             l0-types:power-dbm
+          +-- preferred-rx-channel-power?   l0-types:power-dbm
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:optimizations/tepc:algorithm
             /tepc:metric/tepc:optimization-metric
@@ -223,24 +257,182 @@ module: ietf-wson-path-computation
             /tepc:path-request/tepc:optimizations/tepc:algorithm
             /tepc:metric/tepc:optimization-metric
             /tepc:explicit-route-include-objects
+            /tepc:route-object-include-object/tepc:type
+            /tepc:numbered-node-hop:
+    +-- path-in-transceiver
+    |  +-- transponder-id?   uint32
+    |  +-- transceivers* [lane-id]
+    |     +-- lane-id                       uint8
+    |     +-- transceiver-id?               uint32
+    |     +-- operational-modes*            string
+    |     +-- tx-tune-constraints
+    |     |  +-- min-central-frequency?    frequency-thz
+    |     |  +-- max-central-frequency?    frequency-thz
+    |     |  +-- transceiver-tunability?   frequency-ghz
+    |     +-- line-coding-bitrate*          identityref
+    |     +-- tx-channel-power?             l0-types:power-dbm
+    |     +-- preferred-rx-channel-power?   l0-types:power-dbm
+    +-- path-out-transceiver
+       +-- transponder-id?   uint32
+       +-- transceivers* [lane-id]
+          +-- lane-id                       uint8
+          +-- transceiver-id?               uint32
+          +-- operational-modes*            string
+          +-- tx-tune-constraints
+          |  +-- min-central-frequency?    frequency-thz
+          |  +-- max-central-frequency?    frequency-thz
+          |  +-- transceiver-tunability?   frequency-ghz
+          +-- line-coding-bitrate*          identityref
+          +-- tx-channel-power?             l0-types:power-dbm
+          +-- preferred-rx-channel-power?   l0-types:power-dbm
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:optimizations/tepc:algorithm
+            /tepc:metric/tepc:optimization-metric
+            /tepc:explicit-route-include-objects
             /tepc:route-object-include-object/tepc:type:
     +--:(oms-element)
        +-- oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:path-request/tepc:explicit-route-objects
+            /tepc:route-object-exclude-always/tepc:type
+            /tepc:numbered-node-hop:
+    +-- path-in-transceiver
+    |  +-- transponder-id?   uint32
+    |  +-- transceivers* [lane-id]
+    |     +-- lane-id                       uint8
+    |     +-- transceiver-id?               uint32
+    |     +-- operational-modes*            string
+    |     +-- tx-tune-constraints
+    |     |  +-- min-central-frequency?    frequency-thz
+    |     |  +-- max-central-frequency?    frequency-thz
+    |     |  +-- transceiver-tunability?   frequency-ghz
+    |     +-- line-coding-bitrate*          identityref
+    |     +-- tx-channel-power?             l0-types:power-dbm
+    |     +-- preferred-rx-channel-power?   l0-types:power-dbm
+    +-- path-out-transceiver
+       +-- transponder-id?   uint32
+       +-- transceivers* [lane-id]
+          +-- lane-id                       uint8
+          +-- transceiver-id?               uint32
+          +-- operational-modes*            string
+          +-- tx-tune-constraints
+          |  +-- min-central-frequency?    frequency-thz
+          |  +-- max-central-frequency?    frequency-thz
+          |  +-- transceiver-tunability?   frequency-ghz
+          +-- line-coding-bitrate*          identityref
+          +-- tx-channel-power?             l0-types:power-dbm
+          +-- preferred-rx-channel-power?   l0-types:power-dbm
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects
             /tepc:route-object-exclude-always/tepc:type:
     +--:(oms-element)
        +-- oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:path-request/tepc:explicit-route-objects
+            /tepc:route-object-include-exclude/tepc:type
+            /tepc:numbered-node-hop:
+    +-- path-in-transceiver
+    |  +-- transponder-id?   uint32
+    |  +-- transceivers* [lane-id]
+    |     +-- lane-id                       uint8
+    |     +-- transceiver-id?               uint32
+    |     +-- operational-modes*            string
+    |     +-- tx-tune-constraints
+    |     |  +-- min-central-frequency?    frequency-thz
+    |     |  +-- max-central-frequency?    frequency-thz
+    |     |  +-- transceiver-tunability?   frequency-ghz
+    |     +-- line-coding-bitrate*          identityref
+    |     +-- tx-channel-power?             l0-types:power-dbm
+    |     +-- preferred-rx-channel-power?   l0-types:power-dbm
+    +-- path-out-transceiver
+       +-- transponder-id?   uint32
+       +-- transceivers* [lane-id]
+          +-- lane-id                       uint8
+          +-- transceiver-id?               uint32
+          +-- operational-modes*            string
+          +-- tx-tune-constraints
+          |  +-- min-central-frequency?    frequency-thz
+          |  +-- max-central-frequency?    frequency-thz
+          |  +-- transceiver-tunability?   frequency-ghz
+          +-- line-coding-bitrate*          identityref
+          +-- tx-channel-power?             l0-types:power-dbm
+          +-- preferred-rx-channel-power?   l0-types:power-dbm
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:path-request/tepc:explicit-route-objects
             /tepc:route-object-include-exclude/tepc:type:
     +--:(oms-element)
        +-- oms-element-uid?   string
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:synchronization/tepc:exclude-objects/tepc:excludes
+            /tepc:type/tepc:numbered-node-hop:
+    +-- path-in-transceiver
+    |  +-- transponder-id?   uint32
+    |  +-- transceivers* [lane-id]
+    |     +-- lane-id                       uint8
+    |     +-- transceiver-id?               uint32
+    |     +-- operational-modes*            string
+    |     +-- tx-tune-constraints
+    |     |  +-- min-central-frequency?    frequency-thz
+    |     |  +-- max-central-frequency?    frequency-thz
+    |     |  +-- transceiver-tunability?   frequency-ghz
+    |     +-- line-coding-bitrate*          identityref
+    |     +-- tx-channel-power?             l0-types:power-dbm
+    |     +-- preferred-rx-channel-power?   l0-types:power-dbm
+    +-- path-out-transceiver
+       +-- transponder-id?   uint32
+       +-- transceivers* [lane-id]
+          +-- lane-id                       uint8
+          +-- transceiver-id?               uint32
+          +-- operational-modes*            string
+          +-- tx-tune-constraints
+          |  +-- min-central-frequency?    frequency-thz
+          |  +-- max-central-frequency?    frequency-thz
+          |  +-- transceiver-tunability?   frequency-ghz
+          +-- line-coding-bitrate*          identityref
+          +-- tx-channel-power?             l0-types:power-dbm
+          +-- preferred-rx-channel-power?   l0-types:power-dbm
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info
+            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
             /tepc:type:
     +--:(oms-element)
        +-- oms-element-uid?   string
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties:
+    +--ro estimated-gsnr?          snr
+    +--ro estimated-eol-gsnr?      snr
+    +--ro estimated-lowest-gsnr?   snr
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result
+            /tepc:response/tepc:computed-paths-properties
+            /tepc:computed-path-properties/tepc:path-properties
+            /tepc:path-route-objects/tepc:path-route-object/tepc:type
+            /tepc:numbered-node-hop:
+    +--ro path-in-transceiver
+    |  +--ro transponder-id?   uint32
+    |  +--ro transceivers* [lane-id]
+    |     +--ro lane-id                       uint8
+    |     +--ro transceiver-id?               uint32
+    |     +--ro operational-modes*            string
+    |     +--ro tx-tune-constraints
+    |     |  +--ro min-central-frequency?    frequency-thz
+    |     |  +--ro max-central-frequency?    frequency-thz
+    |     |  +--ro transceiver-tunability?   frequency-ghz
+    |     +--ro line-coding-bitrate*          identityref
+    |     +--ro tx-channel-power?             l0-types:power-dbm
+    |     +--ro preferred-rx-channel-power?   l0-types:power-dbm
+    +--ro path-out-transceiver
+       +--ro transponder-id?   uint32
+       +--ro transceivers* [lane-id]
+          +--ro lane-id                       uint8
+          +--ro transceiver-id?               uint32
+          +--ro operational-modes*            string
+          +--ro tx-tune-constraints
+          |  +--ro min-central-frequency?    frequency-thz
+          |  +--ro max-central-frequency?    frequency-thz
+          |  +--ro transceiver-tunability?   frequency-ghz
+          +--ro line-coding-bitrate*          identityref
+          +--ro tx-channel-power?             l0-types:power-dbm
+          +--ro preferred-rx-channel-power?   l0-types:power-dbm
   augment /te:tunnels-path-compute/te:output/te:path-compute-result
             /tepc:response/tepc:computed-paths-properties
             /tepc:computed-path-properties/tepc:path-properties
@@ -251,778 +443,293 @@ module: ietf-wson-path-computation
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction:
-    +-- grid-type?   identityref
-    +-- priority?    uint8
+    +-- grid-type?    identityref
+    +-- priority?     uint8
+    +-- flexi-grid
+       +-- slot-width-granularity?   identityref
+       +-- min-slot-width-factor?    uint16
+       +-- max-slot-width-factor?    uint16
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-out-segment
             /tepc:label-restrictions/tepc:label-restriction:
-    +-- grid-type?   identityref
-    +-- priority?    uint8
+    +-- grid-type?    identityref
+    +-- priority?     uint8
+    +-- flexi-grid
+       +-- slot-width-granularity?   identityref
+       +-- min-slot-width-factor?    uint16
+       +-- max-slot-width-factor?    uint16
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:optimizations/tepc:algorithm
             /tepc:metric/tepc:optimization-metric
             /tepc:explicit-route-exclude-objects
             /tepc:route-object-exclude-object/tepc:type/tepc:label
             /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +-- (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +-- dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +-- dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +-- subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?                    l0-types:cwdm-n
+          |  +-- cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- (single-or-super-channel)?
+                +--:(single)
+                |  +-- flexi-n?              l0-types:flexi-n
+                |  +-- flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x-- subcarrier-flexi-n* [flexi-n]
+                |     +-- flexi-n    l0-types:flexi-n
+                |     +-- flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +-- frequency-slots
+                      +-- frequency-slot* [flexi-n]
+                         +-- flexi-n    l0-types:flexi-n
+                         +-- flexi-m?   l0-types:flexi-m
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:optimizations/tepc:algorithm
             /tepc:metric/tepc:optimization-metric
             /tepc:explicit-route-include-objects
             /tepc:route-object-include-object/tepc:type/tepc:label
             /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +-- (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +-- dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +-- dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +-- subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?                    l0-types:cwdm-n
+          |  +-- cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- (single-or-super-channel)?
+                +--:(single)
+                |  +-- flexi-n?              l0-types:flexi-n
+                |  +-- flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x-- subcarrier-flexi-n* [flexi-n]
+                |     +-- flexi-n    l0-types:flexi-n
+                |     +-- flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +-- frequency-slots
+                      +-- frequency-slot* [flexi-n]
+                         +-- flexi-n    l0-types:flexi-n
+                         +-- flexi-m?   l0-types:flexi-m
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:path-request/tepc:explicit-route-objects
             /tepc:route-object-exclude-always/tepc:type/tepc:label
             /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +-- (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +-- dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +-- dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +-- subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?                    l0-types:cwdm-n
+          |  +-- cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- (single-or-super-channel)?
+                +--:(single)
+                |  +-- flexi-n?              l0-types:flexi-n
+                |  +-- flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x-- subcarrier-flexi-n* [flexi-n]
+                |     +-- flexi-n    l0-types:flexi-n
+                |     +-- flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +-- frequency-slots
+                      +-- frequency-slot* [flexi-n]
+                         +-- flexi-n    l0-types:flexi-n
+                         +-- flexi-m?   l0-types:flexi-m
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
+            /tepc:path-request/tepc:explicit-route-objects
             /tepc:route-object-include-exclude/tepc:type/tepc:label
             /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +-- (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +-- dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +-- dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +-- subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?                    l0-types:cwdm-n
+          |  +-- cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- (single-or-super-channel)?
+                +--:(single)
+                |  +-- flexi-n?              l0-types:flexi-n
+                |  +-- flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x-- subcarrier-flexi-n* [flexi-n]
+                |     +-- flexi-n    l0-types:flexi-n
+                |     +-- flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +-- frequency-slots
+                      +-- frequency-slot* [flexi-n]
+                         +-- flexi-n    l0-types:flexi-n
+                         +-- flexi-m?   l0-types:flexi-m
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-start/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(fixed-dwdm)
+          |  +-- dwdm-n?    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?   l0-types:cwdm-n
+          |  +-- cwdm-n?    l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- flexi-n?   l0-types:flexi-n
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-end/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(fixed-dwdm)
+          |  +-- dwdm-n?    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?   l0-types:cwdm-n
+          |  +-- cwdm-n?    l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- flexi-n?   l0-types:flexi-n
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-in-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-step/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (l0-grid-type)?
-          +--:(dwdm)
-          |  +-- wson-dwdm-channel-spacing?   identityref
+          +--:(fixed-dwdm)
+          |  +-- wson-dwdm-channel-spacing?    identityref
           +--:(cwdm)
-             +-- wson-cwdm-channel-spacing?   identityref
+          |  +-- wson-cwdm-channel-spacing?    identityref
+          +--:(flexi-grid)
+             x-- flexi-grid-channel-spacing?   identityref
+             +-- flexi-ncfg?                   identityref
+             +-- flexi-n-step?                 uint8
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-out-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-start/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(fixed-dwdm)
+          |  +-- dwdm-n?    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?   l0-types:cwdm-n
+          |  +-- cwdm-n?    l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- flexi-n?   l0-types:flexi-n
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-out-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-end/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- dwdm-n?   l0-types:dwdm-n
+          +--:(fixed-dwdm)
+          |  +-- dwdm-n?    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?   l0-types:cwdm-n
+          |  +-- cwdm-n?    l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- flexi-n?   l0-types:flexi-n
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:path-request/tepc:path-out-segment
             /tepc:label-restrictions/tepc:label-restriction
             /tepc:label-step/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (l0-grid-type)?
-          +--:(dwdm)
-          |  +-- wson-dwdm-channel-spacing?   identityref
+          +--:(fixed-dwdm)
+          |  +-- wson-dwdm-channel-spacing?    identityref
           +--:(cwdm)
-             +-- wson-cwdm-channel-spacing?   identityref
+          |  +-- wson-cwdm-channel-spacing?    identityref
+          +--:(flexi-grid)
+             x-- flexi-grid-channel-spacing?   identityref
+             +-- flexi-ncfg?                   identityref
+             +-- flexi-n-step?                 uint8
   augment /te:tunnels-path-compute/te:input/te:path-compute-info
             /tepc:synchronization/tepc:exclude-objects/tepc:excludes
             /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
             /tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +-- (grid-type)?
-          +--:(dwdm)
-          |  +-- (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +-- (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +-- dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +-- subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +-- dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +-- subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +-- cwdm-n?                    l0-types:cwdm-n
+          |  +-- cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +-- (single-or-super-channel)?
+                +--:(single)
+                |  +-- flexi-n?              l0-types:flexi-n
+                |  +-- flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x-- subcarrier-flexi-n* [flexi-n]
+                |     +-- flexi-n    l0-types:flexi-n
+                |     +-- flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +-- frequency-slots
+                      +-- frequency-slot* [flexi-n]
+                         +-- flexi-n    l0-types:flexi-n
+                         +-- flexi-m?   l0-types:flexi-m
   augment /te:tunnels-path-compute/te:output/te:path-compute-result
             /tepc:response/tepc:computed-paths-properties
             /tepc:computed-path-properties/tepc:path-properties
             /tepc:path-route-objects/tepc:path-route-object/tepc:type
             /tepc:label/tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(wson)
+    +--:(wdm)
        +--ro (grid-type)?
-          +--:(dwdm)
-          |  +--ro (single-or-super-channel)?
+          +--:(fixed-dwdm)
+          |  +--ro (fixed-single-or-super-channel)?
           |     +--:(single)
-          |     |  +--ro dwdm-n?              l0-types:dwdm-n
-          |     +--:(super)
-          |        +--ro subcarrier-dwdm-n*   l0-types:dwdm-n
+          |     |  +--ro dwdm-n?               l0-types:dwdm-n
+          |     +--:(multi)
+          |        +--ro subcarrier-dwdm-n*    l0-types:dwdm-n
           +--:(cwdm)
-             +--ro cwdm-n?                    l0-types:cwdm-n
+          |  +--ro cwdm-n?                     l0-types:cwdm-n
+          +--:(flexi-grid)
+             +--ro (single-or-super-channel)?
+                +--:(single)
+                |  +--ro flexi-n?              l0-types:flexi-n
+                |  +--ro flexi-m?              l0-types:flexi-m
+                x--:(super)
+                |  x--ro subcarrier-flexi-n* [flexi-n]
+                |     +--ro flexi-n    l0-types:flexi-n
+                |     +--ro flexi-m?   l0-types:flexi-m
+                +--:(multi)
+                   +--ro frequency-slots
+                      +--ro frequency-slot* [flexi-n]
+                         +--ro flexi-n    l0-types:flexi-n
+                         +--ro flexi-m?   l0-types:flexi-m
 ]]></artwork></figure>
 
 </section>
-<section anchor="flexg-pc-tree"><name>Flexi-grid Path Computation Tree Diagrams</name>
+<section anchor="wdm-pc-yang"><name>YANG Models for WDM Path Computation</name>
 
-<t><xref target="fig-flexg-pc-tree"/> below shows the tree diagram of the YANG data model defined in module ietf-flexi-grid-path-computation.yang.</t>
-
-<figure title="Flexi-grid path computation tree diagram" anchor="fig-flexg-pc-tree"><artwork type="ascii-art" name="ietf-flexi-grid-path-computation.tree"><![CDATA[
-module: ietf-flexi-grid-path-computation
-
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request:
-    +-- bit-stuffing?            boolean
-    +-- wavelength-assignment?   identityref
-    +-- gsnr-margin?             snr
-  augment /te:tunnels-path-compute/te:output/te:path-compute-result
-            /tepc:response/tepc:computed-paths-properties
-            /tepc:computed-path-properties/tepc:path-properties:
-    +--ro estimated-gsnr?   snr
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:optimizations/tepc:algorithm
-            /tepc:metric/tepc:optimization-metric
-            /tepc:explicit-route-exclude-objects
-            /tepc:route-object-exclude-object/tepc:type:
-    +--:(oms-element)
-       +-- oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:optimizations/tepc:algorithm
-            /tepc:metric/tepc:optimization-metric
-            /tepc:explicit-route-include-objects
-            /tepc:route-object-include-object/tepc:type:
-    +--:(oms-element)
-       +-- oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
-            /tepc:route-object-exclude-always/tepc:type:
-    +--:(oms-element)
-       +-- oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
-            /tepc:route-object-include-exclude/tepc:type:
-    +--:(oms-element)
-       +-- oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
-            /tepc:type:
-    +--:(oms-element)
-       +-- oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:output/te:path-compute-result
-            /tepc:response/tepc:computed-paths-properties
-            /tepc:computed-path-properties/tepc:path-properties
-            /tepc:path-route-objects/tepc:path-route-object
-            /tepc:type:
-    +--:(oms-element)
-       +--ro oms-element-uid?   string
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-in-segment
-            /tepc:label-restrictions/tepc:label-restriction:
-    +-- grid-type?    identityref
-    +-- priority?     uint8
-    +-- flexi-grid
-       +-- slot-width-granularity?   identityref
-       +-- min-slot-width-factor?    uint16
-       +-- max-slot-width-factor?    uint16
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-out-segment
-            /tepc:label-restrictions/tepc:label-restriction:
-    +-- grid-type?    identityref
-    +-- priority?     uint8
-    +-- flexi-grid
-       +-- slot-width-granularity?   identityref
-       +-- min-slot-width-factor?    uint16
-       +-- max-slot-width-factor?    uint16
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:optimizations/tepc:algorithm
-            /tepc:metric/tepc:optimization-metric
-            /tepc:explicit-route-exclude-objects
-            /tepc:route-object-exclude-object/tepc:type/tepc:label
-            /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- (single-or-super-channel)?
-          +--:(single)
-          |  +-- flexi-n?              l0-types:flexi-n
-          |  +-- flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +-- subcarrier-flexi-n* [flexi-n]
-                +-- flexi-n    l0-types:flexi-n
-                +-- flexi-m?   l0-types:flexi-m
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:optimizations/tepc:algorithm
-            /tepc:metric/tepc:optimization-metric
-            /tepc:explicit-route-include-objects
-            /tepc:route-object-include-object/tepc:type/tepc:label
-            /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- (single-or-super-channel)?
-          +--:(single)
-          |  +-- flexi-n?              l0-types:flexi-n
-          |  +-- flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +-- subcarrier-flexi-n* [flexi-n]
-                +-- flexi-n    l0-types:flexi-n
-                +-- flexi-m?   l0-types:flexi-m
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
-            /tepc:route-object-exclude-always/tepc:type/tepc:label
-            /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- (single-or-super-channel)?
-          +--:(single)
-          |  +-- flexi-n?              l0-types:flexi-n
-          |  +-- flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +-- subcarrier-flexi-n* [flexi-n]
-                +-- flexi-n    l0-types:flexi-n
-                +-- flexi-m?   l0-types:flexi-m
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:explicit-route-objects-always
-            /tepc:route-object-include-exclude/tepc:type/tepc:label
-            /tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- (single-or-super-channel)?
-          +--:(single)
-          |  +-- flexi-n?              l0-types:flexi-n
-          |  +-- flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +-- subcarrier-flexi-n* [flexi-n]
-                +-- flexi-n    l0-types:flexi-n
-                +-- flexi-m?   l0-types:flexi-m
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-in-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-start/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-n?   l0-types:flexi-n
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-in-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-end/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-n?   l0-types:flexi-n
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-in-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-step/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-grid-channel-spacing?   identityref
-       +-- flexi-n-step?                 uint8
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-out-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-start/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-n?   l0-types:flexi-n
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-out-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-end/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-n?   l0-types:flexi-n
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:path-request/tepc:path-out-segment
-            /tepc:label-restrictions/tepc:label-restriction
-            /tepc:label-step/tepc:technology:
-    +--:(flexi-grid)
-       +-- flexi-grid-channel-spacing?   identityref
-       +-- flexi-n-step?                 uint8
-  augment /te:tunnels-path-compute/te:input/te:path-compute-info
-            /tepc:synchronization/tepc:exclude-objects/tepc:excludes
-            /tepc:type/tepc:label/tepc:label-hop/tepc:te-label
-            /tepc:technology:
-    +--:(flexi-grid)
-       +-- (single-or-super-channel)?
-          +--:(single)
-          |  +-- flexi-n?              l0-types:flexi-n
-          |  +-- flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +-- subcarrier-flexi-n* [flexi-n]
-                +-- flexi-n    l0-types:flexi-n
-                +-- flexi-m?   l0-types:flexi-m
-  augment /te:tunnels-path-compute/te:output/te:path-compute-result
-            /tepc:response/tepc:computed-paths-properties
-            /tepc:computed-path-properties/tepc:path-properties
-            /tepc:path-route-objects/tepc:path-route-object/tepc:type
-            /tepc:label/tepc:label-hop/tepc:te-label/tepc:technology:
-    +--:(flexi-grid)
-       +--ro (single-or-super-channel)?
-          +--:(single)
-          |  +--ro flexi-n?              l0-types:flexi-n
-          |  +--ro flexi-m?              l0-types:flexi-m
-          +--:(super)
-             +--ro subcarrier-flexi-n* [flexi-n]
-                +--ro flexi-n    l0-types:flexi-n
-                +--ro flexi-m?   l0-types:flexi-m
-]]></artwork></figure>
-
-</section>
-</section>
-<section anchor="optical-pc-yang"><name>YANG Models for Optical Path Computation</name>
-
-<section anchor="wson-pc-yang"><name>YANG Model for WSON Path Computation</name>
-
-<figure title="WSON path computation YANG module" anchor="fig-wson-pc-yang"><sourcecode type="yang" markers="true" name="ietf-wson-path-computation@2022-09-08.yang"><![CDATA[
-module ietf-wson-path-computation {
-  yang-version 1.1;
-  namespace "urn:ietf:params:xml:ns:yang:ietf-wson-path-computation";
-  prefix "wson-pc";
-
-  import ietf-te-path-computation {
-    prefix "tepc";
-    revision-date "2021-09-06";
-    reference 
-      "I-D.ietf-teas-yang-path-computation-14: Yang model
-      for requesting Path Computation.";
-  }
-
-  import ietf-te {
-    prefix "te";
-    revision-date "2021-02-20";
-    reference
-      "I-D.ietf-teas-yang-te-19: A YANG Data Model for Traffic
-      Engineering Tunnels and Interfaces. ";
-  }
-
-  import ietf-layer0-types {
-    prefix "l0-types";
-    reference
-      "I-D.ietf-ccamp-rfc9093-bis: A YANG Data Model for Layer 0
-      Types.";
-  }
-
-  organization
-    "IETF CCAMP Working Group";
-  contact
-    "WG Web:   <http://tools.ietf.org/wg/ccamp/>
-     WG List:  <mailto:ccamp@ietf.org>
-
-     Editor:   Aihua Guo
-               <mailto:aihuaguo.ietf@gmail.com>
-
-     Editor:   Italo Busi
-               <mailto:italo.busi@huawei.com>
-
-     Editor:   Sergio Belotti
-               <mailto:sergio.belotti@nokia.com>";
-
-  description
-    "This module defines a model for requesting
-    WSON Path Computation.
-
-    The model fully conforms to the Network Management 
-    Datastore Architecture (NMDA).
-    
-    Copyright (c) 2022 IETF Trust and the persons
-    identified as authors of the code.  All rights reserved.
-
-    Redistribution and use in source and binary forms, with or
-    without modification, is permitted pursuant to, and subject
-    to the license terms contained in, the Revised BSD License
-    set forth in Section 4.c of the IETF Trust's Legal Provisions
-    Relating to IETF Documents
-    (https://trustee.ietf.org/license-info).
-
-    This version of this YANG module is part of RFC XXXX; see
-    the RFC itself for full legal notices.";
-
-  revision "2022-09-08" {
-    description
-      "Initial version.";
-    reference
-      "RFC XXXX: YANG Data Models for requesting Path Computation
-      in Optical Networks.";
-    // RFC Ed.: replace XXXX with actual RFC number, update date 
-    // information and remove this note
-  }
-
- /*
-  * Data nodes
-  */
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request" {
-    description
-       "Augment with additional constraints for WSON paths.";
-    uses l0-types:l0-tunnel-attributes;
-    uses l0-types:l0-path-constraints;
-  }
-
-  augment "/te:tunnels-path-compute/te:output/"
-        + "te:path-compute-result/tepc:response/"
-        + "tepc:computed-paths-properties/"
-        + "tepc:computed-path-properties/tepc:path-properties" {
-    description
-       "Augment with additional properties for WSON paths.";
-    uses l0-types:l0-path-properties;
-  }
-
-  /*
-   * Augment Route Hop
-   */
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
-        + "tepc:metric/tepc:optimization-metric/"
-        + "tepc:explicit-route-exclude-objects/"
-        + "tepc:route-object-exclude-object/tepc:type" {
-    description
-      "Augment the route hop for the optimization of the explicit
-      route objects excluded by the path computation of the requested
-      path.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
-        + "tepc:metric/tepc:optimization-metric/"
-        + "tepc:explicit-route-include-objects/"
-        + "tepc:route-object-include-object/tepc:type" {
-    description
-      "Augment the route hop for the optimization of the explicit
-      route objects included by the path computation of the requested
-      path.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
-        + "tepc:route-object-exclude-always/tepc:type" {
-    description
-      "Augment the route hop for the explicit route objects always
-      excluded by the path computation of the requested path.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
-        + "tepc:route-object-include-exclude/tepc:type" {
-    description
-      "Augment the route hop for the explicit route objects included
-      or excluded by the path computation of the requested path.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
-        + "tepc:type" {
-    description
-      "Augment the route hop for the explicit route objects to always
-      exclude from synchronized path computation.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:output/"
-        + "te:path-compute-result/tepc:response/"
-        + "tepc:computed-paths-properties/"
-        + "tepc:computed-path-properties/tepc:path-properties/"
-        + "tepc:path-route-objects/tepc:path-route-object/"
-        + "tepc:type" {
-    description
-      "Augment the route hop for the route object of the computed
-      path.";
-    case oms-element {
-      leaf oms-element-uid {
-        type string;
-        description
-          "The unique id of the OMS element.";
-      }
-      description
-        "The OMS element route hop type";
-    }
-  }
-
-  /*
-   * Augment TE label range information
-   */
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-in-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction" {
-    description
-      "Augment TE label range information for the ingress segment
-      of the requested path.";
-    uses l0-types:l0-label-range-info;
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-out-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction" {
-    description
-      "Augment TE label range information for the egress segment
-      of the requested path.";
-    uses l0-types:l0-label-range-info;
-  }
-
-  /*
-   * Augment TE label.
-   */
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
-        + "tepc:metric/tepc:optimization-metric/"
-        + "tepc:explicit-route-exclude-objects/"
-        + "tepc:route-object-exclude-object/tepc:type/tepc:label/"
-        + "tepc:label-hop/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the optimization of the explicit
-      route objects excluded by the path computation of the requested
-      path.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
-        + "tepc:metric/tepc:optimization-metric/"
-        + "tepc:explicit-route-include-objects/"
-        + "tepc:route-object-include-object/tepc:type/tepc:label/"
-        + "tepc:label-hop/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the optimization of the explicit
-      route objects included by the path computation of the requested
-      path.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
-        + "tepc:route-object-exclude-always/tepc:type/tepc:label/"
-        + "tepc:label-hop/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the explicit route objects always
-      excluded by the path computation of the requested path.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
-        + "tepc:route-object-include-exclude/tepc:type/tepc:label/"
-        + "tepc:label-hop/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the explicit route objects included
-      or excluded by the path computation of the requested path.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-in-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-start/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label range start for the ingress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-start-end;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-in-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-end/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label range end for the ingress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-start-end;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-in-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-step/tepc:technology" {
-    description
-      "Augment TE label range step for the ingress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-step;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-out-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-start/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label range start for the egress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-start-end;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-out-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-end/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label range end for the egress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-start-end;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:path-out-segment/"
-        + "tepc:label-restrictions/tepc:label-restriction/"
-        + "tepc:label-step/tepc:technology" {
-    description
-      "Augment TE label range end for the egress segment
-      of the requested path.";
-    case wson {
-      uses l0-types:wson-label-step;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
-        + "tepc:type/tepc:label/tepc:label-hop/"
-        + "tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the explicit route objects to always
-      exclude from synchronized path computation.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-
-  augment "/te:tunnels-path-compute/te:output/"
-        + "te:path-compute-result/tepc:response/"
-        + "tepc:computed-paths-properties/"
-        + "tepc:computed-path-properties/tepc:path-properties/"
-        + "tepc:path-route-objects/tepc:path-route-object/"
-        + "tepc:type/tepc:label/"
-        + "tepc:label-hop/tepc:te-label/tepc:technology" {
-    description
-      "Augment TE label hop for the route object of the computed
-      path.";
-    case wson {
-      uses l0-types:wson-label-hop;
-    }
-  }
-}
-]]></sourcecode></figure>
-
-</section>
-<section anchor="flexg-pc-yang"><name>YANG Model for Flexi-grid Path Computation</name>
-
-<figure title="Flexi-grid path computation YANG module" anchor="fig-flexg-pc-yang"><sourcecode type="yang" markers="true" name="ietf-flexi-grid-path-computation@2022-09-08.yang"><![CDATA[
-module ietf-flexi-grid-path-computation {
+<figure title="WDM path computation YANG module" anchor="fig-wdm-pc-yang"><sourcecode type="yang" markers="true" name="ietf-wdm-path-computation@2024-02-29.yang"><![CDATA[
+module ietf-wdm-path-computation {
   yang-version 1.1;
   namespace
-    "urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation";
-  prefix "flexg-pc";
+    "urn:ietf:params:xml:ns:yang:ietf-wdm-path-computation";
+  prefix "wdm-pc";
 
   import ietf-te-path-computation {
     prefix "tepc";
-    revision-date "2021-09-06";
     reference 
-      "I-D.ietf-teas-yang-path-computation-14: Yang model
+      "I-D.ietf-teas-yang-path-computation-22: Yang model
       for requesting Path Computation.";
   }
 
   import ietf-te {
     prefix "te";
-    revision-date "2021-02-20";
     reference
-      "I-D.ietf-teas-yang-te-19: A YANG Data Model for Traffic
+      "I-D.ietf-teas-yang-te-36: A YANG Data Model for Traffic
       Engineering Tunnels and Interfaces.";
   }
 
@@ -1033,6 +740,12 @@ module ietf-flexi-grid-path-computation {
       Types.";
   }
 
+  import ietf-wdm-tunnel {
+    prefix "wdm-tnl";
+    reference
+      "I-D.ietf-wdm-tunnel: A YANG Data Model for WDM Tunnels.";
+  }
+
   organization
     "IETF CCAMP Working Group";
   contact
@@ -1050,7 +763,7 @@ module ietf-flexi-grid-path-computation {
 
   description
     "This module defines a model for requesting
-    Flexi-grid Path Computation.
+    WDM Path Computation.
 
     The model fully conforms to the Network Management 
     Datastore Architecture (NMDA).
@@ -1068,7 +781,7 @@ module ietf-flexi-grid-path-computation {
     This version of this YANG module is part of RFC XXXX; see
     the RFC itself for full legal notices.";
 
-  revision "2022-09-08" {
+  revision "2024-02-29" {
     description
       "Initial version.";
     reference
@@ -1082,28 +795,34 @@ module ietf-flexi-grid-path-computation {
   * Data nodes
   */
 
+  /*
+   * Augment tunnel attributes
+   */
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request" {
+        + "tepc:tunnel-attributes" {
     description
-       "Augment with additional constraints flexi-grid
-        media channel.";
-    uses l0-types:l0-tunnel-attributes;
-    uses l0-types:l0-path-constraints;
-  }
+       "Augment with WDM tunnel-specific constraints.";
 
-  augment "/te:tunnels-path-compute/te:output/"
-        + "te:path-compute-result/tepc:response/"
-        + "tepc:computed-paths-properties/"
-        + "tepc:computed-path-properties/tepc:path-properties" {
-    description
-       "Augment with additional properties for Flexi-grid paths.";
-    uses l0-types:l0-path-properties;
+    uses wdm-tnl:wdm-constraint;
   }
 
   /*
-   * Augment Route Hop
+   * Augment path computation request
    */
 
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-exclude-objects/"
+        + "tepc:route-object-exclude-object/tepc:type/"
+        + "tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
         + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
         + "tepc:metric/tepc:optimization-metric/"
@@ -1128,6 +847,19 @@ module ietf-flexi-grid-path-computation {
         + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
         + "tepc:metric/tepc:optimization-metric/"
         + "tepc:explicit-route-include-objects/"
+        + "tepc:route-object-include-object/tepc:type/"
+        + "tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:optimizations/tepc:algorithm/"
+        + "tepc:metric/tepc:optimization-metric/"
+        + "tepc:explicit-route-include-objects/"
         + "tepc:route-object-include-object/tepc:type" {
     description
       "Augment the route hop for the optimization of the explicit
@@ -1145,7 +877,18 @@ module ietf-flexi-grid-path-computation {
   }
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
+        + "tepc:route-object-exclude-always/tepc:type/"
+        + "tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
         + "tepc:route-object-exclude-always/tepc:type" {
     description
       "Augment the route hop for the explicit route objects always
@@ -1162,7 +905,18 @@ module ietf-flexi-grid-path-computation {
   }
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
+        + "tepc:route-object-include-exclude/tepc:type/"
+        + "tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
         + "tepc:route-object-include-exclude/tepc:type" {
     description
       "Augment the route hop for the explicit route objects included
@@ -1180,6 +934,16 @@ module ietf-flexi-grid-path-computation {
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
         + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
+        + "tepc:type/tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
+  augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
+        + "tepc:synchronization/tepc:exclude-objects/tepc:excludes/"
         + "tepc:type" {
     description
       "Augment the route hop for the explicit route objects to always
@@ -1195,6 +959,34 @@ module ietf-flexi-grid-path-computation {
     }
   }
 
+  /*
+   * Augment path computation response
+   */
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties" {
+    description
+       "Augment with additional properties for WDM paths.";
+
+    uses l0-types:l0-path-properties;
+  }
+
+
+  augment "/te:tunnels-path-compute/te:output/"
+        + "te:path-compute-result/tepc:response/"
+        + "tepc:computed-paths-properties/"
+        + "tepc:computed-path-properties/tepc:path-properties/"
+        + "tepc:path-route-objects/tepc:path-route-object/"
+        + "tepc:type/tepc:numbered-node-hop" {
+    description
+      "Augment with transceiver configurations.";
+      
+    uses wdm-tnl:path-transceiver-config;
+  }
+
+  //???
   augment "/te:tunnels-path-compute/te:output/"
         + "te:path-compute-result/tepc:response/"
         + "tepc:computed-paths-properties/"
@@ -1225,7 +1017,7 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range information for the ingress segment
       of the requested path.";
-    uses l0-types:flexi-grid-label-range-info;
+    uses l0-types:wdm-label-range-info;
   }
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
@@ -1234,7 +1026,7 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range information for the egress segment
       of the requested path.";
-    uses l0-types:flexi-grid-label-range-info;
+    uses l0-types:wdm-label-range-info;
   }
 
   /*
@@ -1251,8 +1043,8 @@ module ietf-flexi-grid-path-computation {
       "Augment TE label hop for the optimization of the explicit
       route objects excluded by the path computation of the requested
       path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 
@@ -1266,32 +1058,32 @@ module ietf-flexi-grid-path-computation {
       "Augment TE label hop for the optimization of the explicit
       route objects included by the path computation of the requested
       path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
         + "tepc:route-object-exclude-always/tepc:type/tepc:label/"
         + "tepc:label-hop/tepc:te-label/tepc:technology" {
     description
       "Augment TE label hop for the explicit route objects always
       excluded by the path computation of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 
   augment "/te:tunnels-path-compute/te:input/te:path-compute-info/"
-        + "tepc:path-request/tepc:explicit-route-objects-always/"
+        + "tepc:path-request/tepc:explicit-route-objects/"
         + "tepc:route-object-include-exclude/tepc:type/tepc:label/"
         + "tepc:label-hop/tepc:te-label/tepc:technology" {
     description
       "Augment TE label hop for the explicit route objects included
       or excluded by the path computation of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 
@@ -1302,8 +1094,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range start for the ingress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-start-end;
+    case wdm {
+      uses l0-types:wdm-label-start-end;
     }
   }
 
@@ -1314,8 +1106,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range end for the ingress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-start-end;
+    case wdm {
+      uses l0-types:wdm-label-start-end;
     }
   }
 
@@ -1326,8 +1118,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range step for the ingress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-step;
+    case wdm {
+      uses l0-types:wdm-label-step;
     }
   }
 
@@ -1338,8 +1130,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range start for the egress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-start-end;
+    case wdm {
+      uses l0-types:wdm-label-start-end;
     }
   }
 
@@ -1350,8 +1142,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range end for the egress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-start-end;
+    case wdm {
+      uses l0-types:wdm-label-start-end;
     }
   }
 
@@ -1362,8 +1154,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label range end for the egress segment
       of the requested path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-step;
+    case wdm {
+      uses l0-types:wdm-label-step;
     }
   }
 
@@ -1374,8 +1166,8 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label hop for the explicit route objects to always
       exclude from synchronized path computation.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 
@@ -1389,14 +1181,13 @@ module ietf-flexi-grid-path-computation {
     description
       "Augment TE label hop for the route object of the computed
       path.";
-    case flexi-grid {
-      uses l0-types:flexi-grid-label-hop;
+    case wdm {
+      uses l0-types:wdm-label-hop;
     }
   }
 }
 ]]></sourcecode></figure>
 
-</section>
 </section>
 <section anchor="manageability-considerations"><name>Manageability Considerations</name>
 
@@ -1423,11 +1214,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
    within the "IETF XML registry" <xref target="RFC3688"/>.</t>
 
 <figure><artwork><![CDATA[
-  URI: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-  Registrant Contact:  The IESG.
-  XML: N/A, the requested URI is an XML namespace.
-
-  URI: urn:ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
+  URI: urn:ietf:params:xml:ns:yang:ietf-wdm-path-computation
   Registrant Contact:  The IESG.
   XML: N/A, the requested URI is an XML namespace.
 ]]></artwork></figure>
@@ -1436,14 +1223,9 @@ considered sensitive or vulnerable in some network environments. It is thus esse
    registry <xref target="RFC7950"/>.</t>
 
 <figure><artwork><![CDATA[
-  name:      ietf-wson-path-computation
+  name:      ietf-wdm-path-computation
   namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
-  prefix:    wson-pc
-  reference: this document
-
-  name:      ietf-flexi-grid-path-computation
-  namespace: ietf:params:xml:ns:yang:ietf-flexi-grid-path-computation
-  prefix:    flexg-pc
+  prefix:    wdm-pc
   reference: this document
 ]]></artwork></figure>
 
@@ -1459,7 +1241,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 
 
 
-<reference anchor='I-D.ietf-teas-yang-path-computation' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-path-computation-21'>
+<reference anchor='I-D.ietf-teas-yang-path-computation' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-path-computation-22'>
    <front>
       <title>A YANG Data Model for requesting path computation</title>
       <author fullname='Italo Busi' initials='I.' surname='Busi'>
@@ -1477,7 +1259,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
       <author fullname='Yan Shi' initials='Y.' surname='Shi'>
          <organization>China Unicom</organization>
       </author>
-      <date day='7' month='July' year='2023'/>
+      <date day='14' month='February' year='2024'/>
       <abstract>
 	 <t>   There are scenarios, typically in a hierarchical Software-Defined
    Networking (SDN) context, where the topology information provided by
@@ -1500,7 +1282,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-path-computation-21'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-path-computation-22'/>
    
 </reference>
 
@@ -1549,7 +1331,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 </reference>
 
 
-<reference anchor='I-D.ietf-ccamp-rfc9093-bis' target='https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-rfc9093-bis-05'>
+<reference anchor='I-D.ietf-ccamp-rfc9093-bis' target='https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-rfc9093-bis-08'>
    <front>
       <title>A YANG Data Model for Layer 0 Types</title>
       <author fullname='Sergio Belotti' initials='S.' surname='Belotti'>
@@ -1573,7 +1355,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
       <author fullname='Daniel King' initials='D.' surname='King'>
          <organization>University of Lancaster</organization>
       </author>
-      <date day='7' month='July' year='2023'/>
+      <date day='1' month='February' year='2024'/>
       <abstract>
 	 <t>   This document defines a collection of common data types and groupings
    in the YANG data modeling language.  These derived common types and
@@ -1587,12 +1369,12 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-ccamp-rfc9093-bis-05'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-ccamp-rfc9093-bis-08'/>
    
 </reference>
 
 
-<reference anchor='I-D.ietf-teas-yang-te' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-34'>
+<reference anchor='I-D.ietf-teas-yang-te' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-36'>
    <front>
       <title>A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths and Interfaces</title>
       <author fullname='Tarek Saad' initials='T.' surname='Saad'>
@@ -1610,7 +1392,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
       <author fullname='Igor Bryskin' initials='I.' surname='Bryskin'>
          <organization>Individual</organization>
       </author>
-      <date day='1' month='October' year='2023'/>
+      <date day='2' month='February' year='2024'/>
       <abstract>
 	 <t>   This document defines a YANG data model for the provisioning and
    management of Traffic Engineering (TE) tunnels, Label Switched Paths
@@ -1624,7 +1406,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-34'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-36'/>
    
 </reference>
 
@@ -1790,7 +1572,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 </reference>
 
 
-<reference anchor='I-D.ietf-teas-actn-poi-applicability' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-actn-poi-applicability-09'>
+<reference anchor='I-D.ietf-teas-actn-poi-applicability' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-actn-poi-applicability-11'>
    <front>
       <title>Applicability of Abstraction and Control of Traffic Engineered Networks (ACTN) to Packet Optical Integration (POI)</title>
       <author fullname='Fabio Peruzzini' initials='F.' surname='Peruzzini'>
@@ -1808,7 +1590,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
       <author fullname='Daniele Ceccarelli' initials='D.' surname='Ceccarelli'>
          <organization>Cisco</organization>
       </author>
-      <date day='7' month='July' year='2023'/>
+      <date day='22' month='February' year='2024'/>
       <abstract>
 	 <t>   This document considers the applicability of Abstraction and Control
    of TE Networks (ACTN) architecture to Packet Optical Integration
@@ -1825,7 +1607,7 @@ considered sensitive or vulnerable in some network environments. It is thus esse
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-actn-poi-applicability-09'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-actn-poi-applicability-11'/>
    
 </reference>
 
@@ -1958,152 +1740,159 @@ who have contributed to the development of path computation augmentations for WS
   </back>
 
 <!-- ##markdown-source:
-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
-n2KQQONOZW5IZS7/0akByafQCbzUssGJ6IsiS6r5/LZypwV3ZU3U6sJW+Xp0
-zWroal+5J6UH85BCmPpK8eS5ve4F7/twtzVudulYSwhqgFk5x2AFHWkfdaEw
-IEHAmbJq0sPCeWluuV6/SeVy2x7XwVEnbePzs5R/Qo626XWv2wG5XDlOq5os
-/UJ/GSW5Hbso+C21cN5VXateCNTtVKy6U3G3NOnadjtusyZ9kh2FzyrnG9qV
-uLdCXaX249ZI9ZPsHtxm0V5jKNwKu0IK9+VjPkL6MQH0JURTXL93TwW0NHH8
-8uLheCNhJ5xrsZ75ZPWrmAuf3phA+GfzZNe0BP2cruzyC9e7ZCyfWkCf2JV1
-wvn8ruwG5XEDjuzaPpq44XQtgm4AuJlw+po+vHzSAPqBftz4rKuvq3wguZIS
-XDQfFYt5+YuPinXyV9dMUjBmFeMBoqdcpd+tZSqvvll2jOyPZc4qHcU6d6Js
-a7nIggNm24pGFhS7LC8dIf4tLx9Z0EeliMQOsKsiuT1VJF0RSVdE8imKSBa4
-qq6UpCsl6UpJulKShYvRjy4lmTuak03AQANmirO74pKbKC6p1Wl3JSZdiUmX
-wH8vNLQrMek09BYkhHQlJp2yrJ5o0pWY3BuV6UpM7qkW3IWVUVdicvuUqysx
-uakSE+dzT1dqcq2lJqtwtis56UpOLr1mLRWr5cP5nOZ15Sdd+cl90aquFOWK
-S9EHIeCuLOWuiPmBl6hcXkyfPY/4YZardIK6xaUrVxFOV8byEe7uipn5d9CI
-HmZJSyeoT+TuPpNsulKXW1HqcmNB+QP94PJZV3dX+Wjz0Qpx0XKxilsDs+hi
-lY+qhFlQI9JUD/OFSfsOBiIW2YztgcaJiCu9M+h5lB8cmQRjzDo8g7eUkM6z
-sYzqObb1sThHX2Puqx71Sxy1sZJetUeU0YRj6qhIdYb6CDByRdChjGPMrHW/
-CGDfQvHSgc9TcC7imA04S3gIrj1Qsx57kSvEOpGKbzLMcW+i3Y4rNWm72hr1
-L5iZRiNd7xGETjdBnEroCOgB0qHPMFBcZ91PiM2RTifnYa4on/1FTjn1Jsk5
-LTKwC44TVpNd7uZ/OjzooRSPEWWzAHkln1uXFGCeelNPQHIQIpugxZkIdH3A
-85O9w4MXKPxMggzY+/d/O3qx92Tn8aOLC9wZOXp+3Nji6fbj7YuLHhUgxPIc
-WFngoroXzC3HDjQ7gKdBklJpDL3dLEoHgHVRAEKa+Zn0xWRqPlPOgQG6Y/3s
-eMxhMOvHxz9vlNTu1GgpyC6I+fnk5O3xVbo9eX1sx/z48RPoR/PdVlaATMAR
-5EbFd4nB+DBTwCtdn7N+sLv3xhL79GtibWFtRA2H/lCrbFxkBIWPMEFfhHkc
-qILBrljAeyk9XWJxEeZSEzWc6hqwHgG0LkDlPQsEOLSYN2IphItzhTEtbZVJ
-ht+aPe9YTrh1skdv99yGda1zNXISzEDvvNAoLpLF4Z+ZOONIwFkeJ4AHyaIS
-jwlasuYrT84EzPFU+9BjrzKtUHnKUIETKh+AUYeG0SW/gED8OF+QB7QfttNq
-LaRQSKEKCgVlYOPzqUxTgURaetGfwsvNwrAikYY5WdZQux/sYbjEAZBxv9o9
-2J0zbGaKNwoDVnwkIKpUWl+G4CzlOTqo/zp6lerBcLaWpGsodd1WzRALppbb
-11RP8q83r5ltsGZU8usnT5+SXtPUxhBpn13tvisPS1gIO5bY7Ok6sr6uU3r1
-/PglfmAFEvrsYGt3sxZ4Q7co5CAhIov6SSpmWY2kBfPjJyGM+LW6sCqlN0Yo
-tjgVnx0gZgqjrISMgP7+7JttV0BIQl9HLwtFUZD6EeLUJYvUm6n39ZxKnX5V
-o70G4hYLxSHxI0TrEGkjskVUarn5vs8GQXiKVrg3ptXiaznS3l2YCiUST4R1
-O7rKbkE4hCI1t91ZJwaBQwDdqmCY+aPBwFRzFlfi1cahK1O3t3s1dSo+NbYF
-MRCJTAufVARlm25Ehl7s8OSAFVG3wMvPfobJ8gxnY1h/IaW4VpDoxIJMV589
-evQ1W38TqHDMdr7ZpPq/DXSyKSzaMrODqBnlUIvvOcoRq6Vs+Zoma/8NW28I
-GDca6dvEAkIeQN/lWsFMKODHz3gMTl6PrJjAaX7RXcczM1Fjpw6CCq/OQT/Y
-KZ9m7RMCkTUPhHVekR7s+/c/YL3unJizeXvSVeloybrSVFeJbTIgH1cnbvlY
-MJ3yJBLvYLRDrNOc5oPYVDT2qNRd16Xx6Lu1IUSmXAf8u+FpIs9jHo100SBx
-oFKEWQkLZR5HLBanXM+cQXJKQ3YAzODK8mlwmzAuKXwgEAnSawuIaFDA4+AM
-TcOpAUV0o2BqwmyK57U+YIc60NZEob30VqKX4vAq0d5vMod+X3PgpfdzICcC
-nPXvY56M4PcvEFBhhTSoyzv4eQREq4j9AuFQnAXw4CeQ/W9cooOWWC7q/adU
-4Aue9wjkL9A19gtXI9Aq9gZEwv+CJvuwiAF38JarCMsg2U+5UlxJeHOYAnr2
-UiZ/BbEG3hcSdNl7GQwUwHD2MogFii4T8PT3YAjNd2NRIn0jYI2UA4UQtwnQ
-D0nM8/bHKj9j+7AwmzHvfCyR2VwHQFRjF9nqVWMbxDFg4ZzXMBsa7Ws4Wrlm
-4ArIYIA7PFCxAEE5kYznKoZWeJoeTOUfeUtQCkRa0yLdmPw5uXMDUVhG1flp
-t4Q2zbEUGLXrFGaISJ6DGfw/kmUPBcbXAAA=
+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
+bTefQBs8OTtmRVoII3vsJ3D1FxhLYEuAlGIyK9EEA22qth88eMg2jwIVjtne
+N9tUN7+FLiKFfYS2h1OGUQ61eJ+j/LDKOC/7Ln6bttmQ7mw10reNhfc8gLnL
+ZNa6Q/BCFzwGF2VWVoQf8o5m6vjKhhkq8i0RVHg1A/1g53yq290ZkTUPhPXR
+kVnsu3fP8I0Wc2LW84pqXvqCFmJezWCqq7cZkI/ps1t2HUynsIEWl7DaIb7f
+YJoNYvsmgB69Ryb/Kdp3G0PIq+j1Ml9B9DxP5Czm0cgU2xMHKi8vqCQ1Mosj
+Fotzbvx+kJzTkh0Au7jypSfgjmBdUvhAIBJkMmOIxyjgcXCBpuG8OwHRjYKp
+TRIpGzX6gBOaNNEQhfbSW4peyiKrRHu/yAzmfc2Bl95PgZwIcIK/jnkygu//
+FNhqE2x7yi/h61sgWkXsnxDMYx3AhR9B9r9wiY5P4msWvP+UCnzB8x6B/AG6
+xv7J1Qi0ih2BSPgfMOQQUnBwB2+4ivD1AezHTCmuJNw5SQE9eymTP4LYAB8K
+CbrsvQwGCmA4exnEAkWnBVz9NRjC8P1YlEiPBGT4GVAIWYcA/ZDEPO9wrLIL
+dgjbiivmzcYSmc1N+Kay9yh/64O1DeIYsHDOa9gdd/sOZEQ7EHAFZDDAHR6o
+WICgnDjsuYphFJ5csy2nJ28JSoFIa1pkBtNLmMwb2AxEYRlV52fcEto0x1do
+oHadQ2SI5AzM4P8Br/2Oc//CAAA=
 
 -->
 
