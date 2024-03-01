@@ -1,0 +1,1173 @@
+module: ietf-te-path-computation
+
+  augment /te:tunnels-path-compute/te:input/te:path-compute-info:
+    +-- path-request* [request-id]
+    |  +-- request-id                            uint32
+    |  +-- (tunnel-attributes)?
+    |  |  +--:(reference)
+    |  |  |  +-- tunnel-reference
+    |  |  |     +-- (tunnel-exist)?
+    |  |  |     |  +--:(tunnel-ref)
+    |  |  |     |  |  +-- tunnel-ref                te:tunnel-ref
+    |  |  |     |  +--:(tunnel-attributes-ref)
+    |  |  |     |     +-- tunnel-attributes-ref     leafref
+    |  |  |     +-- path-name?                      string
+    |  |  |     +-- (path-role)
+    |  |  |        +--:(primary-path)
+    |  |  |        |  +-- primary-path!
+    |  |  |        |     +-- preference?          uint8
+    |  |  |        |     +-- co-routed?           boolean
+    |  |  |        |     +-- k-requested-paths?   uint8
+    |  |  |        +--:(secondary-path)
+    |  |  |        |  +-- secondary-path
+    |  |  |        |     +-- preference?           uint8
+    |  |  |        |     +-- co-routed?            boolean
+    |  |  |        |     +-- protection-type?      identityref
+    |  |  |        |     +-- restoration-type?     identityref
+    |  |  |        |     +-- restoration-scheme?   identityref
+    |  |  |        |     +-- primary-path-ref* []
+    |  |  |        |        +-- (primary-path-exist)?
+    |  |  |        |           +--:(path-ref)
+    |  |  |        |           |  +-- primary-path-ref    leafref
+    |  |  |        |           +--:(path-request-ref)
+    |  |  |        |              +-- path-request-ref    leafref
+    |  |  |        +--:(primary-reverse-path)
+    |  |  |        |  +-- primary-reverse-path
+    |  |  |        |     +-- (primary-path-exist)?
+    |  |  |        |        +--:(path-ref)
+    |  |  |        |        |  +-- primary-path-ref    leafref
+    |  |  |        |        +--:(path-request-ref)
+    |  |  |        |           +-- path-request-ref    leafref
+    |  |  |        +--:(secondary-reverse-path)
+    |  |  |           +-- secondary-reverse-path
+    |  |  |              +-- preference?                 uint8
+    |  |  |              +-- co-routed?                  boolean
+    |  |  |              +-- protection-type?            identityref
+    |  |  |              +-- restoration-type?           identityref
+    |  |  |              +-- restoration-scheme?         identityref
+    |  |  |              +-- primary-reverse-path-ref* []
+    |  |  |                 +-- (primary-reverse-path-exist)?
+    |  |  |                    +--:(path-ref)
+    |  |  |                    |  +-- primary-path-ref    leafref
+    |  |  |                    +--:(path-request-ref)
+    |  |  |                       +-- path-request-ref    leafref
+    |  |  +--:(value)
+    |  |     +-- tunnel-name?                    string
+    |  |     +-- path-name?                      string
+    |  |     +-- (path-role)?
+    |  |     |  +--:(primary-path)
+    |  |     |  +--:(secondary-path)
+    |  |     |  |  +-- secondary-path!
+    |  |     |  |     +-- primary-path-name?   string
+    |  |     |  +--:(primary-reverse-path)
+    |  |     |  |  +-- primary-reverse-path!
+    |  |     |  |     +-- primary-path-name?   string
+    |  |     |  +--:(secondary-reverse-path)
+    |  |     |     +-- secondary-reverse-path!
+    |  |     |        +-- primary-path-name?           string
+    |  |     |        +-- primary-reverse-path-name?   string
+    |  |     +-- k-requested-paths?              uint8
+    |  |     +-- encoding?                       identityref
+    |  |     +-- switching-type?                 identityref
+    |  |     +-- source?                         te-types:te-node-id
+    |  |     +-- destination?                    te-types:te-node-id
+    |  |     +-- src-tunnel-tp-id?               binary
+    |  |     +-- dst-tunnel-tp-id?               binary
+    |  |     +-- bidirectional?                  boolean
+    |  |     +-- te-topology-identifier
+    |  |        +-- provider-id?   te-global-id
+    |  |        +-- client-id?     te-global-id
+    |  |        +-- topology-id?   te-topology-id
+    |  +-- association-objects
+    |  |  +-- association-object* [association-key]
+    |  |  |  +-- association-key    string
+    |  |  |  +-- type?              identityref
+    |  |  |  +-- id?                uint16
+    |  |  |  +-- source
+    |  |  |     +-- id?     te-gen-node-id
+    |  |  |     +-- type?   enumeration
+    |  |  +-- association-object-extended* [association-key]
+    |  |     +-- association-key    string
+    |  |     +-- type?              identityref
+    |  |     +-- id?                uint16
+    |  |     +-- source
+    |  |     |  +-- id?     te-gen-node-id
+    |  |     |  +-- type?   enumeration
+    |  |     +-- global-source?     uint32
+    |  |     +-- extended-id?       yang:hex-string
+    |  +-- optimizations
+    |  |  +-- (algorithm)?
+    |  |     +--:(metric) {path-optimization-metric}?
+    |  |     |  +-- optimization-metric* [metric-type]
+    |  |     |  |  +-- metric-type                       identityref
+    |  |     |  |  +-- weight?                           uint8
+    |  |     |  |  +-- explicit-route-exclude-objects
+    |  |     |  |  |  +-- route-object-exclude-object* [index]
+    |  |     |  |  |     +-- index
+    |  |     |  |  |     |       uint32
+    |  |     |  |  |     +-- (type)?
+    |  |     |  |  |        +--:(numbered-node-hop)
+    |  |     |  |  |        |  +-- numbered-node-hop
+    |  |     |  |  |        |  |  +-- node-id-uri?   nw:node-id
+    |  |     |  |  |        |  |  +-- node-id?       te-node-id
+    |  |     |  |  |        |  |  +-- hop-type?      te-hop-type
+    |  |     |  |  |        |  +-- wdm-pc:path-in-transceiver
+    |  |     |  |  |        |  |  +-- wdm-pc:transponder-id?   uint32
+    |  |     |  |  |        |  |  +-- wdm-pc:transceivers* [lane-id]
+    |  |     |  |  |        |  |     +-- wdm-pc:lane-id
+    |  |     |  |  |        |  |     |       uint8
+    |  |     |  |  |        |  |     +-- wdm-pc:transceiver-id?
+    |  |     |  |  |        |  |     |       uint32
+    |  |     |  |  |        |  |     +-- wdm-pc:operational-modes*
+    |  |     |  |  |        |  |     |       string
+    |  |     |  |  |        |  |     +-- wdm-pc:tx-tune-constraints
+    |  |     |  |  |        |  |     |  +-- wdm-pc:min-central-frequency?
+    |  |     |  |  |        |  |     |  |       frequency-thz
+    |  |     |  |  |        |  |     |  +-- wdm-pc:max-central-frequency?
+    |  |     |  |  |        |  |     |  |       frequency-thz
+    |  |     |  |  |        |  |     |  +-- wdm-pc:transceiver-tunability?
+    |  |     |  |  |        |  |     |          frequency-ghz
+    |  |     |  |  |        |  |     +-- wdm-pc:line-coding-bitrate*
+    |  |     |  |  |        |  |     |       identityref
+    |  |     |  |  |        |  |     +-- wdm-pc:tx-channel-power?
+    |  |     |  |  |        |  |     |       l0-types:power-dbm
+    |  |     |  |  |        |  |     +-- wdm-pc:preferred-rx-channel-power?
+    |  |     |  |  |        |  |             l0-types:power-dbm
+    |  |     |  |  |        |  +-- wdm-pc:path-out-transceiver
+    |  |     |  |  |        |     +-- wdm-pc:transponder-id?   uint32
+    |  |     |  |  |        |     +-- wdm-pc:transceivers* [lane-id]
+    |  |     |  |  |        |        +-- wdm-pc:lane-id
+    |  |     |  |  |        |        |       uint8
+    |  |     |  |  |        |        +-- wdm-pc:transceiver-id?
+    |  |     |  |  |        |        |       uint32
+    |  |     |  |  |        |        +-- wdm-pc:operational-modes*
+    |  |     |  |  |        |        |       string
+    |  |     |  |  |        |        +-- wdm-pc:tx-tune-constraints
+    |  |     |  |  |        |        |  +-- wdm-pc:min-central-frequency?
+    |  |     |  |  |        |        |  |       frequency-thz
+    |  |     |  |  |        |        |  +-- wdm-pc:max-central-frequency?
+    |  |     |  |  |        |        |  |       frequency-thz
+    |  |     |  |  |        |        |  +-- wdm-pc:transceiver-tunability?
+    |  |     |  |  |        |        |          frequency-ghz
+    |  |     |  |  |        |        +-- wdm-pc:line-coding-bitrate*
+    |  |     |  |  |        |        |       identityref
+    |  |     |  |  |        |        +-- wdm-pc:tx-channel-power?
+    |  |     |  |  |        |        |       l0-types:power-dbm
+    |  |     |  |  |        |        +-- wdm-pc:preferred-rx-channel-power?
+    |  |     |  |  |        |                l0-types:power-dbm
+    |  |     |  |  |        +--:(numbered-link-hop)
+    |  |     |  |  |        |  +-- numbered-link-hop
+    |  |     |  |  |        |     +-- link-tp-id    te-tp-id
+    |  |     |  |  |        |     +-- hop-type?     te-hop-type
+    |  |     |  |  |        |     +-- direction?    te-link-direction
+    |  |     |  |  |        +--:(unnumbered-link-hop)
+    |  |     |  |  |        |  +-- unnumbered-link-hop
+    |  |     |  |  |        |     +-- link-tp-id-uri?   nt:tp-id
+    |  |     |  |  |        |     +-- link-tp-id?       te-tp-id
+    |  |     |  |  |        |     +-- node-id-uri?      nw:node-id
+    |  |     |  |  |        |     +-- node-id?          te-node-id
+    |  |     |  |  |        |     +-- hop-type?         te-hop-type
+    |  |     |  |  |        |     +-- direction?
+    |  |     |  |  |        |             te-link-direction
+    |  |     |  |  |        +--:(as-number)
+    |  |     |  |  |        |  +-- as-number-hop
+    |  |     |  |  |        |     +-- as-number    inet:as-number
+    |  |     |  |  |        |     +-- hop-type?    te-hop-type
+    |  |     |  |  |        +--:(label)
+    |  |     |  |  |        |  +-- label-hop
+    |  |     |  |  |        |     +-- te-label
+    |  |     |  |  |        |        +-- (technology)?
+    |  |     |  |  |        |        |  +--:(generic)
+    |  |     |  |  |        |        |  |  +-- generic?
+    |  |     |  |  |        |        |  |          rt-types:generalized-label
+    |  |     |  |  |        |        |  +--:(wdm-pc:wdm)
+    |  |     |  |  |        |        |     +-- (wdm-pc:grid-type)?
+    |  |     |  |  |        |        |        +--:(wdm-pc:fixed-dwdm)
+    |  |     |  |  |        |        |        |  +-- (wdm-pc:fixed-single-or-super-channel)?
+    |  |     |  |  |        |        |        |     +--:(wdm-pc:single)
+    |  |     |  |  |        |        |        |     |  +-- wdm-pc:dwdm-n?
+    |  |     |  |  |        |        |        |     |          l0-types:dwdm-n
+    |  |     |  |  |        |        |        |     +--:(wdm-pc:multi)
+    |  |     |  |  |        |        |        |        +-- wdm-pc:subcarrier-dwdm-n*
+    |  |     |  |  |        |        |        |                l0-types:dwdm-n
+    |  |     |  |  |        |        |        +--:(wdm-pc:cwdm)
+    |  |     |  |  |        |        |        |  +-- wdm-pc:cwdm-n?
+    |  |     |  |  |        |        |        |          l0-types:cwdm-n
+    |  |     |  |  |        |        |        +--:(wdm-pc:flexi-grid)
+    |  |     |  |  |        |        |           +-- (wdm-pc:single-or-super-channel)?
+    |  |     |  |  |        |        |              +--:(wdm-pc:single)
+    |  |     |  |  |        |        |              |  +-- wdm-pc:flexi-n?
+    |  |     |  |  |        |        |              |  |       l0-types:flexi-n
+    |  |     |  |  |        |        |              |  +-- wdm-pc:flexi-m?
+    |  |     |  |  |        |        |              |          l0-types:flexi-m
+    |  |     |  |  |        |        |              x--:(wdm-pc:super)
+    |  |     |  |  |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
+    |  |     |  |  |        |        |              |          [flexi-n]
+    |  |     |  |  |        |        |              |     +-- wdm-pc:flexi-n
+    |  |     |  |  |        |        |              |     |       l0-types:flexi-n
+    |  |     |  |  |        |        |              |     +-- wdm-pc:flexi-m?
+    |  |     |  |  |        |        |              |             l0-types:flexi-m
+    |  |     |  |  |        |        |              +--:(wdm-pc:multi)
+    |  |     |  |  |        |        |                 +-- wdm-pc:frequency-slots
+    |  |     |  |  |        |        |                    +-- wdm-pc:frequency-slot*
+    |  |     |  |  |        |        |                            [flexi-n]
+    |  |     |  |  |        |        |                       +-- wdm-pc:flexi-n
+    |  |     |  |  |        |        |                       |       l0-types:flexi-n
+    |  |     |  |  |        |        |                       +-- wdm-pc:flexi-m?
+    |  |     |  |  |        |        |                               l0-types:flexi-m
+    |  |     |  |  |        |        +-- direction?
+    |  |     |  |  |        |                te-label-direction
+    |  |     |  |  |        +--:(srlg)
+    |  |     |  |  |        |  +-- srlg
+    |  |     |  |  |        |     +-- srlg?   uint32
+    |  |     |  |  |        +--:(wdm-pc:oms-element)
+    |  |     |  |  |           +-- wdm-pc:oms-element-uid?
+    |  |     |  |  |                   string
+    |  |     |  |  +-- explicit-route-include-objects
+    |  |     |  |     +-- route-object-include-object* [index]
+    |  |     |  |        +-- index
+    |  |     |  |        |       uint32
+    |  |     |  |        +-- (type)?
+    |  |     |  |           +--:(numbered-node-hop)
+    |  |     |  |           |  +-- numbered-node-hop
+    |  |     |  |           |  |  +-- node-id-uri?   nw:node-id
+    |  |     |  |           |  |  +-- node-id?       te-node-id
+    |  |     |  |           |  |  +-- hop-type?      te-hop-type
+    |  |     |  |           |  +-- wdm-pc:path-in-transceiver
+    |  |     |  |           |  |  +-- wdm-pc:transponder-id?   uint32
+    |  |     |  |           |  |  +-- wdm-pc:transceivers* [lane-id]
+    |  |     |  |           |  |     +-- wdm-pc:lane-id
+    |  |     |  |           |  |     |       uint8
+    |  |     |  |           |  |     +-- wdm-pc:transceiver-id?
+    |  |     |  |           |  |     |       uint32
+    |  |     |  |           |  |     +-- wdm-pc:operational-modes*
+    |  |     |  |           |  |     |       string
+    |  |     |  |           |  |     +-- wdm-pc:tx-tune-constraints
+    |  |     |  |           |  |     |  +-- wdm-pc:min-central-frequency?
+    |  |     |  |           |  |     |  |       frequency-thz
+    |  |     |  |           |  |     |  +-- wdm-pc:max-central-frequency?
+    |  |     |  |           |  |     |  |       frequency-thz
+    |  |     |  |           |  |     |  +-- wdm-pc:transceiver-tunability?
+    |  |     |  |           |  |     |          frequency-ghz
+    |  |     |  |           |  |     +-- wdm-pc:line-coding-bitrate*
+    |  |     |  |           |  |     |       identityref
+    |  |     |  |           |  |     +-- wdm-pc:tx-channel-power?
+    |  |     |  |           |  |     |       l0-types:power-dbm
+    |  |     |  |           |  |     +-- wdm-pc:preferred-rx-channel-power?
+    |  |     |  |           |  |             l0-types:power-dbm
+    |  |     |  |           |  +-- wdm-pc:path-out-transceiver
+    |  |     |  |           |     +-- wdm-pc:transponder-id?   uint32
+    |  |     |  |           |     +-- wdm-pc:transceivers* [lane-id]
+    |  |     |  |           |        +-- wdm-pc:lane-id
+    |  |     |  |           |        |       uint8
+    |  |     |  |           |        +-- wdm-pc:transceiver-id?
+    |  |     |  |           |        |       uint32
+    |  |     |  |           |        +-- wdm-pc:operational-modes*
+    |  |     |  |           |        |       string
+    |  |     |  |           |        +-- wdm-pc:tx-tune-constraints
+    |  |     |  |           |        |  +-- wdm-pc:min-central-frequency?
+    |  |     |  |           |        |  |       frequency-thz
+    |  |     |  |           |        |  +-- wdm-pc:max-central-frequency?
+    |  |     |  |           |        |  |       frequency-thz
+    |  |     |  |           |        |  +-- wdm-pc:transceiver-tunability?
+    |  |     |  |           |        |          frequency-ghz
+    |  |     |  |           |        +-- wdm-pc:line-coding-bitrate*
+    |  |     |  |           |        |       identityref
+    |  |     |  |           |        +-- wdm-pc:tx-channel-power?
+    |  |     |  |           |        |       l0-types:power-dbm
+    |  |     |  |           |        +-- wdm-pc:preferred-rx-channel-power?
+    |  |     |  |           |                l0-types:power-dbm
+    |  |     |  |           +--:(numbered-link-hop)
+    |  |     |  |           |  +-- numbered-link-hop
+    |  |     |  |           |     +-- link-tp-id    te-tp-id
+    |  |     |  |           |     +-- hop-type?     te-hop-type
+    |  |     |  |           |     +-- direction?    te-link-direction
+    |  |     |  |           +--:(unnumbered-link-hop)
+    |  |     |  |           |  +-- unnumbered-link-hop
+    |  |     |  |           |     +-- link-tp-id-uri?   nt:tp-id
+    |  |     |  |           |     +-- link-tp-id?       te-tp-id
+    |  |     |  |           |     +-- node-id-uri?      nw:node-id
+    |  |     |  |           |     +-- node-id?          te-node-id
+    |  |     |  |           |     +-- hop-type?         te-hop-type
+    |  |     |  |           |     +-- direction?
+    |  |     |  |           |             te-link-direction
+    |  |     |  |           +--:(as-number)
+    |  |     |  |           |  +-- as-number-hop
+    |  |     |  |           |     +-- as-number    inet:as-number
+    |  |     |  |           |     +-- hop-type?    te-hop-type
+    |  |     |  |           +--:(label)
+    |  |     |  |           |  +-- label-hop
+    |  |     |  |           |     +-- te-label
+    |  |     |  |           |        +-- (technology)?
+    |  |     |  |           |        |  +--:(generic)
+    |  |     |  |           |        |  |  +-- generic?
+    |  |     |  |           |        |  |          rt-types:generalized-label
+    |  |     |  |           |        |  +--:(wdm-pc:wdm)
+    |  |     |  |           |        |     +-- (wdm-pc:grid-type)?
+    |  |     |  |           |        |        +--:(wdm-pc:fixed-dwdm)
+    |  |     |  |           |        |        |  +-- (wdm-pc:fixed-single-or-super-channel)?
+    |  |     |  |           |        |        |     +--:(wdm-pc:single)
+    |  |     |  |           |        |        |     |  +-- wdm-pc:dwdm-n?
+    |  |     |  |           |        |        |     |          l0-types:dwdm-n
+    |  |     |  |           |        |        |     +--:(wdm-pc:multi)
+    |  |     |  |           |        |        |        +-- wdm-pc:subcarrier-dwdm-n*
+    |  |     |  |           |        |        |                l0-types:dwdm-n
+    |  |     |  |           |        |        +--:(wdm-pc:cwdm)
+    |  |     |  |           |        |        |  +-- wdm-pc:cwdm-n?
+    |  |     |  |           |        |        |          l0-types:cwdm-n
+    |  |     |  |           |        |        +--:(wdm-pc:flexi-grid)
+    |  |     |  |           |        |           +-- (wdm-pc:single-or-super-channel)?
+    |  |     |  |           |        |              +--:(wdm-pc:single)
+    |  |     |  |           |        |              |  +-- wdm-pc:flexi-n?
+    |  |     |  |           |        |              |  |       l0-types:flexi-n
+    |  |     |  |           |        |              |  +-- wdm-pc:flexi-m?
+    |  |     |  |           |        |              |          l0-types:flexi-m
+    |  |     |  |           |        |              x--:(wdm-pc:super)
+    |  |     |  |           |        |              |  x-- wdm-pc:subcarrier-flexi-n*
+    |  |     |  |           |        |              |          [flexi-n]
+    |  |     |  |           |        |              |     +-- wdm-pc:flexi-n
+    |  |     |  |           |        |              |     |       l0-types:flexi-n
+    |  |     |  |           |        |              |     +-- wdm-pc:flexi-m?
+    |  |     |  |           |        |              |             l0-types:flexi-m
+    |  |     |  |           |        |              +--:(wdm-pc:multi)
+    |  |     |  |           |        |                 +-- wdm-pc:frequency-slots
+    |  |     |  |           |        |                    +-- wdm-pc:frequency-slot*
+    |  |     |  |           |        |                            [flexi-n]
+    |  |     |  |           |        |                       +-- wdm-pc:flexi-n
+    |  |     |  |           |        |                       |       l0-types:flexi-n
+    |  |     |  |           |        |                       +-- wdm-pc:flexi-m?
+    |  |     |  |           |        |                               l0-types:flexi-m
+    |  |     |  |           |        +-- direction?
+    |  |     |  |           |                te-label-direction
+    |  |     |  |           +--:(wdm-pc:oms-element)
+    |  |     |  |              +-- wdm-pc:oms-element-uid?
+    |  |     |  |                      string
+    |  |     |  +-- tiebreakers
+    |  |     |     +-- tiebreaker* [tiebreaker-type]
+    |  |     |        +-- tiebreaker-type    identityref
+    |  |     +--:(objective-function)
+    |  |              {path-optimization-objective-function}?
+    |  |        +-- objective-function
+    |  |           +-- objective-function-type?   identityref
+    |  +-- named-path-constraint?                leafref
+    |  |       {te-types:named-path-constraints}?
+    |  +-- te-bandwidth
+    |  |  +-- (technology)?
+    |  |     +--:(generic)
+    |  |        +-- generic?   te-bandwidth
+    |  +-- link-protection?                      identityref
+    |  +-- setup-priority?                       uint8
+    |  +-- hold-priority?                        uint8
+    |  +-- signaling-type?                       identityref
+    |  +-- path-metric-bounds
+    |  |  +-- path-metric-bound* [metric-type]
+    |  |     +-- metric-type    identityref
+    |  |     +-- upper-bound?   uint64
+    |  +-- path-affinities-values
+    |  |  +-- path-affinities-value* [usage]
+    |  |     +-- usage    identityref
+    |  |     +-- value?   admin-groups
+    |  +-- path-affinity-names
+    |  |  +-- path-affinity-name* [usage]
+    |  |     +-- usage            identityref
+    |  |     +-- affinity-name* [name]
+    |  |        +-- name    string
+    |  +-- path-srlgs-lists
+    |  |  +-- path-srlgs-list* [usage]
+    |  |     +-- usage     identityref
+    |  |     +-- values*   srlg
+    |  +-- path-srlgs-names
+    |  |  +-- path-srlgs-name* [usage]
+    |  |     +-- usage    identityref
+    |  |     +-- names*   string
+    |  +-- disjointness?                         te-path-disjointness
+    |  +-- explicit-route-objects
+    |  |  +-- route-object-exclude-always* [index]
+    |  |  |  +-- index                                uint32
+    |  |  |  +-- (type)?
+    |  |  |     +--:(numbered-node-hop)
+    |  |  |     |  +-- numbered-node-hop
+    |  |  |     |  |  +-- node-id-uri?   nw:node-id
+    |  |  |     |  |  +-- node-id?       te-node-id
+    |  |  |     |  |  +-- hop-type?      te-hop-type
+    |  |  |     |  +-- wdm-pc:path-in-transceiver
+    |  |  |     |  |  +-- wdm-pc:transponder-id?   uint32
+    |  |  |     |  |  +-- wdm-pc:transceivers* [lane-id]
+    |  |  |     |  |     +-- wdm-pc:lane-id
+    |  |  |     |  |     |       uint8
+    |  |  |     |  |     +-- wdm-pc:transceiver-id?
+    |  |  |     |  |     |       uint32
+    |  |  |     |  |     +-- wdm-pc:operational-modes*
+    |  |  |     |  |     |       string
+    |  |  |     |  |     +-- wdm-pc:tx-tune-constraints
+    |  |  |     |  |     |  +-- wdm-pc:min-central-frequency?
+    |  |  |     |  |     |  |       frequency-thz
+    |  |  |     |  |     |  +-- wdm-pc:max-central-frequency?
+    |  |  |     |  |     |  |       frequency-thz
+    |  |  |     |  |     |  +-- wdm-pc:transceiver-tunability?
+    |  |  |     |  |     |          frequency-ghz
+    |  |  |     |  |     +-- wdm-pc:line-coding-bitrate*
+    |  |  |     |  |     |       identityref
+    |  |  |     |  |     +-- wdm-pc:tx-channel-power?
+    |  |  |     |  |     |       l0-types:power-dbm
+    |  |  |     |  |     +-- wdm-pc:preferred-rx-channel-power?
+    |  |  |     |  |             l0-types:power-dbm
+    |  |  |     |  +-- wdm-pc:path-out-transceiver
+    |  |  |     |     +-- wdm-pc:transponder-id?   uint32
+    |  |  |     |     +-- wdm-pc:transceivers* [lane-id]
+    |  |  |     |        +-- wdm-pc:lane-id
+    |  |  |     |        |       uint8
+    |  |  |     |        +-- wdm-pc:transceiver-id?
+    |  |  |     |        |       uint32
+    |  |  |     |        +-- wdm-pc:operational-modes*
+    |  |  |     |        |       string
+    |  |  |     |        +-- wdm-pc:tx-tune-constraints
+    |  |  |     |        |  +-- wdm-pc:min-central-frequency?
+    |  |  |     |        |  |       frequency-thz
+    |  |  |     |        |  +-- wdm-pc:max-central-frequency?
+    |  |  |     |        |  |       frequency-thz
+    |  |  |     |        |  +-- wdm-pc:transceiver-tunability?
+    |  |  |     |        |          frequency-ghz
+    |  |  |     |        +-- wdm-pc:line-coding-bitrate*
+    |  |  |     |        |       identityref
+    |  |  |     |        +-- wdm-pc:tx-channel-power?
+    |  |  |     |        |       l0-types:power-dbm
+    |  |  |     |        +-- wdm-pc:preferred-rx-channel-power?
+    |  |  |     |                l0-types:power-dbm
+    |  |  |     +--:(numbered-link-hop)
+    |  |  |     |  +-- numbered-link-hop
+    |  |  |     |     +-- link-tp-id    te-tp-id
+    |  |  |     |     +-- hop-type?     te-hop-type
+    |  |  |     |     +-- direction?    te-link-direction
+    |  |  |     +--:(unnumbered-link-hop)
+    |  |  |     |  +-- unnumbered-link-hop
+    |  |  |     |     +-- link-tp-id-uri?   nt:tp-id
+    |  |  |     |     +-- link-tp-id?       te-tp-id
+    |  |  |     |     +-- node-id-uri?      nw:node-id
+    |  |  |     |     +-- node-id?          te-node-id
+    |  |  |     |     +-- hop-type?         te-hop-type
+    |  |  |     |     +-- direction?        te-link-direction
+    |  |  |     +--:(as-number)
+    |  |  |     |  +-- as-number-hop
+    |  |  |     |     +-- as-number    inet:as-number
+    |  |  |     |     +-- hop-type?    te-hop-type
+    |  |  |     +--:(label)
+    |  |  |     |  +-- label-hop
+    |  |  |     |     +-- te-label
+    |  |  |     |        +-- (technology)?
+    |  |  |     |        |  +--:(generic)
+    |  |  |     |        |  |  +-- generic?
+    |  |  |     |        |  |          rt-types:generalized-label
+    |  |  |     |        |  +--:(wdm-pc:wdm)
+    |  |  |     |        |     +-- (wdm-pc:grid-type)?
+    |  |  |     |        |        +--:(wdm-pc:fixed-dwdm)
+    |  |  |     |        |        |  +-- (wdm-pc:fixed-single-or-super-channel)?
+    |  |  |     |        |        |     +--:(wdm-pc:single)
+    |  |  |     |        |        |     |  +-- wdm-pc:dwdm-n?
+    |  |  |     |        |        |     |          l0-types:dwdm-n
+    |  |  |     |        |        |     +--:(wdm-pc:multi)
+    |  |  |     |        |        |        +-- wdm-pc:subcarrier-dwdm-n*
+    |  |  |     |        |        |                l0-types:dwdm-n
+    |  |  |     |        |        +--:(wdm-pc:cwdm)
+    |  |  |     |        |        |  +-- wdm-pc:cwdm-n?
+    |  |  |     |        |        |          l0-types:cwdm-n
+    |  |  |     |        |        +--:(wdm-pc:flexi-grid)
+    |  |  |     |        |           +-- (wdm-pc:single-or-super-channel)?
+    |  |  |     |        |              +--:(wdm-pc:single)
+    |  |  |     |        |              |  +-- wdm-pc:flexi-n?
+    |  |  |     |        |              |  |       l0-types:flexi-n
+    |  |  |     |        |              |  +-- wdm-pc:flexi-m?
+    |  |  |     |        |              |          l0-types:flexi-m
+    |  |  |     |        |              x--:(wdm-pc:super)
+    |  |  |     |        |              |  x-- wdm-pc:subcarrier-flexi-n*
+    |  |  |     |        |              |          [flexi-n]
+    |  |  |     |        |              |     +-- wdm-pc:flexi-n
+    |  |  |     |        |              |     |       l0-types:flexi-n
+    |  |  |     |        |              |     +-- wdm-pc:flexi-m?
+    |  |  |     |        |              |             l0-types:flexi-m
+    |  |  |     |        |              +--:(wdm-pc:multi)
+    |  |  |     |        |                 +-- wdm-pc:frequency-slots
+    |  |  |     |        |                    +-- wdm-pc:frequency-slot*
+    |  |  |     |        |                            [flexi-n]
+    |  |  |     |        |                       +-- wdm-pc:flexi-n
+    |  |  |     |        |                       |       l0-types:flexi-n
+    |  |  |     |        |                       +-- wdm-pc:flexi-m?
+    |  |  |     |        |                               l0-types:flexi-m
+    |  |  |     |        +-- direction?
+    |  |  |     |                te-label-direction
+    |  |  |     +--:(wdm-pc:oms-element)
+    |  |  |        +-- wdm-pc:oms-element-uid?        string
+    |  |  +-- route-object-include-exclude* [index]
+    |  |     +-- explicit-route-usage?                identityref
+    |  |     +-- index                                uint32
+    |  |     +-- (type)?
+    |  |        +--:(numbered-node-hop)
+    |  |        |  +-- numbered-node-hop
+    |  |        |  |  +-- node-id-uri?   nw:node-id
+    |  |        |  |  +-- node-id?       te-node-id
+    |  |        |  |  +-- hop-type?      te-hop-type
+    |  |        |  +-- wdm-pc:path-in-transceiver
+    |  |        |  |  +-- wdm-pc:transponder-id?   uint32
+    |  |        |  |  +-- wdm-pc:transceivers* [lane-id]
+    |  |        |  |     +-- wdm-pc:lane-id
+    |  |        |  |     |       uint8
+    |  |        |  |     +-- wdm-pc:transceiver-id?
+    |  |        |  |     |       uint32
+    |  |        |  |     +-- wdm-pc:operational-modes*
+    |  |        |  |     |       string
+    |  |        |  |     +-- wdm-pc:tx-tune-constraints
+    |  |        |  |     |  +-- wdm-pc:min-central-frequency?
+    |  |        |  |     |  |       frequency-thz
+    |  |        |  |     |  +-- wdm-pc:max-central-frequency?
+    |  |        |  |     |  |       frequency-thz
+    |  |        |  |     |  +-- wdm-pc:transceiver-tunability?
+    |  |        |  |     |          frequency-ghz
+    |  |        |  |     +-- wdm-pc:line-coding-bitrate*
+    |  |        |  |     |       identityref
+    |  |        |  |     +-- wdm-pc:tx-channel-power?
+    |  |        |  |     |       l0-types:power-dbm
+    |  |        |  |     +-- wdm-pc:preferred-rx-channel-power?
+    |  |        |  |             l0-types:power-dbm
+    |  |        |  +-- wdm-pc:path-out-transceiver
+    |  |        |     +-- wdm-pc:transponder-id?   uint32
+    |  |        |     +-- wdm-pc:transceivers* [lane-id]
+    |  |        |        +-- wdm-pc:lane-id
+    |  |        |        |       uint8
+    |  |        |        +-- wdm-pc:transceiver-id?
+    |  |        |        |       uint32
+    |  |        |        +-- wdm-pc:operational-modes*
+    |  |        |        |       string
+    |  |        |        +-- wdm-pc:tx-tune-constraints
+    |  |        |        |  +-- wdm-pc:min-central-frequency?
+    |  |        |        |  |       frequency-thz
+    |  |        |        |  +-- wdm-pc:max-central-frequency?
+    |  |        |        |  |       frequency-thz
+    |  |        |        |  +-- wdm-pc:transceiver-tunability?
+    |  |        |        |          frequency-ghz
+    |  |        |        +-- wdm-pc:line-coding-bitrate*
+    |  |        |        |       identityref
+    |  |        |        +-- wdm-pc:tx-channel-power?
+    |  |        |        |       l0-types:power-dbm
+    |  |        |        +-- wdm-pc:preferred-rx-channel-power?
+    |  |        |                l0-types:power-dbm
+    |  |        +--:(numbered-link-hop)
+    |  |        |  +-- numbered-link-hop
+    |  |        |     +-- link-tp-id    te-tp-id
+    |  |        |     +-- hop-type?     te-hop-type
+    |  |        |     +-- direction?    te-link-direction
+    |  |        +--:(unnumbered-link-hop)
+    |  |        |  +-- unnumbered-link-hop
+    |  |        |     +-- link-tp-id-uri?   nt:tp-id
+    |  |        |     +-- link-tp-id?       te-tp-id
+    |  |        |     +-- node-id-uri?      nw:node-id
+    |  |        |     +-- node-id?          te-node-id
+    |  |        |     +-- hop-type?         te-hop-type
+    |  |        |     +-- direction?        te-link-direction
+    |  |        +--:(as-number)
+    |  |        |  +-- as-number-hop
+    |  |        |     +-- as-number    inet:as-number
+    |  |        |     +-- hop-type?    te-hop-type
+    |  |        +--:(label)
+    |  |        |  +-- label-hop
+    |  |        |     +-- te-label
+    |  |        |        +-- (technology)?
+    |  |        |        |  +--:(generic)
+    |  |        |        |  |  +-- generic?
+    |  |        |        |  |          rt-types:generalized-label
+    |  |        |        |  +--:(wdm-pc:wdm)
+    |  |        |        |     +-- (wdm-pc:grid-type)?
+    |  |        |        |        +--:(wdm-pc:fixed-dwdm)
+    |  |        |        |        |  +-- (wdm-pc:fixed-single-or-super-channel)?
+    |  |        |        |        |     +--:(wdm-pc:single)
+    |  |        |        |        |     |  +-- wdm-pc:dwdm-n?
+    |  |        |        |        |     |          l0-types:dwdm-n
+    |  |        |        |        |     +--:(wdm-pc:multi)
+    |  |        |        |        |        +-- wdm-pc:subcarrier-dwdm-n*
+    |  |        |        |        |                l0-types:dwdm-n
+    |  |        |        |        +--:(wdm-pc:cwdm)
+    |  |        |        |        |  +-- wdm-pc:cwdm-n?
+    |  |        |        |        |          l0-types:cwdm-n
+    |  |        |        |        +--:(wdm-pc:flexi-grid)
+    |  |        |        |           +-- (wdm-pc:single-or-super-channel)?
+    |  |        |        |              +--:(wdm-pc:single)
+    |  |        |        |              |  +-- wdm-pc:flexi-n?
+    |  |        |        |              |  |       l0-types:flexi-n
+    |  |        |        |              |  +-- wdm-pc:flexi-m?
+    |  |        |        |              |          l0-types:flexi-m
+    |  |        |        |              x--:(wdm-pc:super)
+    |  |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
+    |  |        |        |              |          [flexi-n]
+    |  |        |        |              |     +-- wdm-pc:flexi-n
+    |  |        |        |              |     |       l0-types:flexi-n
+    |  |        |        |              |     +-- wdm-pc:flexi-m?
+    |  |        |        |              |             l0-types:flexi-m
+    |  |        |        |              +--:(wdm-pc:multi)
+    |  |        |        |                 +-- wdm-pc:frequency-slots
+    |  |        |        |                    +-- wdm-pc:frequency-slot*
+    |  |        |        |                            [flexi-n]
+    |  |        |        |                       +-- wdm-pc:flexi-n
+    |  |        |        |                       |       l0-types:flexi-n
+    |  |        |        |                       +-- wdm-pc:flexi-m?
+    |  |        |        |                               l0-types:flexi-m
+    |  |        |        +-- direction?
+    |  |        |                te-label-direction
+    |  |        +--:(srlg)
+    |  |        |  +-- srlg
+    |  |        |     +-- srlg?   uint32
+    |  |        +--:(wdm-pc:oms-element)
+    |  |           +-- wdm-pc:oms-element-uid?        string
+    |  +-- path-in-segment!
+    |  |  +-- label-restrictions
+    |  |     +-- label-restriction* [index]
+    |  |        +-- restriction?         enumeration
+    |  |        +-- index                uint32
+    |  |        +-- label-start
+    |  |        |  +-- te-label
+    |  |        |     +-- (technology)?
+    |  |        |     |  +--:(generic)
+    |  |        |     |  |  +-- generic?
+    |  |        |     |  |          rt-types:generalized-label
+    |  |        |     |  +--:(wdm-pc:wdm)
+    |  |        |     |     +-- (wdm-pc:grid-type)?
+    |  |        |     |        +--:(wdm-pc:fixed-dwdm)
+    |  |        |     |        |  +-- wdm-pc:dwdm-n?
+    |  |        |     |        |          l0-types:dwdm-n
+    |  |        |     |        +--:(wdm-pc:cwdm)
+    |  |        |     |        |  +-- wdm-pc:cwdm-n?
+    |  |        |     |        |          l0-types:cwdm-n
+    |  |        |     |        +--:(wdm-pc:flexi-grid)
+    |  |        |     |           +-- wdm-pc:flexi-n?
+    |  |        |     |                   l0-types:flexi-n
+    |  |        |     +-- direction?
+    |  |        |             te-label-direction
+    |  |        +-- label-end
+    |  |        |  +-- te-label
+    |  |        |     +-- (technology)?
+    |  |        |     |  +--:(generic)
+    |  |        |     |  |  +-- generic?
+    |  |        |     |  |          rt-types:generalized-label
+    |  |        |     |  +--:(wdm-pc:wdm)
+    |  |        |     |     +-- (wdm-pc:grid-type)?
+    |  |        |     |        +--:(wdm-pc:fixed-dwdm)
+    |  |        |     |        |  +-- wdm-pc:dwdm-n?
+    |  |        |     |        |          l0-types:dwdm-n
+    |  |        |     |        +--:(wdm-pc:cwdm)
+    |  |        |     |        |  +-- wdm-pc:cwdm-n?
+    |  |        |     |        |          l0-types:cwdm-n
+    |  |        |     |        +--:(wdm-pc:flexi-grid)
+    |  |        |     |           +-- wdm-pc:flexi-n?
+    |  |        |     |                   l0-types:flexi-n
+    |  |        |     +-- direction?
+    |  |        |             te-label-direction
+    |  |        +-- label-step
+    |  |        |  +-- (technology)?
+    |  |        |     +--:(generic)
+    |  |        |     |  +-- generic?
+    |  |        |     |          int32
+    |  |        |     +--:(wdm-pc:wdm)
+    |  |        |        +-- (wdm-pc:l0-grid-type)?
+    |  |        |           +--:(wdm-pc:fixed-dwdm)
+    |  |        |           |  +-- wdm-pc:wson-dwdm-channel-spacing?
+    |  |        |           |          identityref
+    |  |        |           +--:(wdm-pc:cwdm)
+    |  |        |           |  +-- wdm-pc:wson-cwdm-channel-spacing?
+    |  |        |           |          identityref
+    |  |        |           +--:(wdm-pc:flexi-grid)
+    |  |        |              x-- wdm-pc:flexi-grid-channel-spacing?
+    |  |        |              |       identityref
+    |  |        |              +-- wdm-pc:flexi-ncfg?
+    |  |        |              |       identityref
+    |  |        |              +-- wdm-pc:flexi-n-step?
+    |  |        |                      uint8
+    |  |        +-- range-bitmap?        yang:hex-string
+    |  |        +-- wdm-pc:grid-type?    identityref
+    |  |        +-- wdm-pc:priority?     uint8
+    |  |        +-- wdm-pc:flexi-grid
+    |  |           +-- wdm-pc:slot-width-granularity?   identityref
+    |  |           +-- wdm-pc:min-slot-width-factor?    uint16
+    |  |           +-- wdm-pc:max-slot-width-factor?    uint16
+    |  +-- path-out-segment!
+    |  |  +-- label-restrictions
+    |  |     +-- label-restriction* [index]
+    |  |        +-- restriction?         enumeration
+    |  |        +-- index                uint32
+    |  |        +-- label-start
+    |  |        |  +-- te-label
+    |  |        |     +-- (technology)?
+    |  |        |     |  +--:(generic)
+    |  |        |     |  |  +-- generic?
+    |  |        |     |  |          rt-types:generalized-label
+    |  |        |     |  +--:(wdm-pc:wdm)
+    |  |        |     |     +-- (wdm-pc:grid-type)?
+    |  |        |     |        +--:(wdm-pc:fixed-dwdm)
+    |  |        |     |        |  +-- wdm-pc:dwdm-n?
+    |  |        |     |        |          l0-types:dwdm-n
+    |  |        |     |        +--:(wdm-pc:cwdm)
+    |  |        |     |        |  +-- wdm-pc:cwdm-n?
+    |  |        |     |        |          l0-types:cwdm-n
+    |  |        |     |        +--:(wdm-pc:flexi-grid)
+    |  |        |     |           +-- wdm-pc:flexi-n?
+    |  |        |     |                   l0-types:flexi-n
+    |  |        |     +-- direction?
+    |  |        |             te-label-direction
+    |  |        +-- label-end
+    |  |        |  +-- te-label
+    |  |        |     +-- (technology)?
+    |  |        |     |  +--:(generic)
+    |  |        |     |  |  +-- generic?
+    |  |        |     |  |          rt-types:generalized-label
+    |  |        |     |  +--:(wdm-pc:wdm)
+    |  |        |     |     +-- (wdm-pc:grid-type)?
+    |  |        |     |        +--:(wdm-pc:fixed-dwdm)
+    |  |        |     |        |  +-- wdm-pc:dwdm-n?
+    |  |        |     |        |          l0-types:dwdm-n
+    |  |        |     |        +--:(wdm-pc:cwdm)
+    |  |        |     |        |  +-- wdm-pc:cwdm-n?
+    |  |        |     |        |          l0-types:cwdm-n
+    |  |        |     |        +--:(wdm-pc:flexi-grid)
+    |  |        |     |           +-- wdm-pc:flexi-n?
+    |  |        |     |                   l0-types:flexi-n
+    |  |        |     +-- direction?
+    |  |        |             te-label-direction
+    |  |        +-- label-step
+    |  |        |  +-- (technology)?
+    |  |        |     +--:(generic)
+    |  |        |     |  +-- generic?
+    |  |        |     |          int32
+    |  |        |     +--:(wdm-pc:wdm)
+    |  |        |        +-- (wdm-pc:l0-grid-type)?
+    |  |        |           +--:(wdm-pc:fixed-dwdm)
+    |  |        |           |  +-- wdm-pc:wson-dwdm-channel-spacing?
+    |  |        |           |          identityref
+    |  |        |           +--:(wdm-pc:cwdm)
+    |  |        |           |  +-- wdm-pc:wson-cwdm-channel-spacing?
+    |  |        |           |          identityref
+    |  |        |           +--:(wdm-pc:flexi-grid)
+    |  |        |              x-- wdm-pc:flexi-grid-channel-spacing?
+    |  |        |              |       identityref
+    |  |        |              +-- wdm-pc:flexi-ncfg?
+    |  |        |              |       identityref
+    |  |        |              +-- wdm-pc:flexi-n-step?
+    |  |        |                      uint8
+    |  |        +-- range-bitmap?        yang:hex-string
+    |  |        +-- wdm-pc:grid-type?    identityref
+    |  |        +-- wdm-pc:priority?     uint8
+    |  |        +-- wdm-pc:flexi-grid
+    |  |           +-- wdm-pc:slot-width-granularity?   identityref
+    |  |           +-- wdm-pc:min-slot-width-factor?    uint16
+    |  |           +-- wdm-pc:max-slot-width-factor?    uint16
+    |  +-- requested-metrics* [metric-type]
+    |  |  +-- metric-type    identityref
+    |  +-- return-srlgs?                         boolean
+    |  +-- return-affinities?                    boolean
+    |  +-- requested-state!
+    |     +-- timer?            uint16
+    |     +-- transaction-id?   string
+    +-- tunnel-attributes* [tunnel-name]
+    |  +-- tunnel-name               string
+    |  +-- encoding?                 identityref
+    |  +-- switching-type?           identityref
+    |  +-- source?                   te-types:te-node-id
+    |  +-- destination?              te-types:te-node-id
+    |  +-- src-tunnel-tp-id?         binary
+    |  +-- dst-tunnel-tp-id?         binary
+    |  +-- bidirectional?            boolean
+    |  +-- association-objects
+    |  |  +-- association-object* [association-key]
+    |  |  |  +-- association-key    string
+    |  |  |  +-- type?              identityref
+    |  |  |  +-- id?                uint16
+    |  |  |  +-- source
+    |  |  |     +-- id?     te-gen-node-id
+    |  |  |     +-- type?   enumeration
+    |  |  +-- association-object-extended* [association-key]
+    |  |     +-- association-key    string
+    |  |     +-- type?              identityref
+    |  |     +-- id?                uint16
+    |  |     +-- source
+    |  |     |  +-- id?     te-gen-node-id
+    |  |     |  +-- type?   enumeration
+    |  |     +-- global-source?     uint32
+    |  |     +-- extended-id?       yang:hex-string
+    |  +-- protection-type?          identityref
+    |  +-- restoration-type?         identityref
+    |  +-- restoration-scheme?       identityref
+    |  +-- network-id?               nw:network-id
+    |  +-- te-topology-identifier
+    |  |  +-- provider-id?   te-global-id
+    |  |  +-- client-id?     te-global-id
+    |  |  +-- topology-id?   te-topology-id
+    |  +-- te-bandwidth
+    |  |  +-- (technology)?
+    |  |     +--:(generic)
+    |  |        +-- generic?   te-bandwidth
+    |  +-- link-protection?          identityref
+    |  +-- setup-priority?           uint8
+    |  +-- hold-priority?            uint8
+    |  +-- signaling-type?           identityref
+    |  +-- hierarchy
+    |  |  +-- dependency-tunnels
+    |  |  |  +-- dependency-tunnel* [name]
+    |  |  |  |  +-- name              tunnel-ref
+    |  |  |  |  +-- encoding?         identityref
+    |  |  |  |  +-- switching-type?   identityref
+    |  |  |  +-- dependency-tunnel-attributes* [name]
+    |  |  |     +-- name              leafref
+    |  |  |     +-- encoding?         identityref
+    |  |  |     +-- switching-type?   identityref
+    |  |  +-- hierarchical-link
+    |  |     +-- enable?                   boolean
+    |  |     +-- local-node-id?            nw:node-id
+    |  |     +-- local-te-node-id?         te-types:te-node-id
+    |  |     +-- local-link-tp-id?         nt:tp-id
+    |  |     +-- local-te-link-tp-id?      te-types:te-tp-id
+    |  |     +-- remote-node-id?           nw:node-id
+    |  |     +-- remote-link-tp-id?        nt:tp-id
+    |  |     +-- remote-te-link-tp-id?     te-types:te-tp-id
+    |  |     +-- remote-te-node-id?        te-types:te-node-id
+    |  |     +--ro link-id?                  nt:link-id
+    |  |     +-- network-id?               nw:network-id
+    |  |     +-- te-topology-identifier
+    |  |        +-- provider-id?   te-global-id
+    |  |        +-- client-id?     te-global-id
+    |  |        +-- topology-id?   te-topology-id
+    |  +-- wdm-pc:wdm-constraint
+    |     +-- wdm-pc:transceiver-constraint
+    |     |  +-- wdm-pc:operational-modes*            string
+    |     |  +-- wdm-pc:tx-tune-constraints
+    |     |  |  +-- wdm-pc:min-central-frequency?    frequency-thz
+    |     |  |  +-- wdm-pc:max-central-frequency?    frequency-thz
+    |     |  |  +-- wdm-pc:transceiver-tunability?   frequency-ghz
+    |     |  +-- wdm-pc:line-coding-bitrate*          identityref
+    |     |  +-- wdm-pc:tx-channel-power?
+    |     |  |       l0-types:power-dbm
+    |     |  +-- wdm-pc:preferred-rx-channel-power?
+    |     |          l0-types:power-dbm
+    |     +-- wdm-pc:gsnr-extra-margin?             snr
+    |     +-- wdm-pc:use-regen?                     boolean
+    |     +-- wdm-pc:wavelength-conversion?         boolean
+    |     +-- wdm-pc:wavelength-assignment?         identityref
+    |     +-- wdm-pc:guard-band-size?
+    |     |       l0-types:frequency-thz
+    |     +-- wdm-pc:matching-fwd-rev-wavelength?   boolean
+    |     +-- wdm-pc:allow-retuning?                boolean
+    |     +-- wdm-pc:delta-power?
+    |             l0-types:power-ratio
+    +-- synchronization* []
+       +-- svec
+       |  +-- relaxable?           boolean
+       |  +-- disjointness?        te-path-disjointness
+       |  +-- request-id-number*   uint32
+       +-- svec-constraints
+       |  +-- path-metric-bound* [metric-type]
+       |     +-- metric-type    identityref
+       |     +-- upper-bound?   uint64
+       +-- path-srlgs-lists
+       |  +-- path-srlgs-list* [usage]
+       |     +-- usage     identityref
+       |     +-- values*   srlg
+       +-- path-srlgs-names
+       |  +-- path-srlgs-name* [usage]
+       |     +-- usage    identityref
+       |     +-- names*   string
+       +-- exclude-objects
+       |  +-- excludes* []
+       |     +-- (type)?
+       |        +--:(numbered-node-hop)
+       |        |  +-- numbered-node-hop
+       |        |  |  +-- node-id-uri?   nw:node-id
+       |        |  |  +-- node-id?       te-node-id
+       |        |  |  +-- hop-type?      te-hop-type
+       |        |  +-- wdm-pc:path-in-transceiver
+       |        |  |  +-- wdm-pc:transponder-id?   uint32
+       |        |  |  +-- wdm-pc:transceivers* [lane-id]
+       |        |  |     +-- wdm-pc:lane-id
+       |        |  |     |       uint8
+       |        |  |     +-- wdm-pc:transceiver-id?
+       |        |  |     |       uint32
+       |        |  |     +-- wdm-pc:operational-modes*
+       |        |  |     |       string
+       |        |  |     +-- wdm-pc:tx-tune-constraints
+       |        |  |     |  +-- wdm-pc:min-central-frequency?
+       |        |  |     |  |       frequency-thz
+       |        |  |     |  +-- wdm-pc:max-central-frequency?
+       |        |  |     |  |       frequency-thz
+       |        |  |     |  +-- wdm-pc:transceiver-tunability?
+       |        |  |     |          frequency-ghz
+       |        |  |     +-- wdm-pc:line-coding-bitrate*
+       |        |  |     |       identityref
+       |        |  |     +-- wdm-pc:tx-channel-power?
+       |        |  |     |       l0-types:power-dbm
+       |        |  |     +-- wdm-pc:preferred-rx-channel-power?
+       |        |  |             l0-types:power-dbm
+       |        |  +-- wdm-pc:path-out-transceiver
+       |        |     +-- wdm-pc:transponder-id?   uint32
+       |        |     +-- wdm-pc:transceivers* [lane-id]
+       |        |        +-- wdm-pc:lane-id
+       |        |        |       uint8
+       |        |        +-- wdm-pc:transceiver-id?
+       |        |        |       uint32
+       |        |        +-- wdm-pc:operational-modes*
+       |        |        |       string
+       |        |        +-- wdm-pc:tx-tune-constraints
+       |        |        |  +-- wdm-pc:min-central-frequency?
+       |        |        |  |       frequency-thz
+       |        |        |  +-- wdm-pc:max-central-frequency?
+       |        |        |  |       frequency-thz
+       |        |        |  +-- wdm-pc:transceiver-tunability?
+       |        |        |          frequency-ghz
+       |        |        +-- wdm-pc:line-coding-bitrate*
+       |        |        |       identityref
+       |        |        +-- wdm-pc:tx-channel-power?
+       |        |        |       l0-types:power-dbm
+       |        |        +-- wdm-pc:preferred-rx-channel-power?
+       |        |                l0-types:power-dbm
+       |        +--:(numbered-link-hop)
+       |        |  +-- numbered-link-hop
+       |        |     +-- link-tp-id    te-tp-id
+       |        |     +-- hop-type?     te-hop-type
+       |        |     +-- direction?    te-link-direction
+       |        +--:(unnumbered-link-hop)
+       |        |  +-- unnumbered-link-hop
+       |        |     +-- link-tp-id-uri?   nt:tp-id
+       |        |     +-- link-tp-id?       te-tp-id
+       |        |     +-- node-id-uri?      nw:node-id
+       |        |     +-- node-id?          te-node-id
+       |        |     +-- hop-type?         te-hop-type
+       |        |     +-- direction?        te-link-direction
+       |        +--:(as-number)
+       |        |  +-- as-number-hop
+       |        |     +-- as-number    inet:as-number
+       |        |     +-- hop-type?    te-hop-type
+       |        +--:(label)
+       |        |  +-- label-hop
+       |        |     +-- te-label
+       |        |        +-- (technology)?
+       |        |        |  +--:(generic)
+       |        |        |  |  +-- generic?
+       |        |        |  |          rt-types:generalized-label
+       |        |        |  +--:(wdm-pc:wdm)
+       |        |        |     +-- (wdm-pc:grid-type)?
+       |        |        |        +--:(wdm-pc:fixed-dwdm)
+       |        |        |        |  +-- (wdm-pc:fixed-single-or-super-channel)?
+       |        |        |        |     +--:(wdm-pc:single)
+       |        |        |        |     |  +-- wdm-pc:dwdm-n?
+       |        |        |        |     |          l0-types:dwdm-n
+       |        |        |        |     +--:(wdm-pc:multi)
+       |        |        |        |        +-- wdm-pc:subcarrier-dwdm-n*
+       |        |        |        |                l0-types:dwdm-n
+       |        |        |        +--:(wdm-pc:cwdm)
+       |        |        |        |  +-- wdm-pc:cwdm-n?
+       |        |        |        |          l0-types:cwdm-n
+       |        |        |        +--:(wdm-pc:flexi-grid)
+       |        |        |           +-- (wdm-pc:single-or-super-channel)?
+       |        |        |              +--:(wdm-pc:single)
+       |        |        |              |  +-- wdm-pc:flexi-n?
+       |        |        |              |  |       l0-types:flexi-n
+       |        |        |              |  +-- wdm-pc:flexi-m?
+       |        |        |              |          l0-types:flexi-m
+       |        |        |              x--:(wdm-pc:super)
+       |        |        |              |  x-- wdm-pc:subcarrier-flexi-n*
+       |        |        |              |          [flexi-n]
+       |        |        |              |     +-- wdm-pc:flexi-n
+       |        |        |              |     |       l0-types:flexi-n
+       |        |        |              |     +-- wdm-pc:flexi-m?
+       |        |        |              |             l0-types:flexi-m
+       |        |        |              +--:(wdm-pc:multi)
+       |        |        |                 +-- wdm-pc:frequency-slots
+       |        |        |                    +-- wdm-pc:frequency-slot*
+       |        |        |                            [flexi-n]
+       |        |        |                       +-- wdm-pc:flexi-n
+       |        |        |                       |       l0-types:flexi-n
+       |        |        |                       +-- wdm-pc:flexi-m?
+       |        |        |                               l0-types:flexi-m
+       |        |        +-- direction?
+       |        |                te-label-direction
+       |        +--:(wdm-pc:oms-element)
+       |           +-- wdm-pc:oms-element-uid?        string
+       +-- optimizations
+          +-- (algorithm)?
+             +--:(metric) {te-types:path-optimization-metric}?
+             |  +-- optimization-metric* [metric-type]
+             |     +-- metric-type    identityref
+             |     +-- weight?        uint8
+             +--:(objective-function)
+                      {te-types:path-optimization-objective-function}?
+                +-- objective-function
+                   +-- objective-function-type?   identityref
+  augment /te:tunnels-path-compute/te:output/te:path-compute-result:
+    +--ro response* [response-id]
+       +--ro response-id                         uint32
+       +--ro computed-paths-properties
+       |  +--ro computed-path-properties* [k-index]
+       |     +--ro k-index            uint8
+       |     +--ro path-properties
+       |        +--ro path-metric* [metric-type]
+       |        |  +--ro metric-type           identityref
+       |        |  +--ro accumulative-value?   uint64
+       |        +--ro path-affinities-values
+       |        |  +--ro path-affinities-value* [usage]
+       |        |     +--ro usage    identityref
+       |        |     +--ro value?   admin-groups
+       |        +--ro path-affinity-names
+       |        |  +--ro path-affinity-name* [usage]
+       |        |     +--ro usage            identityref
+       |        |     +--ro affinity-name* [name]
+       |        |        +--ro name    string
+       |        +--ro path-srlgs-lists
+       |        |  +--ro path-srlgs-list* [usage]
+       |        |     +--ro usage     identityref
+       |        |     +--ro values*   srlg
+       |        +--ro path-srlgs-names
+       |        |  +--ro path-srlgs-name* [usage]
+       |        |     +--ro usage    identityref
+       |        |     +--ro names*   string
+       |        +--ro path-route-objects
+       |        |  +--ro path-route-object* [index]
+       |        |     +--ro index
+       |        |     |       uint32
+       |        |     +--ro (type)?
+       |        |        +--:(numbered-node-hop)
+       |        |        |  +--ro numbered-node-hop
+       |        |        |  |  +--ro node-id-uri?   nw:node-id
+       |        |        |  |  +--ro node-id?       te-node-id
+       |        |        |  |  +--ro hop-type?      te-hop-type
+       |        |        |  +--ro wdm-pc:path-in-transceiver
+       |        |        |  |  +--ro wdm-pc:transponder-id?   uint32
+       |        |        |  |  +--ro wdm-pc:transceivers* [lane-id]
+       |        |        |  |     +--ro wdm-pc:lane-id
+       |        |        |  |     |       uint8
+       |        |        |  |     +--ro wdm-pc:transceiver-id?
+       |        |        |  |     |       uint32
+       |        |        |  |     +--ro wdm-pc:operational-modes*
+       |        |        |  |     |       string
+       |        |        |  |     +--ro wdm-pc:tx-tune-constraints
+       |        |        |  |     |  +--ro wdm-pc:min-central-frequency?
+       |        |        |  |     |  |       frequency-thz
+       |        |        |  |     |  +--ro wdm-pc:max-central-frequency?
+       |        |        |  |     |  |       frequency-thz
+       |        |        |  |     |  +--ro wdm-pc:transceiver-tunability?
+       |        |        |  |     |          frequency-ghz
+       |        |        |  |     +--ro wdm-pc:line-coding-bitrate*
+       |        |        |  |     |       identityref
+       |        |        |  |     +--ro wdm-pc:tx-channel-power?
+       |        |        |  |     |       l0-types:power-dbm
+       |        |        |  |     +--ro wdm-pc:preferred-rx-channel-power?
+       |        |        |  |             l0-types:power-dbm
+       |        |        |  +--ro wdm-pc:path-out-transceiver
+       |        |        |     +--ro wdm-pc:transponder-id?   uint32
+       |        |        |     +--ro wdm-pc:transceivers* [lane-id]
+       |        |        |        +--ro wdm-pc:lane-id
+       |        |        |        |       uint8
+       |        |        |        +--ro wdm-pc:transceiver-id?
+       |        |        |        |       uint32
+       |        |        |        +--ro wdm-pc:operational-modes*
+       |        |        |        |       string
+       |        |        |        +--ro wdm-pc:tx-tune-constraints
+       |        |        |        |  +--ro wdm-pc:min-central-frequency?
+       |        |        |        |  |       frequency-thz
+       |        |        |        |  +--ro wdm-pc:max-central-frequency?
+       |        |        |        |  |       frequency-thz
+       |        |        |        |  +--ro wdm-pc:transceiver-tunability?
+       |        |        |        |          frequency-ghz
+       |        |        |        +--ro wdm-pc:line-coding-bitrate*
+       |        |        |        |       identityref
+       |        |        |        +--ro wdm-pc:tx-channel-power?
+       |        |        |        |       l0-types:power-dbm
+       |        |        |        +--ro wdm-pc:preferred-rx-channel-power?
+       |        |        |                l0-types:power-dbm
+       |        |        +--:(numbered-link-hop)
+       |        |        |  +--ro numbered-link-hop
+       |        |        |     +--ro link-tp-id    te-tp-id
+       |        |        |     +--ro hop-type?     te-hop-type
+       |        |        |     +--ro direction?    te-link-direction
+       |        |        +--:(unnumbered-link-hop)
+       |        |        |  +--ro unnumbered-link-hop
+       |        |        |     +--ro link-tp-id-uri?   nt:tp-id
+       |        |        |     +--ro link-tp-id?       te-tp-id
+       |        |        |     +--ro node-id-uri?      nw:node-id
+       |        |        |     +--ro node-id?          te-node-id
+       |        |        |     +--ro hop-type?         te-hop-type
+       |        |        |     +--ro direction?
+       |        |        |             te-link-direction
+       |        |        +--:(as-number)
+       |        |        |  +--ro as-number-hop
+       |        |        |     +--ro as-number    inet:as-number
+       |        |        |     +--ro hop-type?    te-hop-type
+       |        |        +--:(label)
+       |        |        |  +--ro label-hop
+       |        |        |     +--ro te-label
+       |        |        |        +--ro (technology)?
+       |        |        |        |  +--:(generic)
+       |        |        |        |  |  +--ro generic?
+       |        |        |        |  |          rt-types:generalized-label
+       |        |        |        |  +--:(wdm-pc:wdm)
+       |        |        |        |     +--ro (wdm-pc:grid-type)?
+       |        |        |        |        +--:(wdm-pc:fixed-dwdm)
+       |        |        |        |        |  +--ro (wdm-pc:fixed-single-or-super-channel)?
+       |        |        |        |        |     +--:(wdm-pc:single)
+       |        |        |        |        |     |  +--ro wdm-pc:dwdm-n?
+       |        |        |        |        |     |          l0-types:dwdm-n
+       |        |        |        |        |     +--:(wdm-pc:multi)
+       |        |        |        |        |        +--ro wdm-pc:subcarrier-dwdm-n*
+       |        |        |        |        |                l0-types:dwdm-n
+       |        |        |        |        +--:(wdm-pc:cwdm)
+       |        |        |        |        |  +--ro wdm-pc:cwdm-n?
+       |        |        |        |        |          l0-types:cwdm-n
+       |        |        |        |        +--:(wdm-pc:flexi-grid)
+       |        |        |        |           +--ro (wdm-pc:single-or-super-channel)?
+       |        |        |        |              +--:(wdm-pc:single)
+       |        |        |        |              |  +--ro wdm-pc:flexi-n?
+       |        |        |        |              |  |       l0-types:flexi-n
+       |        |        |        |              |  +--ro wdm-pc:flexi-m?
+       |        |        |        |              |          l0-types:flexi-m
+       |        |        |        |              x--:(wdm-pc:super)
+       |        |        |        |              |  x--ro wdm-pc:subcarrier-flexi-n*
+       |        |        |        |              |          [flexi-n]
+       |        |        |        |              |     +--ro wdm-pc:flexi-n
+       |        |        |        |              |     |       l0-types:flexi-n
+       |        |        |        |              |     +--ro wdm-pc:flexi-m?
+       |        |        |        |              |             l0-types:flexi-m
+       |        |        |        |              +--:(wdm-pc:multi)
+       |        |        |        |                 +--ro wdm-pc:frequency-slots
+       |        |        |        |                    +--ro wdm-pc:frequency-slot*
+       |        |        |        |                            [flexi-n]
+       |        |        |        |                       +--ro wdm-pc:flexi-n
+       |        |        |        |                       |       l0-types:flexi-n
+       |        |        |        |                       +--ro wdm-pc:flexi-m?
+       |        |        |        |                               l0-types:flexi-m
+       |        |        |        +--ro direction?
+       |        |        |                te-label-direction
+       |        |        +--:(wdm-pc:oms-element)
+       |        |           +--ro wdm-pc:oms-element-uid?
+       |        |                   string
+       |        +--ro te-bandwidth
+       |        |  +--ro (technology)?
+       |        |     +--:(generic)
+       |        |        +--ro generic?   te-bandwidth
+       |        +--ro disjointness-type?
+       |        |       te-types:te-path-disjointness
+       |        +--ro wdm-pc:estimated-gsnr?          snr
+       |        +--ro wdm-pc:estimated-eol-gsnr?      snr
+       |        +--ro wdm-pc:estimated-lowest-gsnr?   snr
+       +--ro computed-path-error-infos
+       |  +--ro computed-path-error-info* []
+       |     +--ro error-description?   string
+       |     +--ro error-timestamp?     yang:date-and-time
+       |     +--ro error-reason?        identityref
+       +--ro tunnel-ref?                         te:tunnel-ref
+       +--ro (path-role)?
+          +--:(primary)
+          |  +--ro primary-path-ref?             leafref
+          +--:(primary-reverse)
+          |  +--ro primary-reverse-path-ref?     leafref
+          +--:(secondary)
+          |  +--ro secondary-path-ref?           leafref
+          +--:(secondary-reverse)
+             +--ro secondary-reverse-path-ref?   leafref
+  augment /te:tunnels-actions/te:input/te:tunnel-info/te:filter-type:
+    +--:(path-compute-transactions)
+       +-- path-compute-transaction-id*   string
+  augment /te:tunnels-actions/te:output:
+    +--ro path-computed-delete-result
+       +--ro path-compute-transaction-id*   string

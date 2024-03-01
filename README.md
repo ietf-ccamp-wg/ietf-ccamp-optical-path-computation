@@ -1,13 +1,13 @@
-# YANG Data Models for requesting Path Computation in Optical Networks
+# YANG Data Models for Requesting Path Computation in WDM Networks
 
 ## Scope
 
 This repository is to facilitate the work on the [IETF CCAMP](https://datatracker.ietf.org/wg/ccamp/documents/) Individual Internet-Draft,
-"[YANG Data Models for requesting Path Computation in Optical Networks](https://datatracker.ietf.org/doc/draft-gbb-ccamp-optical-path-computation-yang/)".
+"[YANG Data Models for Requesting Path Computation in WDM Networks](https://datatracker.ietf.org/doc/draft-ietf-ccamp-optical-path-computation-yang/)".
 
 ## Abstract
 
-This document describes YANG data models for Remote Procedure Calls (RPCs) to request Path Computation in Optical Networks (OTN, WSON and Flexi-grid).
+This document describes YANG data models for Remote Procedure Calls (RPCs) to request Path Computation in WDM (WSON and Flexi-grid) Networks.
 
 The YANG data models defined in this
 document conforms to the Network Management Datastore Architecture
