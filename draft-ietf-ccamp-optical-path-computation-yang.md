@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "YANG Data Models for requesting Path Computation in WDM Optical Networks"
+abbrev: "YANG for WDM Path Computation"
+category: std
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-ietf-ccamp-optical-path-computation-yang-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
