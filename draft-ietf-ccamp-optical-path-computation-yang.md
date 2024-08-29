@@ -57,7 +57,7 @@ draft-ietf-teas-yang-path-computation once it has been published.
 
 {{!I-D.ietf-teas-yang-path-computation}} describes key use cases, where a client needs to request
 underlying Software-Defined Network (SDN) controllers for path computation. In some of these use cases, the
-underlying SDN controller can control a single-layer optical technologies, including 
+underlying SDN controller can control a single-layer optical technologies, including
 Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Flexi-grid, and multi-layer Optical network.
 
 This document defines YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
@@ -126,13 +126,13 @@ The YANG data models for requesting WDM path computation are defined as augmenta
                     +--------------------------+    o: augment
        TE generic   | ietf-te-path-computation |
                     +--------------------------+
-                                 o          
-                                 |              
-                                 |             
-                                 |     
-                    +---------------------------+   
-                    | ietf-wdm-path-computation |   
-                    +---------------------------+   
+                                 o
+                                 |
+                                 |
+                                 |
+                    +---------------------------+
+                    | ietf-wdm-path-computation |
+                    +---------------------------+
 
 ~~~~
 {: #fig-wdm-pc title="Relationship between WDM and TE path computation models" artwork-name="wdm-path-computation.txt"}
