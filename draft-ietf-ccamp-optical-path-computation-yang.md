@@ -63,7 +63,7 @@ Optical Transport Network (OTN), Wavelength Switched Optical Networks (WSON), Fl
 This document defines YANG data models, which augment the generic Path Computation RPC defined in {{!I-D.ietf-teas-yang-path-computation}}, with technology-specific augmentations required to request path computation to an underlying Optical SDN controller. These models allow
 a client to delegate path computation tasks to the underlying Optical SDN controller without having to obtain optical-layer information from the controller and performing feasible path computation itself. This is especially helpful in cases where computing optically-feasible paths require knowledge of physical-layer states, such as optical impairments, which are visible only to the Optical controller.
 
-## Terminology and Notations 
+## Terminology and Notations
 
   Refer to {{?RFC7446}} and {{?RFC7581}} for the key terms used in this
   document.  The following terms are defined in {{!RFC7950}} and are not
@@ -106,7 +106,7 @@ a client to delegate path computation tasks to the underlying Optical SDN contro
 | l0-types     | ietf-layer0-types                | \[RFCZZZZ]
 | te           | ietf-te                          | \[RFCKKKK]
 | tepc         | ietf-te-path-computation         | \[RFCYYYY]
-| wdm-pc       | ietf-wdm-path-computation        | RFCXXXX         
+| wdm-pc       | ietf-wdm-path-computation        | RFCXXXX
 {: #tab-prefixes title="Prefixes and corresponding YANG modules"}
 
 RFC Editor Note:
@@ -116,7 +116,7 @@ Please replace KKKK with the RFC number assigned to {{!I-D.ietf-teas-yang-te}}.
 Please replace YYYY with the RFC number assigned to {{!I-D.ietf-teas-yang-path-computation}}.
 Please remove this note.
 
-# YANG Data Models for WDM Path Computation 
+# YANG Data Models for WDM Path Computation
 
 ## YANG Models Overview
 
@@ -126,7 +126,7 @@ The YANG data models for requesting WDM path computation are defined as augmenta
                     +--------------------------+    o: augment
        TE generic   | ietf-te-path-computation |
                     +--------------------------+
-                                 o              
+                                 o          
                                  |              
                                  |             
                                  |     
@@ -160,7 +160,7 @@ for the te-bandwidth containers defined in {{!I-D.ietf-teas-yang-path-computatio
 ## Label Augmentations
 
 The models augment all the occurrences of the label-restriction list
-with WSON and Flexi-grid technology-specific attributes using the 
+with WSON and Flexi-grid technology-specific attributes using the
 l0-label-range-info and flexi-grid-label-range-info groupings defined in {{!I-D.ietf-ccamp-rfc9093-bis}}.
 
 Moreover, the models augment all the occurrences of the te-label
@@ -243,19 +243,19 @@ Editors note, please remove this appendix before publication.
 
 The authors of this document would like to thank the authors of {{?I-D.ietf-teas-actn-poi-applicability}} for having identified the gap and requirements to trigger this work.
 
-The authors of this document would also like to thank 
-Young Lee, 
-Haomian Zheng, 
-Victor Lopex, 
-Ricard Vilalta, 
-Bin Yeong Yoon, 
-Jorge E. Lopez de Vergara Mendez, 
-Daniel Perdices Burrero, 
-Oscar Gonzalez de Dios, 
-Gabriele Galimberti, 
-Zafar Ali, 
-Daniel Michaud Vallinoto and 
-Dhruv Dhody 
+The authors of this document would also like to thank
+Young Lee,
+Haomian Zheng,
+Victor Lopex,
+Ricard Vilalta,
+Bin Yeong Yoon,
+Jorge E. Lopez de Vergara Mendez,
+Daniel Perdices Burrero,
+Oscar Gonzalez de Dios,
+Gabriele Galimberti,
+Zafar Ali,
+Daniel Michaud Vallinoto and
+Dhruv Dhody
 who have contributed to the development of path computation augmentations for WSON and Flexi-grid topology in earlier versions of
 {{?I-D.ietf-ccamp-wson-tunnel-model}} and of {{?I-D.ietf-ccamp-flexigrid-tunnel-yang}}.
 
