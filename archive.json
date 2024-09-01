@@ -1,0 +1,1181 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2024-09-01T00:40:41.010459+00:00",
+  "repo": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "agreed",
+      "description": "",
+      "color": "c2e0c6"
+    },
+    {
+      "name": "wait",
+      "description": "",
+      "color": "fef2c0"
+    }
+  ],
+  "issues": [
+    {
+      "number": 2,
+      "id": "I_kwDOGLfxbc49MNyj",
+      "title": "Text for the -00 draft",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/2",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi",
+        "aguoietf"
+      ],
+      "labels": [],
+      "body": "Prepare some text for the -00 draft\r\n\r\nCo-authors:\r\n- Aihua\r\n- Italo\r\n- Sergio\r\n- Daniel King (contributor)\r\n",
+      "createdAt": "2021-10-14T16:46:18Z",
+      "updatedAt": "2021-10-20T16:56:48Z",
+      "closedAt": "2021-10-20T16:56:48Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Proposed draft name: draft-gbb-ccamp-optical-path-computation-yang\r\n",
+          "createdAt": "2021-10-19T14:40:30Z",
+          "updatedAt": "2021-10-19T14:40:30Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOGLfxbc49MOHc",
+      "title": "Check co-authors from the media-channel draft",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/3",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aguoietf"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "Ask co-authors of the media-channel draft if they wish to co-sign this draft as well, since the flexi-grid path computation YANG model has been taken from that draft\r\n",
+      "createdAt": "2021-10-14T16:48:01Z",
+      "updatedAt": "2022-03-07T14:35:09Z",
+      "closedAt": "2022-03-07T14:35:09Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Add co-authors of flexi-grid tunnel and wson-tunnel in the acknowledgement section, since the YANG model for flexi-grid and wson path computation have been moved from these drafts",
+          "createdAt": "2021-11-25T13:49:12Z",
+          "updatedAt": "2021-11-25T13:49:12Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOGLfxbc49MO5b",
+      "title": "Add flexi-grid path computation YANG model",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/4",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi"
+      ],
+      "labels": [],
+      "body": "Start from the RPC in https://datatracker.ietf.org/doc/draft-ietf-ccamp-flexigrid-media-channel-yang/04/ and add flexi-grid technology-specific augmentations for the te-label and label-ranges\r\n",
+      "createdAt": "2021-10-14T16:51:46Z",
+      "updatedAt": "2021-10-22T17:38:42Z",
+      "closedAt": "2021-10-20T16:03:13Z",
+      "comments": [
+        {
+          "author": "tsaad-dev",
+          "authorAssociation": "NONE",
+          "body": "Addressed in e066911dc46063015daa17407a69ed994428fb79 of https://github.com/tsaad-dev/te/commits/master",
+          "createdAt": "2021-10-22T17:38:42Z",
+          "updatedAt": "2021-10-22T17:38:42Z"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOGLfxbc4-WiVX",
+      "title": "Review l0-tunnel-attributes grouping",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/7",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi",
+        "sergiobelotti"
+      ],
+      "labels": [
+        "wait"
+      ],
+      "body": "- [x] https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-flexigrid-media-channel-yang/issues/15\r\n\r\nSee: See slides: https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-flexigrid-tunnel-yang/files/9019962/wdm-tunnel-scenarios-05.pptx\r\n",
+      "createdAt": "2021-11-05T17:47:50Z",
+      "updatedAt": "2024-08-01T13:41:05Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOGLfxbc4-WicQ",
+      "title": "Review l0-path-constraints grouping",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/8",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi",
+        "sergiobelotti"
+      ],
+      "labels": [],
+      "body": "- [x] https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-flexigrid-media-channel-yang/issues/16",
+      "createdAt": "2021-11-05T17:48:24Z",
+      "updatedAt": "2022-02-04T22:33:05Z",
+      "closedAt": "2022-02-04T22:33:05Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Update the code as discussed in https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-flexigrid-tunnel-yang/issues/16\r\n",
+          "createdAt": "2021-12-16T13:25:08Z",
+          "updatedAt": "2021-12-16T13:25:08Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOGLfxbc4-Wini",
+      "title": "How many documents?",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/9",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Discuss how many documents (1,2 or 3) should developed:\r\n- WSON Path Computation\r\n- Flexi-grid Path Computation\r\n- OTN Path Computation\r\n",
+      "createdAt": "2021-11-05T17:49:13Z",
+      "updatedAt": "2022-04-07T12:24:01Z",
+      "closedAt": "2022-04-07T12:24:01Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "As discussed during CCAMP IETF 112 meeting, we will have another update of this document and later discuss how to split it\r\n",
+          "createdAt": "2021-11-25T13:46:21Z",
+          "updatedAt": "2022-02-24T14:05:33Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Comment from @aguoietf :\r\n\r\n> If we look at the current flex grid and wson path computation - they are identical. Therefore I think a better strategy is to combine these two and have a common path computation model for both flex grid and wson. We can add flex-grid- or wson-specific constructs onto the common model using augments (or even within the same model by switch-case statement) if there is a need.\r\n\r\nSee: https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/18#pullrequestreview-898977312",
+          "createdAt": "2022-03-03T17:39:25Z",
+          "updatedAt": "2022-03-03T17:40:05Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> Comment from @aguoietf :\r\n> \r\n> > If we look at the current flex grid and wson path computation - they are identical. Therefore I think a better strategy is to combine these two and have a common path computation model for both flex grid and wson. We can add flex-grid- or wson-specific constructs onto the common model using augments (or even within the same model by switch-case statement) if there is a need.\r\n> \r\n> See: [#18 (review)](https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/18#pullrequestreview-898977312)\r\n\r\nThe augmentations related with TE labels are not in common between WSON and flexi-grid models, but I would agree that all the other augmentations would be in common between WSON and flexi-grid models ...\r\n\r\nAn alternative approach could be to have a common l0-path-computation model with all the common augmentations to be further augmented by wson-path-computation and flexi-grid-path-computation models with the specific augmentations (most likely only those related to the TE labels)",
+          "createdAt": "2022-03-03T17:45:20Z",
+          "updatedAt": "2022-03-03T17:45:20Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Feedbacks from IETF 113 discussion:\r\n\r\nhttps://notes.ietf.org/notes-ietf-113-ccamp\r\n\r\n1. Split the work in two documents: one for OTN (layer 1) and for WDM (layer 0): see issue #19 ;\r\n2. Try to merge WSON and flexi-grid path computation modules into a single module: see issue #20\r\n\r\nI think we can close this issue",
+          "createdAt": "2022-03-25T15:54:11Z",
+          "updatedAt": "2022-03-25T15:54:11Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOGLfxbc4_ZVj7",
+      "title": "Complete Manageability Considerations",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/10",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "danielkinguk"
+      ],
+      "labels": [],
+      "body": "Add text to the Manageability Considerations section\r\n",
+      "createdAt": "2021-11-25T13:42:40Z",
+      "updatedAt": "2024-08-29T18:10:24Z",
+      "closedAt": "2024-08-29T18:10:23Z",
+      "comments": [
+        {
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Initial text for \"Manageability Considerations\" section.  \r\n\r\n\"This document provides a method for requesting path computations for WSON and Flexi-Grid tunnels. Consideration of mechanisms to gather and collate information required for the path computations will be necessary. Furthermore, storing path computation requests and responses and triggering actions according to configured will also need to be carefully managed and secured. \r\n\r\nFuture versions of this document will contain additional information.\"\r\n",
+          "createdAt": "2022-09-09T14:30:02Z",
+          "updatedAt": "2022-09-09T14:30:02Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "The text on Manageability Considerations should be updated once the document is stable.",
+          "createdAt": "2022-09-12T13:19:08Z",
+          "updatedAt": "2022-09-12T13:19:08Z"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOGLfxbc4_ZV7R",
+      "title": "Complete Security Considerations",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/11",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "danielkinguk",
+        "italobusi"
+      ],
+      "labels": [],
+      "body": "Propose text for the Security Considerations section\r\n",
+      "createdAt": "2021-11-25T13:44:07Z",
+      "updatedAt": "2022-09-12T13:19:26Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Text for security section. \r\n\r\nThe YANG module defined in this document will be accessed via the NETCONF protocol [RFC6241] or RESTCONF protocol [RFC8040]. The lowest NETCONF layer is the secure transport layer, and the mandatory-to-implement secure transport is Secure Shell (SSH) [RFC6242].  The lowest RESTCONF layer is HTTPS and the mandatory-to-implement secure transport is TLS [RFC8446].\r\n\r\nThe Network Configuration Access Control Model (NACM) [RFC8341] provides the means to restrict access to particular NETCONF or RESTCONF users to a preconfigured subset of all available NETCONF or RESTCONF protocol operations and content.\r\n\r\nSome of the RPC operations defined in this YANG module may be\r\n considered sensitive or vulnerable in some network environments.  It is thus essential to control access to these operations.  \r\n\r\nOperations defined in this document, and their sensitivities and possible vulnerabilities, will be discussed further in future versions of this document.",
+          "createdAt": "2022-09-09T14:35:04Z",
+          "updatedAt": "2022-09-09T14:35:04Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "The text on Security Considerations should be updated once the YANG model is stable.",
+          "createdAt": "2022-09-12T13:17:08Z",
+          "updatedAt": "2022-09-12T13:17:08Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOGLfxbc4_ZWI8",
+      "title": "Add IANA Considerations",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/12",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi"
+      ],
+      "labels": [],
+      "body": "Propose text for the IANA Considerations section.",
+      "createdAt": "2021-11-25T13:44:58Z",
+      "updatedAt": "2022-03-07T14:35:08Z",
+      "closedAt": "2022-03-07T14:35:08Z",
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOGLfxbc4_ZWsm",
+      "title": "Review -00 draft text",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/13",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "danielkinguk",
+        "ggalimba56"
+      ],
+      "labels": [],
+      "body": "Review the -00 version of the draft and provide comments\r\n",
+      "createdAt": "2021-11-25T13:47:17Z",
+      "updatedAt": "2022-04-07T12:23:39Z",
+      "closedAt": "2022-04-07T12:23:39Z",
+      "comments": [
+        {
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "body": "A few suggestions attached.\r\n \r\n[draft-gbb-ccamp-optical-path-computation-yang-00-dk-review.docx](https://github.com/aguoietf/ietf-ccamp-optical-path-computation/files/8195946/draft-gbb-ccamp-optical-path-computation-yang-00-dk-review.docx)\r\n",
+          "createdAt": "2022-03-07T08:22:20Z",
+          "updatedAt": "2022-03-07T08:22:20Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOGLfxbc4_wTao",
+      "title": "Add optical impairment-related constraints to path computation",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/14",
+      "state": "CLOSED",
+      "author": "aguoietf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi",
+        "sergiobelotti"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "Candidates for consideration:\r\n- QoT (Q-factor and/or BER)\r\n- G-SNR",
+      "createdAt": "2021-12-02T14:40:44Z",
+      "updatedAt": "2022-03-07T14:35:09Z",
+      "closedAt": "2022-03-07T14:35:09Z",
+      "comments": [
+        {
+          "author": "ggalimba56",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In flexigrid networks the optical impairments constraints are not very different from WSON networks.\r\nIt is very common to calculate the circuit (or tunnel) G-SNR and use its value to match against the Transceiver G-SNR robustness. If the two values are compatible the probability that the new tunnel works is very high (wit usually 0.5dB margin).\r\nOther parameter that can be considered are the total tunnel Chromatic Dispersion (CD) and the Transceiver capability to compensate it. Finally the, for a more accurate optical feasibility, the PMD and PDL can be calculated and checked against the transceiver capabilities. \r\n ",
+          "createdAt": "2021-12-29T16:11:35Z",
+          "updatedAt": "2021-12-29T16:11:35Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-01-27 Call**\r\n\r\n> It is very common to calculate the circuit (or tunnel) G-SNR and use its value to match against the Transceiver G-SNR robustness. If the two values are compatible the probability that the new tunnel works is very high (wit usually 0.5dB margin).\r\n\r\n@aguoietf : there are applications that requires the flexibility to specify a G-SNR different than the Transceiver G-SNR robustness\r\n\r\nQoT (Q-factor and/or BER) needs further investigation\r\n",
+          "createdAt": "2022-01-27T14:00:19Z",
+          "updatedAt": "2022-01-27T14:04:27Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-02-03 Call**\r\n\r\nAgreement to make the G-SNR margin configurable by the user (used as an input for path computation)\r\n\r\nAdd a new optional attribute as input for path computation:\r\n- name: gsnr-margin\r\n- type: decimal64 (or existing typedef for dB)\r\n- unit: dB\r\n- default: implementation specific (to be clarified in the description)\r\n\r\n- [x] @aguoietf : check for a reference and definition (to be put in the YANG description)\r\n\r\nAdd a new optional attribute as output of path computation to report the computed gsnr of the path\r\n\r\nThese attributes need to be defined both for path computation and tunnel models (per path)\r\n\r\nDiscuss the Q-factor next week\r\n",
+          "createdAt": "2022-02-03T13:54:13Z",
+          "updatedAt": "2022-02-17T13:55:52Z"
+        },
+        {
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "body": "2022-02-10 call:\r\ngsnr-margin and Q-factor are both parameters that can be configured by user. \r\ngsnr-margin can overwrite what is provided by transceiver specification (osnr-min, q-factor-min as represented in optical impairments).\r\nEs: I can have a path with OSNR = 9, at receiver you can have by specification OSNR-min = 10, and so the path would be not feasible. But if the user put an OSNR-margin = -2, that means OSNR-min becomes 8, and the path is feasible.\r\nQ-factor needs a clear definition. \r\n",
+          "createdAt": "2022-02-10T18:34:07Z",
+          "updatedAt": "2022-02-10T18:34:07Z"
+        },
+        {
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "body": "From gsnr-margin and minimum gsnr on the transceiver, one can estimate a receiving gsnr, which can then be used to calculate Q-factor and pre-FEC BER. Perhaps it is better to just keep the gsnr-margin parameter on the flexgrid tunnel specification.\r\n\r\nReference to Q-factor definition and calculation:\r\n[ITU-T Rec. Q.201](https://www.itu.int/rec/T-REC-O.201-200307-I/en)",
+          "createdAt": "2022-02-17T01:46:19Z",
+          "updatedAt": "2022-02-17T01:51:14Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-02-17 Call**\r\n\r\n**OSNR or GSNR?**\r\n\r\nThe transceiver spec defines the OSNR-min that characterize the transceiver without considering linear effects. For the path the GSNR is computed (estimated) and this value is compared with the OSNR-min, which includes some industrial and EOL margins \r\n\r\nExample:\r\n- path GSNR = 9 dB\r\n- transceiver mode min-OSNR 7dB\r\n  - with no gsnr-marging, the path is feasible\r\n  - with 3 dB gsnr-marging the path becomes unfeasible\r\n\r\n**Should the gsnr-marging be positive or could it be also negative?**\r\n\r\nA negative gsnr-marging can be risky. However, the margins used are sometimes too conservative.\r\n\r\nAgreed to define the gsnr-margin as a positive value only and not to define any attribute for Q-factor.\r\n",
+          "createdAt": "2022-02-17T13:41:13Z",
+          "updatedAt": "2022-02-24T13:24:38Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "2022-02-24 Call\r\n\r\n> Add a new optional attribute as output of path computation to report the computed gsnr of the path\r\n> \r\n\r\nAgreed: the attribute should be called estimated-gsnr\r\n\r\n> These attributes need to be defined both for path computation and tunnel models (per path)\r\n\r\nAgreed: the definitions should be developed within a grouping in L0-types-ext and imported by the path computation and tunnel models\r\n\r\n",
+          "createdAt": "2022-02-24T13:28:02Z",
+          "updatedAt": "2022-02-24T13:28:02Z"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOGLfxbc5AgRxB",
+      "title": "Add WDM technology-specific constraints",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/15",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi",
+        "sergiobelotti"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "**2021-12-16 Call**\r\n\r\nIn addition to optical impairments-related constraints (issue #14 ) there can be other WDM technology-specific constraints\r\n\r\nCandidates:\r\n- path length or latency\r\n- number of hops\r\n\r\nTo check if they already exist as a generic constraints",
+      "createdAt": "2021-12-16T13:32:51Z",
+      "updatedAt": "2022-03-07T14:35:08Z",
+      "closedAt": "2022-03-07T14:35:08Z",
+      "comments": [
+        {
+          "author": "ggalimba56",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In a Flexigrid tunnel it is reasonable to suppose some constraints may be set from the operator,\r\nthe most significant are:\r\n- MAX number of hops\r\n- MAX circuit (tunnel) length (latency)\r\n- MAX circuit Noise (or Min OSNR) value.\r\nThe Operator should be able to set any combination of the above constraints (giving values) as well as giving the criteria to sort the the available tunnel list (e.g. sorting first on the number of hops or on the circuit length, etc.).\r\nAll the above can give an excellent path computation accuracy in terms of optical feasibility and circuit performance.\r\n\r\nThere are other kind of constraints required by and operator):\r\n- diversity (from an existing circuit)\r\n- exclusion of resources already in use or critical (XRO - e.g. Nodes, Links, SRLG)\r\n- Inclusion of resources or exlicit route (ERO)\r\n- Spectrum assignment.\r\nThe above constraints are considered in the path computation process.",
+          "createdAt": "2021-12-29T17:09:25Z",
+          "updatedAt": "2021-12-29T17:09:25Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-01-27 Call**\r\n\r\nRe-opened to track the actions required to support these requirements: checks which constraints are already supported by generic TE  tunnel and which constraints need to be defined in the flexi-grid tunnel model\r\n",
+          "createdAt": "2022-01-27T14:01:14Z",
+          "updatedAt": "2022-01-27T14:03:51Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-02-24 Call**\r\n\r\n> * MAX number of hops\r\n> * MAX circuit (tunnel) length (latency)\r\n\r\nSupported by the generic TE tunnel and Path Computation RPC models as metric-bounds\r\n\r\n> * MAX circuit Noise (or Min OSNR) value.\r\n\r\nAddressed in #14 \r\n\r\n> * diversity (from an existing circuit)\r\n> * exclusion of resources already in use or critical (XRO - e.g. Nodes, Links, SRLG)\r\n> * Inclusion of resources or exlicit route (ERO)\r\n\r\nSupported by the generic TE tunnel and Path Computation RPC models\r\n\r\n> * Spectrum assignment.\r\n\r\nSupported by the existing technology-specific augmentations of the TE label containers for the generic TE tunnel and Path Computation RPC models\r\n\r\nAdditional technology-specific constraints (to be added):\r\n- include/exclude OMS elements\r\n\r\nThis constraint can be configured in either path computation RPC or in the tunnel model (per-path)\r\n\r\nTo be added in layer0-types-ext and to be used by all the technology-specific tunnel and path-computation models",
+          "createdAt": "2022-02-24T13:47:11Z",
+          "updatedAt": "2022-02-24T13:49:19Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> Additional technology-specific constraints (to be added):\r\n> \r\n> * include/exclude OMS elements\r\n> \r\n> This constraint can be configured in either path computation RPC or in the tunnel model (per-path)\r\n> \r\n> To be added in layer0-types-ext and to be used by all the technology-specific tunnel and path-computation models\r\n\r\nWe need to augment the following choice with one attribute (oms-element-id):\r\n\r\n```\r\n       |  |  |  +-- (type)?\r\n       |  |  |     +--:(numbered-node-hop)\r\n       |  |  |     |  +-- numbered-node-hop\r\n       |  |  |     |     +-- node-id     te-node-id\r\n       |  |  |     |     +-- hop-type?   te-hop-type\r\n       |  |  |     +--:(numbered-link-hop)\r\n       |  |  |     |  +-- numbered-link-hop\r\n       |  |  |     |     +-- link-tp-id    te-tp-id\r\n       |  |  |     |     +-- hop-type?     te-hop-type\r\n       |  |  |     |     +-- direction?    te-link-direction\r\n       |  |  |     +--:(unnumbered-link-hop)\r\n       |  |  |     |  +-- unnumbered-link-hop\r\n       |  |  |     |     +-- link-tp-id    te-tp-id\r\n       |  |  |     |     +-- node-id       te-node-id\r\n       |  |  |     |     +-- hop-type?     te-hop-type\r\n       |  |  |     |     +-- direction?    te-link-direction\r\n       |  |  |     +--:(as-number)\r\n       |  |  |     |  +-- as-number-hop\r\n       |  |  |     |     +-- as-number    inet:as-number\r\n       |  |  |     |     +-- hop-type?    te-hop-type\r\n       |  |  |     +--:(label)\r\n       |  |  |        +-- label-hop\r\n       |  |  |           +-- te-label\r\n       |  |  |              +-- (technology)?\r\n       |  |  |              |  +--:(generic)\r\n       |  |  |              |     +-- generic?\r\n       |  |  |              |             rt-types:generalized-label\r\n       |  |  |              +-- direction?       te-label-direction\r\n\r\n``` \r\n\r\nThis should be done in each model and not in the layer0-types-ext.\r\n\r\nCo-Authored-By: sergio belotti [sergio.belotti@nokia.com](mailto:sergio.belotti@nokia.com)\r\n",
+          "createdAt": "2022-03-02T17:57:34Z",
+          "updatedAt": "2022-03-02T17:57:34Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOGLfxbc5GZAUf",
+      "title": "Split the work in two documents: one for OTN (layer 1) and for WDM (layer 0)",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/19",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedbacks from IETF 113 discussion:\r\n\r\nhttps://notes.ietf.org/notes-ietf-113-ccamp\r\n\r\n1. **Split the work in two documents: one for OTN (layer 1) and for WDM (layer 0)**;\r\n2. Try to merge WSON and flexi-grid path computation modules into a single module\r\n",
+      "createdAt": "2022-03-25T15:52:53Z",
+      "updatedAt": "2022-09-12T08:48:31Z",
+      "closedAt": "2022-09-12T08:48:31Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "@aguoietf and me have already duplicated the content of this repository into a new github repository to be used for OTN path computation:\r\n\r\nhttps://github.com/aguoietf/ietf-ccamp-otn-path-computation\r\n\r\nThis github repository can be used to continue the work on wson and flexi-grid path computation models",
+          "createdAt": "2022-03-25T19:12:34Z",
+          "updatedAt": "2022-03-25T19:12:34Z"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOGLfxbc5GZAeW",
+      "title": "Merge WSON and flexi-grid path computation modules into a single module",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/20",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "italobusi",
+        "aguoietf"
+      ],
+      "labels": [],
+      "body": "Feedbacks from IETF 113 discussion:\r\n\r\nhttps://notes.ietf.org/notes-ietf-113-ccamp\r\n\r\n1. Split the work in two documents: one for OTN (layer 1) and for WDM (layer 0);\r\n2. **Try to merge WSON and flexi-grid path computation modules into a single module**\r\n",
+      "createdAt": "2022-03-25T15:53:30Z",
+      "updatedAt": "2024-01-11T13:24:20Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We will prepare first YANG code that shows the merge, and we will discuss on our weekly optical call (starting Oct 20). ",
+          "createdAt": "2022-10-13T12:29:11Z",
+          "updatedAt": "2022-10-13T12:29:11Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "An initial proposal prepared by me and Aihua: [wdm-path-computation-00.pptx](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/files/9877879/wdm-path-computation-00.pptx)\r\n",
+          "createdAt": "2022-10-27T09:07:04Z",
+          "updatedAt": "2022-10-27T09:07:04Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Slides updated during the 2022-10-27 call: [wdm-path-computation-01.pptx](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/files/9879504/wdm-path-computation-01.pptx)\r\n",
+          "createdAt": "2022-10-27T12:48:59Z",
+          "updatedAt": "2022-10-27T12:49:25Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Slides updated during the offline call with customers on 2022-11-03: [wdm-path-computation-02.pptx](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/files/9940068/wdm-path-computation-02.pptx)\r\n",
+          "createdAt": "2022-11-04T15:56:55Z",
+          "updatedAt": "2022-11-04T15:56:55Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "Align the I-D and model with [draft-ietf-ccamp-wdm-tunnel-yang](https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-wdm-tunnel-yang)",
+          "createdAt": "2024-01-11T13:24:19Z",
+          "updatedAt": "2024-01-11T13:24:19Z"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "id": "I_kwDOGLfxbc5Rpwrw",
+      "title": "Fix idnits warnings",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/23",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "danielkinguk"
+      ],
+      "labels": [],
+      "body": "The following ID-nits have been identified:\r\n\r\n>   == Unused Reference: 'I-D.ietf-ccamp-flexigrid-tunnel-yang' is defined on\r\n>      line 1604, but no explicit reference was found in the text\r\n> \r\n>   == Unused Reference: 'I-D.ietf-teas-actn-poi-applicability' is defined on\r\n>      line 1594, but no explicit reference was found in the text\r\n> \r\n\r\nThese two drafts are informatively referenced in the Acknowledgements section\r\n\r\nReference: https://author-tools.ietf.org/api/idnits?url=https://www.ietf.org/archive/id/draft-gbb-ccamp-optical-path-computation-yang-02.txt",
+      "createdAt": "2022-09-12T13:20:46Z",
+      "updatedAt": "2022-10-06T12:59:47Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "See: https://github.com/aguoietf/ietf-ccamp-otn-path-computation/issues/7",
+          "createdAt": "2022-10-06T12:57:05Z",
+          "updatedAt": "2022-10-06T12:57:05Z"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOGLfxbc5TOV2O",
+      "title": "Tom Petch's WG adoption comments",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/24",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "sergiobelotti"
+      ],
+      "labels": [],
+      "body": "> The YANG import have revision dates which fix which version of the import is to be used and the dates are sure to change when the referenced I-D becomes an RFC.  This is unusual.\r\n> \r\n\r\nAuthors>> TBD\r\n\r\n> There is no history, nothing in the I-D, nothing AFAICT in the data tracker, to show the initial version and the split that took place.  Needs recording and should be in the final RFC IMHO.\r\n\r\nAuthors>> TBD\r\n\r\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/s705HTkui3tsTivyF6UB1HQA_XE/",
+      "createdAt": "2022-10-04T13:20:48Z",
+      "updatedAt": "2022-10-10T12:31:22Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2022-10-06 Weekly call**\r\n\r\nRegarding the first comment, clarify that the import-by-revision is used to avoid compilation issues when the imported module (which is also work-in-progress) changes. The import-by-revision will be changed to a regular import once the imported modules are stable and before the WG LC of this draft.\r\n\r\nRegarding the second comment, we can add an appendix as proposed in https://github.com/aguoietf/ietf-ccamp-otn-path-computation/issues/8\r\n\r\n- [ ] @sergiobelotti : send a reply to Tom on the CCAMP WG mailing list\r\n",
+          "createdAt": "2022-10-06T12:52:12Z",
+          "updatedAt": "2022-10-06T12:52:12Z"
+        },
+        {
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Appendix A. Change Log\r\n\r\nThe initial YANG data model requesting path computation in optical networks was draft-gbb-ccamp-optical-path-computation-yang-00. This document included path computation request capabilities for WSON, Flexi-Grid and OTN technologies. However, it was proposed at IETF 113 (March 25, 2022) to split the initial document into separate documents for WDM (WSON and Flexi-Grid) and OTN technologies, as each technology may be developed and implemented separately.\r\n\r\nThe WDM technology capabilities were kept in [draft-gbb-ccamp-optical-path-computation-yang], and the OTN capabilities were moved into a new document [draft-gbb-ccamp-otn-path-computation-yang].\r\n\r\nEditors note, please remove this appendix before publication.",
+          "createdAt": "2022-10-07T09:21:01Z",
+          "updatedAt": "2022-10-07T09:21:01Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> Appendix A. Change Log\r\n> \r\n> The initial YANG data model requesting path computation in optical networks was draft-gbb-ccamp-optical-path-computation-yang-00. This document included path computation request capabilities for WSON, Flexi-Grid and OTN technologies. However, it was proposed at IETF 113 (March 25, 2022) to split the initial document into separate documents for WDM (WSON and Flexi-Grid) and OTN technologies, as each technology may be developed and implemented separately.\r\n> \r\n> The WDM technology capabilities were kept in [draft-gbb-ccamp-optical-path-computation-yang], and the OTN capabilities were moved into a new document [draft-gbb-ccamp-otn-path-computation-yang].\r\n> \r\n> Editors note, please remove this appendix before publication.\r\n\r\nFixed in https://github.com/aguoietf/ietf-ccamp-optical-path-computation/commit/86594396fc6e749c848c4176b06a56a140712cba",
+          "createdAt": "2022-10-10T12:31:22Z",
+          "updatedAt": "2022-10-10T12:31:22Z"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOGLfxbc57xv4H",
+      "title": "Update reference to WDM Tunnel model",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/25",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Update the references to WDM tunnel model ([draft-ietf-ccamp-wdm-tunnel-yang](https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-wdm-tunnel-yang)) which has replaced both WSON and Flexi-grid tunnel models",
+      "createdAt": "2024-01-11T13:20:44Z",
+      "updatedAt": "2024-01-11T13:20:45Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOGLfxbc57xxPX",
+      "title": "Rename the I-D and model as wdm-path-computation",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/issues/26",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "To align with the companion wdm-tunnel-yang\r\n",
+      "createdAt": "2024-01-11T13:23:13Z",
+      "updatedAt": "2024-01-11T13:23:13Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOGLfxbc4tImcP",
+      "title": "YANG initial proposal",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/1",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Initial proposal for YANG models for OTN and WSON path computation\r\n\r\nCo-Authored-By: aguoietf <83043060+aguoietf@users.noreply.github.com>",
+      "createdAt": "2021-10-13T09:59:26Z",
+      "updatedAt": "2022-03-01T12:24:23Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "32d80f8ef8099582f3798a24e8e42f5299a1413f",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "initial-proposal",
+      "headRefOid": "85c8ce956ae95cf9670d824b538e10a10b753797",
+      "closedAt": "2021-10-19T19:18:10Z",
+      "mergedAt": "2021-10-19T19:18:10Z",
+      "mergedBy": "aguoietf",
+      "mergeCommit": {
+        "oid": "ae81244a59a59e16c7590feb5efbc80838e821be"
+      },
+      "comments": [
+        {
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Only 1 comment : there is no revision date in the import of both layer1-type\r\nimport ietf-layer1-types {\r\n    prefix \"l1-types\";\r\n    reference \r\n    \"I-D.ietf-ccamp-layer1-types: \r\n     A YANG Data Model for Layer 1 Types. \";\r\n  }\r\nand layer0-types and layer0-types-ext.\r\n\r\n",
+          "createdAt": "2021-10-15T14:32:16Z",
+          "updatedAt": "2021-10-15T14:32:16Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> Only 1 comment : there is no revision date in the import of both layer1-type import ietf-layer1-types { prefix \"l1-types\"; reference \"I-D.ietf-ccamp-layer1-types: A YANG Data Model for Layer 1 Types. \"; } and layer0-types and layer0-types-ext.\r\n\r\nIn IETF drafts we usually do not import by revision date\r\n\r\nThe import of ietf-te and ietf-te-path-computation are exceptions to avoid being required to synch-up a huge amount of augment statements each time the ietf-te or the ietf-te-path-computation are updated due to the lack of possibility to augment groupings in YANG (as discussed with Netmod WG)\r\n\r\nAfter these drafts have passed WG LC we should import them without a revision date",
+          "createdAt": "2021-10-18T08:49:43Z",
+          "updatedAt": "2021-10-18T08:49:43Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc4ui6-U",
+          "commit": {
+            "abbreviatedOid": "85c8ce9"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-10-15T14:28:18Z",
+          "updatedAt": "2021-10-15T14:28:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGLfxbc4ui8fW",
+          "commit": {
+            "abbreviatedOid": "85c8ce9"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-10-15T14:33:47Z",
+          "updatedAt": "2021-10-15T14:33:47Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "PR_kwDOGLfxbc4tPptP",
+      "title": "Flexi-grid Path Computation YANG",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/5",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Initial proposal for flexi-grid path computation YANG\r\n\r\nStarted from the RPC in https://datatracker.ietf.org/doc/draft-ietf-ccamp-flexigrid-media-channel-yang/04/ and add flexi-grid technology-specific augmentations for the te-label and label-ranges\r\n\r\nFix #4",
+      "createdAt": "2021-10-15T10:07:35Z",
+      "updatedAt": "2021-10-20T16:03:17Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "32d80f8ef8099582f3798a24e8e42f5299a1413f",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "flexi-grid-yang",
+      "headRefOid": "53631b3526ba72491a7bddd714136a0a0878549e",
+      "closedAt": "2021-10-20T16:03:13Z",
+      "mergedAt": "2021-10-20T16:03:13Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "c44b71a7aa22e660848a0a91034d9ec03a41b72a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc4uthz3",
+          "commit": {
+            "abbreviatedOid": "53631b3"
+          },
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-10-19T19:15:13Z",
+          "updatedAt": "2021-10-19T19:15:13Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOGLfxbc4tP1q7",
+      "title": "Initial text proposal",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/6",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Initial text proposal for the I-D\r\n\r\nFix #2 ",
+      "createdAt": "2021-10-15T11:24:59Z",
+      "updatedAt": "2021-10-20T16:56:51Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "c44b71a7aa22e660848a0a91034d9ec03a41b72a",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "intial-text-proposal",
+      "headRefOid": "9f0dd6d8bcd692e7326b8b6472caac848a059e57",
+      "closedAt": "2021-10-20T16:56:48Z",
+      "mergedAt": "2021-10-20T16:56:48Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "71e71b695dc08aa302639f870cfc65639de86376"
+      },
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": " @aguoietf , @sergiobelotti : you can just review the latest changes in https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/6/commits/b1f84d63012ba103a9ee5c3cc8e43b544ddb1687\r\n",
+          "createdAt": "2021-10-20T16:38:48Z",
+          "updatedAt": "2021-10-20T16:38:48Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc4uxmUI",
+          "commit": {
+            "abbreviatedOid": "9f0dd6d"
+          },
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-10-20T16:49:48Z",
+          "updatedAt": "2021-10-20T16:49:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGLfxbc4uxnRH",
+          "commit": {
+            "abbreviatedOid": "9f0dd6d"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2021-10-20T16:53:42Z",
+          "updatedAt": "2021-10-20T16:53:42Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOGLfxbc4wFmV7",
+      "title": "Remove use of l0-path-constraints",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/16",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aguoietf"
+      ],
+      "labels": [],
+      "body": "Remove the use of l0-path-constraints grouping from l0-type-ext\r\n\r\nFix https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-flexigrid-tunnel-yang/issues/16\r\n\r\nPending merge of https://github.com/ietf-ccamp-wg/ietf-ccamp-layer0-types-ext/pull/31\r\n\r\nCo-Authored-By: sergio belotti <sergio.belotti@nokia.com>\r\n",
+      "createdAt": "2021-12-20T15:54:33Z",
+      "updatedAt": "2022-02-03T08:43:13Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "1381b66a8d5bb810422b848ee3e577737ad70fac",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "update",
+      "headRefOid": "5b41add4d6dbaa6753621b3afb37f81cd045f42d",
+      "closedAt": "2022-02-02T21:27:49Z",
+      "mergedAt": "2022-02-02T21:27:49Z",
+      "mergedBy": "aguoietf",
+      "mergeCommit": {
+        "oid": "2cc81a2f852e7b6b034fdf1a5af8fb34edc37a06"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc4z7FSF",
+          "commit": {
+            "abbreviatedOid": "5b41add"
+          },
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "changes are ok with me.",
+          "createdAt": "2022-02-02T21:27:32Z",
+          "updatedAt": "2022-02-02T21:27:32Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "PR_kwDOGLfxbc4x--ed",
+      "title": "Proposed updates to README.md",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/17",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "aguoietf"
+      ],
+      "labels": [],
+      "body": "Aligned with other repositories",
+      "createdAt": "2022-02-02T18:31:32Z",
+      "updatedAt": "2022-02-03T08:41:33Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "1381b66a8d5bb810422b848ee3e577737ad70fac",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "readme",
+      "headRefOid": "e7d19382d1e0a7e78515d57031016591aa5c4562",
+      "closedAt": "2022-02-02T21:06:46Z",
+      "mergedAt": "2022-02-02T21:06:46Z",
+      "mergedBy": "aguoietf",
+      "mergeCommit": {
+        "oid": "5f5c75ee0821e1a4a3898c99041850504bc76893"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOGLfxbc4zueuY",
+      "title": "Proposed updates for IETF 113",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/18",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Prepare and update I-D to be presented at IETF 113:\r\n\r\n- [x] Add IANA Considerations: Fix #12\r\n- [x] Add WDM path constraints: fix #15 \r\n- [x] Add optical impairments constraints: fix #14\r\n- [x] Add Acknowledgements: fix #3  \r\n\r\nPending merge of PR:\r\n- [x] https://github.com/ietf-ccamp-wg/ietf-ccamp-layer0-types-ext/pull/36",
+      "createdAt": "2022-03-01T12:35:18Z",
+      "updatedAt": "2022-03-07T14:35:14Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "2cc81a2f852e7b6b034fdf1a5af8fb34edc37a06",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "ietf-113",
+      "headRefOid": "223aacd1e1ddb92cb1b4401b3e89fec48c583ac7",
+      "closedAt": "2022-03-07T14:35:09Z",
+      "mergedAt": "2022-03-07T14:35:08Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "879b5157e5d2c5a7cc5c018ab6c41539fec3cf28"
+      },
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "> If we look at the current flex grid and wson path computation - they are identical. Therefore I think a better strategy is to combine these two and have a common path computation model for both flex grid and wson. We can add flex-grid- or wson-specific constructs onto the common model using augments (or even within the same model by switch-case statement) if there is a need.\r\n\r\nLet's discuss this comment in the context of issue #9 since this has an impact on the number of documents that we should progress for optical path computation",
+          "createdAt": "2022-03-03T17:40:58Z",
+          "updatedAt": "2022-03-03T17:40:58Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc41lU4g",
+          "commit": {
+            "abbreviatedOid": "26e200f"
+          },
+          "author": "aguoietf",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "If we look at the current flex grid and wson path computation - they are identical. Therefore I think a better strategy is to combine these two and have a common path computation model for both flex grid and wson. We can add flex-grid- or wson-specific constructs onto the common model using augments (or even within the same model by switch-case statement) if there is a need. ",
+          "createdAt": "2022-03-03T14:12:50Z",
+          "updatedAt": "2022-03-03T14:15:33Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "As discussed, since the gsnr-margin is applicable to both wson and flex grid there is no need for an extra container",
+              "createdAt": "2022-03-03T14:12:51Z",
+              "updatedAt": "2022-03-03T14:15:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGLfxbc41medj",
+          "commit": {
+            "abbreviatedOid": "27352dc"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-03-03T17:37:37Z",
+          "updatedAt": "2022-03-03T17:37:37Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "Fixed in https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/18/commits/27352dc7be50c1ccd4f5e7d52b98e3d633f0fca9",
+              "createdAt": "2022-03-03T17:37:37Z",
+              "updatedAt": "2022-03-03T17:37:37Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "id": "PR_kwDOGLfxbc4-lBRm",
+      "title": "WSON and flexi-grid path computation",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/21",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Draft updated to focus only on WSON and flexi-grid path computation\r\n\r\nFix #19\r\n",
+      "createdAt": "2022-09-08T09:58:56Z",
+      "updatedAt": "2022-09-12T08:48:38Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "879b5157e5d2c5a7cc5c018ab6c41539fec3cf28",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "wg-adoption",
+      "headRefOid": "b031b44bda1d73a7d456787b4f490598580b1c64",
+      "closedAt": "2022-09-12T08:48:31Z",
+      "mergedAt": "2022-09-12T08:48:31Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "625c5892ed7dc480b9a3b31afee820a05314d8b8"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc5BtTgp",
+          "commit": {
+            "abbreviatedOid": "b031b44"
+          },
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-09T14:16:33Z",
+          "updatedAt": "2022-09-09T14:16:33Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGLfxbc5BtU-b",
+          "commit": {
+            "abbreviatedOid": "b031b44"
+          },
+          "author": "danielkinguk",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-09T14:20:32Z",
+          "updatedAt": "2022-09-09T14:20:32Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOGLfxbc5BtgkJ",
+          "commit": {
+            "abbreviatedOid": "b031b44"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-09T14:45:20Z",
+          "updatedAt": "2022-09-09T14:45:20Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "id": "PR_kwDOGLfxbc4-w7Za",
+      "title": "Added Manageability and Security Considerations",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/22",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Added Manageability and Security Considerations proposed by Daniel:\r\nhttps://github.com/aguoietf/ietf-ccamp-optical-path-computation/issues/10#issuecomment-1242047633 https://github.com/aguoietf/ietf-ccamp-optical-path-computation/issues/11#issuecomment-1242053633\r\n",
+      "createdAt": "2022-09-12T09:12:53Z",
+      "updatedAt": "2022-09-12T13:03:43Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "625c5892ed7dc480b9a3b31afee820a05314d8b8",
+      "headRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "headRefName": "wg-adoption",
+      "headRefOid": "da0f2311e19bd400f28b031b83dbe37ddd46895b",
+      "closedAt": "2022-09-12T13:03:39Z",
+      "mergedAt": "2022-09-12T13:03:39Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "b47038342fafaa3efd9d31655206b4d7ed60ee12"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc5Bzhxl",
+          "commit": {
+            "abbreviatedOid": "5c797fa"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2022-09-12T12:35:06Z",
+          "updatedAt": "2022-09-12T12:38:29Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "....triggering actions according to configured will also need....\r\nI would think the words missing would be \"tunnels\" probably but the sentence has to be completed",
+              "createdAt": "2022-09-12T12:35:06Z",
+              "updatedAt": "2022-09-12T12:38:29Z"
+            },
+            {
+              "originalPosition": 332,
+              "body": "....according to configured will also need...\r\nI would think the words missing would be \"tunnels\" probably but the sentence has to be completed",
+              "createdAt": "2022-09-12T12:36:50Z",
+              "updatedAt": "2022-09-12T12:38:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGLfxbc5BzyVq",
+          "commit": {
+            "abbreviatedOid": "5c797fa"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T13:02:22Z",
+          "updatedAt": "2022-09-12T13:02:23Z",
+          "comments": [
+            {
+              "originalPosition": 332,
+              "body": "Fixed in https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/22/commits/da0f2311e19bd400f28b031b83dbe37ddd46895b\r\n",
+              "createdAt": "2022-09-12T13:02:23Z",
+              "updatedAt": "2022-09-12T13:02:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOGLfxbc5Bzygl",
+          "commit": {
+            "abbreviatedOid": "5c797fa"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-09-12T13:02:47Z",
+          "updatedAt": "2022-09-12T13:02:48Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Fixed in https://github.com/aguoietf/ietf-ccamp-optical-path-computation/pull/22/commits/da0f2311e19bd400f28b031b83dbe37ddd46895b\r\n",
+              "createdAt": "2022-09-12T13:02:48Z",
+              "updatedAt": "2022-09-12T13:02:48Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOGLfxbc5nJE7f",
+      "title": "update wdm path computation model to align with wdm tunnel",
+      "url": "https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/pull/27",
+      "state": "MERGED",
+      "author": "aguoietf",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "update wdm path computation model to align with wdm tunnel",
+      "createdAt": "2024-02-16T23:14:49Z",
+      "updatedAt": "2024-03-01T16:48:54Z",
+      "baseRepository": "ietf-ccamp-wg/ietf-ccamp-optical-path-computation",
+      "baseRefName": "main",
+      "baseRefOid": "a4bd9b9114d05710d92f878e91db8146f7103021",
+      "headRepository": "aguoietf/ietf-ccamp-optical-path-computation",
+      "headRefName": "main",
+      "headRefOid": "74b3a6ce313e0da561568d5e5833cd7924606806",
+      "closedAt": "2024-03-01T16:48:54Z",
+      "mergedAt": "2024-03-01T16:48:54Z",
+      "mergedBy": "aguoietf",
+      "mergeCommit": {
+        "oid": "3323808fb1972fc851f85432f2b6d26e5e4affed"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOGLfxbc5x7LO6",
+          "commit": {
+            "abbreviatedOid": "74b3a6c"
+          },
+          "author": "sergiobelotti",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-01T14:45:43Z",
+          "updatedAt": "2024-03-01T14:45:43Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
+}
