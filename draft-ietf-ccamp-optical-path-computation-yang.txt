@@ -5,10 +5,10 @@
 Common Control and Measurement Plane                             I. Busi
 Internet-Draft                                       Huawei Technologies
 Intended status: Standards Track                                  A. Guo
-Expires: 2 March 2025                             Futurewei Technologies
+Expires: 7 August 2025                            Futurewei Technologies
                                                               S. Belotti
                                                                    Nokia
-                                                          29 August 2024
+                                                         3 February 2025
 
 
 YANG Data Models for requesting Path Computation in WDM Optical Networks
@@ -58,11 +58,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 March 2025.
+   This Internet-Draft will expire on 7 August 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1299,8 +1299,9 @@ Table of Contents
               Belotti, S., Busi, I., Beller, D., Le Rouzic, E., and A.
               Guo, "Common YANG Data Types for Layer 0 Networks", Work
               in Progress, Internet-Draft, draft-ietf-ccamp-rfc9093-bis-
-              11, 25 July 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-ccamp-rfc9093-bis-11>.
+              12, 4 December 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
+              rfc9093-bis-12>.
 
    [I-D.ietf-teas-yang-path-computation]
               Busi, I., Belotti, S., de Dios, O. G., Sharma, A., and Y.
@@ -1314,9 +1315,9 @@ Table of Contents
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
               Bryskin, "A YANG Data Model for Traffic Engineering
               Tunnels, Label Switched Paths and Interfaces", Work in
-              Progress, Internet-Draft, draft-ietf-teas-yang-te-36, 2
-              February 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-yang-te-36>.
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-37, 9
+              October 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-yang-te-37>.
 
    [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
               DOI 10.17487/RFC3688, January 2004,
@@ -1388,9 +1389,9 @@ Table of Contents
               Ceccarelli, "Applicability of Abstraction and Control of
               Traffic Engineered Networks (ACTN) to Packet Optical
               Integration (POI)", Work in Progress, Internet-Draft,
-              draft-ietf-teas-actn-poi-applicability-12, 5 July 2024,
+              draft-ietf-teas-actn-poi-applicability-13, 3 January 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              actn-poi-applicability-12>.
+              actn-poi-applicability-13>.
 
    [RFC7446]  Lee, Y., Ed., Bernstein, G., Ed., Li, D., and W. Imajuku,
               "Routing and Wavelength Assignment Information Model for
