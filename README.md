@@ -11,7 +11,7 @@ This is the working area for the IETF [CCAMP Working Group](https://datatracker.
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/blob//CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
