@@ -5,10 +5,10 @@
 Common Control and Measurement Plane                             I. Busi
 Internet-Draft                                       Huawei Technologies
 Intended status: Standards Track                                  A. Guo
-Expires: 7 August 2025                            Futurewei Technologies
+Expires: 1 September 2025                         Futurewei Technologies
                                                               S. Belotti
                                                                    Nokia
-                                                         3 February 2025
+                                                        28 February 2025
 
 
 YANG Data Models for requesting Path Computation in WDM Optical Networks
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 August 2025.
+   This Internet-Draft will expire on 1 September 2025.
 
 Copyright Notice
 
@@ -1307,9 +1307,9 @@ Table of Contents
               Busi, I., Belotti, S., de Dios, O. G., Sharma, A., and Y.
               Shi, "A YANG Data Model for requesting path computation",
               Work in Progress, Internet-Draft, draft-ietf-teas-yang-
-              path-computation-23, 19 August 2024,
+              path-computation-24, 13 February 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              yang-path-computation-23>.
+              yang-path-computation-24>.
 
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
@@ -1389,9 +1389,9 @@ Table of Contents
               Ceccarelli, "Applicability of Abstraction and Control of
               Traffic Engineered Networks (ACTN) to Packet Optical
               Integration (POI)", Work in Progress, Internet-Draft,
-              draft-ietf-teas-actn-poi-applicability-13, 3 January 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              actn-poi-applicability-13>.
+              draft-ietf-teas-actn-poi-applicability-14, 25 February
+              2025, <https://datatracker.ietf.org/doc/html/draft-ietf-
+              teas-actn-poi-applicability-14>.
 
    [RFC7446]  Lee, Y., Ed., Bernstein, G., Ed., Li, D., and W. Imajuku,
               "Routing and Wavelength Assignment Information Model for
