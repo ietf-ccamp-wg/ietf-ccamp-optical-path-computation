@@ -1,3 +1,5 @@
+<!-- regenerate: on (set to off if you edit this file) -->
+
 # YANG Data Models for requesting Path Computation in WDM Optical Networks
 
 This is the working area for the IETF [CCAMP Working Group](https://datatracker.ietf.org/group/ccamp/documents/) Internet-Draft, "YANG Data Models for requesting Path Computation in WDM Optical Networks".
@@ -13,9 +15,8 @@ This is the working area for the IETF [CCAMP Working Group](https://datatracker.
 See the
 [guidelines for contributions](https://github.com/ietf-ccamp-wg/ietf-ccamp-optical-path-computation/blob/main/CONTRIBUTING.md).
 
-Contributions can be made by creating pull requests.
-The GitHub interface supports creating pull requests using the Edit (✏) button.
-
+The contributing file also has tips on how to make contributions, if you
+don't already know how to do that.
 
 ## Command Line Usage
 
