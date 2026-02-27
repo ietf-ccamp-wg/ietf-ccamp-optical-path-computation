@@ -179,7 +179,7 @@ flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defin
 ~~~~ yang
 {::include yang/ietf-wdm-path-computation.yang}
 ~~~~
-{: #fig-wdm-pc-yang title="WDM path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-wdm-path-computation@2024-02-29.yang"}
+{: #fig-wdm-pc-yang title="WDM path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-wdm-path-computation@2026-02-27.yang"}
 
 
 # Manageability Considerations
@@ -215,7 +215,7 @@ Operations defined in this document, and their sensitivities and possible vulner
 
 ~~~~
   name:      ietf-wdm-path-computation
-  namespace: urn:ietf:params:xml:ns:yang:ietf-wson-path-computation
+  namespace: urn:ietf:params:xml:ns:yang:ietf-wdm-path-computation
   prefix:    wdm-pc
   reference: this document
 ~~~~

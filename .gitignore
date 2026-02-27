@@ -22,3 +22,5 @@ draft-ietf-ccamp-optical-path-computation-yang.xml
 package-lock.json
 report.xml
 !requirements.txt
+*.bash
+pretty/
