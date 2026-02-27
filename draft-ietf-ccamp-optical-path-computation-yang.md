@@ -143,9 +143,7 @@ The entities and Traffic Engineering (TE) attributes, such as requested path and
 
 The common characteristics for layer 0 (WSON and Flexi-grid) path computation are under definition in {{!I-D.ietf-ccamp-rfc9093-bis}} and re-used in the ietf-wdm-path-computation YANG models.
 
-{: #wdm-te-bandwidth}
-
-## Bandwidth Augmentation
+## Bandwidth Augmentation {#wdm-te-bandwidth}
 
 As described in Section 4.2 of {{!RFC7699}}, there is some overlap
 between bandwidth and label in layer0.
@@ -155,9 +153,7 @@ is sufficient to describe also the spectrum resources within WSON and
 flexi-grid networks. Therefore, the model does not define any augmentation
 for the te-bandwidth containers defined in {{!I-D.ietf-teas-yang-path-computation}}.
 
-{: #wdm-te-label}
-
-## Label Augmentations
+## Label Augmentations {#wdm-te-label}
 
 The models augment all the occurrences of the label-restriction list
 with WSON and Flexi-grid technology-specific attributes using the
@@ -168,24 +164,20 @@ container with the WSON, Flexi-grid and OTN technology-specific attributes using
 wson-label-start-end, wson-label-hop, wson-label-step,
 flexi-grid-label-start-end, flexi-grid-label-hop and flexi-grid-label-step defined in {{!I-D.ietf-ccamp-rfc9093-bis}}.
 
-{: #wdm-pc-tree}
-
-# WDM Path Computation Tree Diagrams
+# WDM Path Computation Tree Diagrams {#wdm-pc-tree}
 
 {{fig-wdm-pc-tree}} below shows the tree diagram of the YANG data model defined in module ietf-wdm-path-computation.yang.
 
 ~~~~ ascii-art
-{::include ./ietf-wdm-path-computation.tree}
+{::include-fold yang/ietf-wdm-path-computation.tree}
 ~~~~
 {: #fig-wdm-pc-tree title="WDM path computation tree diagram" artwork-name="ietf-wdm-path-computation.tree"}
 
 
-{: #wdm-pc-yang}
-
-# YANG Models for WDM Path Computation
+# YANG Models for WDM Path Computation {#wdm-pc-yang}
 
 ~~~~ yang
-{::include ./ietf-wdm-path-computation.yang}
+{::include yang/ietf-wdm-path-computation.yang}
 ~~~~
 {: #fig-wdm-pc-yang title="WDM path computation YANG module" sourcecode-markers="true" sourcecode-name="ietf-wdm-path-computation@2024-02-29.yang"}
 
