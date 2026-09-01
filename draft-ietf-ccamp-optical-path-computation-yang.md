@@ -10,7 +10,7 @@ date:
 consensus: true
 v: 3
 area: "Routing"
-workgroup: "Common Control and Measurement Plane"
+workgroup: "CCAMP Working Group"
 keyword:
  - next generation
  - unicorn
