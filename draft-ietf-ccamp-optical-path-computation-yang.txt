@@ -2,7 +2,7 @@
 
 
 
-Common Control and Measurement Plane                             I. Busi
+CCAMP Working Group                                              I. Busi
 Internet-Draft                                       Huawei Technologies
 Intended status: Standards Track                                  A. Guo
 Expires: 5 March 2027                             Futurewei Technologies
