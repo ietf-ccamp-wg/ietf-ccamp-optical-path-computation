@@ -1,3 +1,4 @@
+*.bash
 *.html
 *.pdf
 *.redxml
@@ -20,7 +21,6 @@ Gemfile.lock
 archive.json
 draft-ietf-ccamp-optical-path-computation-yang.xml
 package-lock.json
+pretty/
 report.xml
 !requirements.txt
-*.bash
-pretty/
